@@ -407,6 +407,10 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text="Bot Reloaded")
         bot.send_message(message.chat.id, text=m.startmsg, reply_markup=start_btn())
         
+@bot.message_handler() 
+def get_message(mes):
+    if mes.text == "Chat":
+        bot.send_message(mes.chat.id, "Click!!!", reply_markup = ReplyKeyboardRemove())
         
         
 
