@@ -15,7 +15,7 @@ user_dict = {}
 class User:
     def __init__(self, name):
         self.name = name
-         self.sex = None
+        self.sex = None
 
 
 
