@@ -1,7 +1,7 @@
 from telebot import*
 from telebot.types import*
 from config import bot_token, m
-from cmds import*
+
     
 from telebot.apihelper import ApiTelegramException
 bot_token = bot_token
