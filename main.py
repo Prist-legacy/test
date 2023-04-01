@@ -411,6 +411,9 @@ def send_welcome(message):
 def get_message(mes):
     if mes.text == "Chat":
         bot.send_message(mes.chat.id, "Click!!!", reply_markup = ReplyKeyboardRemove())
+    elif message.text == ["VIP GAMES"]:
+            bot.edit_message_text(message.chat.id,
+                                  text=m.vip_msg, reply_markup=vip_btn())
         
         
 
