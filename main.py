@@ -9,7 +9,13 @@ bot_token = bot_token
 bot = telebot.TeleBot(bot_token)
 
 
+user_dict = {}
 
+
+class User:
+    def __init__(self, name):
+        self.name = name
+         self.sex = None
 
 
 
@@ -444,25 +450,46 @@ def get_message(message):
                                   text="Key-buttons removed", reply_markup=ReplyKeyboardRemove())
         bot.send_message(message.chat.id,
                                   text=m.start_msg, reply_markup=start_btn())
-@bot.message_handler()
-def get_message(message):
-    if message.text == "support":
+    elif message.text == "support":
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         msg = bot.send_message(message.chat.id,
                                   text=support_msg)
         bot.register_next_step_handler(msg, process_problem_step)
-
+        
+        
 def process_problem_step(message):
     try:
-        problem = message.text
-        bot.send_message(message.chat.id, text=f'You said..\\n{problem}\n\nFowarded succefully...')
+        chat_id = message.chat.id
+        name = message.text
+        user = User(name)
+        user_dict[chat_id] = user
+        msg = bot.reply_to(message, 'How old are you?')
+        bot.register_next_step_handler(msg, process_age_step)
+    except Exception as e:
+        bot.reply_to(message, 'oooops')
+        
+def process_sex_step(message):
+    try:
+        chat_id = message.chat.id
+        sex = message.text
+        user = user_dict[chat_id]
+        if (sex == u'Male') or (sex == u'Female'):
+            user.sex = sex
+        else:
+            raise Exception("Unknown sex")
+        bot.send_message(chat_id, 'Nice to meet you ' + user.name + '\n Sex:' + user.sex)
     except Exception as e:
         bot.reply_to(message, 'oooops')
         
         
+# Enable saving next step handlers to file "./.handlers-saves/step.save".
+# Delay=2 means that after any change in next step handlers (e.g. calling register_next_step_handler())
+# saving will hapen after delay 2 seconds.
+bot.enable_save_next_step_handlers(delay=1)
 
+# Load next_step_handlers from save file (default "./.handlers-saves/step.save")
+# WARNING It will work only if enable_save_next_step_handlers was called!
+bot.load_next_step_handlers()
+        
 print('BOT IS STARTED SUCCESSFULLY')
-
-
-
 bot.polling()
