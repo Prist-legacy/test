@@ -453,7 +453,9 @@ def get_message(message):
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         msg = bot.send_message(message.chat.id,
                                   text=support_msg)
-        bot.register_next_step_handler(msg, process_problem_step)
+        msg2 = bot.send_message(message.chat.id,
+                                  text='Send your problem')
+        bot.register_next_step_handler(msg,msg2, process_problem_step,reply_markup=ReplyKeyboardRemove())
         
         
 def process_problem_step(message):
