@@ -408,10 +408,19 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.startmsg, reply_markup=start_btn())
         
 @bot.message_handler() 
-def get_message(mes):
-    if mes.text == "Chat":
-        bot.send_message(mes.chat.id, "Click!!!", reply_markup = ReplyKeyboardRemove())
-    elif message.text == ["VIP GAMES"]:
+def get_message(message):
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+    user_name2 = message.from_user.last_name
+    mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
+    if message.text == ["admin", "ADMIN", "Admin"]:
+        bot.send_chat_action(message.chat.id, 'typing')  # show the bot "typing" (max. 5 secs)
+        time.sleep(3)
+        bot.send_message(message.chat.id, text=f"USER = {mention}\n" + f"ID = {user_id}\n" + m.admin_msg, 
+                             reply_markup=admin_btn(), 
+                             parse_mode = "Markdown", 
+                             disable_web_page_preview=True)
+    elif message.text == "VIP GAMES":
             bot.edit_message_text(message.chat.id,
                                   text=m.vip_msg, reply_markup=vip_btn())
         
