@@ -452,10 +452,10 @@ def get_message(message):
     elif message.text == "support":
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         msg = bot.send_message(message.chat.id,
-                                  text=support_msg)
+                                  text=support_msg,reply_markup=ReplyKeyboardRemove())
         msg2 = bot.send_message(message.chat.id,
                                   text='Send your problem')
-        bot.register_next_step_handler(msg,msg2, process_problem_step,reply_markup=ReplyKeyboardRemove())
+        bot.register_next_step_handler(msg,msg2, process_problem_step)
         
         
 def process_problem_step(message):
