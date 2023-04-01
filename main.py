@@ -428,27 +428,25 @@ def get_message(message):
         user_name2 = message.from_user.last_name
         user_name = message.from_user.first_name
         mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
-        acc = f"""
-        ACCOUNT N0: {user_id}
-        TELL NAME: {user_name}
-        ACCOUNT TYPE: 
-        
-        ORDERS:
-        """
+        acc = f"ACCOUNT N0: {user_id}\nTELL NAME: {user_name} \nACCOUNT TYPE: \nORDERS:"
         bot.send_message(message.chat.id,
                                   text=acc, reply_markup=start_btn())
     elif message.text == "Free tips":
         bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
     elif message.text == "My orders":
+        orders = "These are your oders"
         bot.send_message(message.chat.id,
-                                  text=m.vip_msg, reply_markup=vip_btn())
+                                  text=orders, reply_markup=start_btn())
     elif message.text == "support":
+        support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         bot.send_message(message.chat.id,
-                                  text=m.vip_msg, reply_markup=vip_btn())
-    elif message.text == "others":
+                                  text=support_msg)
+    elif message.text == "Close this menue":
         bot.send_message(message.chat.id,
-                                  text=m.vip_msg, reply_markup=vip_btn())
+                                  text="Key-buttons removed", reply_markup=ReplyKeyboardRemove())
+        bot.send_message(message.chat.id,
+                                  text=m.start_msg, reply_markup=start_btn())
         
         
 
