@@ -440,13 +440,23 @@ def get_message(message):
                                   text=orders_msg)
     elif message.text == "support":
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
-        bot.send_message(message.chat.id,
+        msg = bot.send_message(message.chat.id,
                                   text=support_msg)
+        bot.register_next_step_handler(msg, process_problem_step)
+        
     elif message.text == "Close this menue":
         bot.send_message(message.chat.id,
                                   text="Key-buttons removed", reply_markup=ReplyKeyboardRemove())
         bot.send_message(message.chat.id,
                                   text=m.start_msg, reply_markup=start_btn())
+        
+def process_problem_step(message):
+    try:
+        problem = message.text
+        bot.send_message(message.chat.id, text=f'You said..\n
+        {problem}\n\nFowarded succefully...')
+    except Exception as e:
+        bot.reply_to(message, 'oooops')
         
         
 
