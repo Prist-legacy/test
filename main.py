@@ -15,7 +15,6 @@ user_dict = {}
 class User:
     def __init__(self, name):
         self.name = name
-        self.sex = None
 
 
 
@@ -463,23 +462,10 @@ def process_problem_step(message):
         name = message.text
         user = User(name)
         user_dict[chat_id] = user
-        msg = bot.reply_to(message, 'How old are you?')
-        bot.register_next_step_handler(msg, process_sex_step)
+        bot.send_message(chat_id, 'Nice to meet you ' + user.name)
     except Exception as e:
         bot.reply_to(message, 'oooops')
         
-def process_sex_step(message):
-    try:
-        chat_id = message.chat.id
-        sex = message.text
-        user = user_dict[chat_id]
-        if (sex == u'Male') or (sex == u'Female'):
-            user.sex = sex
-        else:
-            raise Exception("Unknown sex")
-        bot.send_message(chat_id, 'Nice to meet you ' + user.name + '\n Sex:' + user.sex)
-    except Exception as e:
-        bot.reply_to(message, 'oooops')
         
         
 # Enable saving next step handlers to file "./.handlers-saves/step.save".
