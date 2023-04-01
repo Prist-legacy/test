@@ -456,7 +456,7 @@ def process_problem_step(message):
     try:
         problem = message.text
         bot.send_message(message.chat.id, text=f'You said..\n
-        {problem}\n\nFowarded succefully...')
+        {problem}\nFowarded succefully...')
     except Exception as e:
         bot.reply_to(message, 'oooops')
         
