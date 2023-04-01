@@ -467,12 +467,14 @@ def process_problem_step(message):
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         user_dict[chat_id] = user
         bot.send_message(chat_id, text=f'{mention} SAID.. \n\n{user.name}\n\nFowarded to admin successfully..'
-                         )
-        bot.send_message(message.chat.id, text='MAIN MENU 🔰',reply_markup=main_btn)
+                         parse_mode = "Markdown", 
+
+                         disable_web_page_preview=True)
+        
     except Exception as e:
 
         bot.send_message(message.chat.id, text='Oooops... Something went wrong.',reply_markup=admin_btn)
-        
+    bot.send_message(message.chat.id, text='MAIN MENU 🔰',reply_markup=main_btn)
         
         
 # Enable saving next step handlers to file "./.handlers-saves/step.save".
