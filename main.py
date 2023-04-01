@@ -445,7 +445,8 @@ def get_message(message):
         bot.send_message(message.chat.id,
                                   text=m.start_msg, reply_markup=start_btn())
 @bot.message_handler()
-def message.text == "support":
+def get_message(message):
+    if message.text == "support":
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         msg = bot.send_message(message.chat.id,
                                   text=support_msg)
