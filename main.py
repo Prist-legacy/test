@@ -421,7 +421,7 @@ def get_message(message):
                              parse_mode = "Markdown", 
                              disable_web_page_preview=True)
     elif message.text == "VIP GAMES":
-            bot.edit_message_text(message.chat.id,
+            bot.send_message(message.chat.id,
                                   text=m.vip_msg, reply_markup=vip_btn())
         
         
