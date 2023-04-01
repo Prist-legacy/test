@@ -435,9 +435,9 @@ def get_message(message):
         bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
     elif message.text == "My orders":
-        orders = "These are your oders"
+        orders_msg = "These are your oders"
         bot.send_message(message.chat.id,
-                                  text=orders, reply_markup=start_btn())
+                                  text=orders_msg)
     elif message.text == "support":
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         bot.send_message(message.chat.id,
