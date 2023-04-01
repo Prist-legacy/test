@@ -464,12 +464,12 @@ def process_problem_step(message):
         user_id = message.from_user.id
         name = message.text
         user = User(name)
-        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
+        mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         user_dict[chat_id] = user
-        bot.send_message(chat_id, f'{mention} SAID.. \n\n{user.name}\n\nFowarded to admin successfully..',reply_markup=main_btn)
+        bot.send_message(chat_id, text=f'{mention} SAID.. \n\n{user.name}\n\nFowarded to admin successfully..',reply_markup=main_btn)
     except Exception as e:
-        bot.reply_to(message, 'oooops')
-        bot.send_message(chat_id, 'Oooops... Something went wrong.',reply_markup=admin_btn)
+        
+        bot.send_message(chat_id, text='Oooops... Something went wrong.',reply_markup=admin_btn)
         
         
         
