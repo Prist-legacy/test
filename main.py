@@ -460,10 +460,13 @@ def get_message(message):
 def process_problem_step(message):
     try:
         chat_id = message.chat.id
+        user_name = message.from_user.first_name
+        user_id = message.from_user.id
         name = message.text
         user = User(name)
+        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
         user_dict[chat_id] = user
-        bot.send_message(chat_id, f'YOU SAID.. \n{user.name}\nFowarded to admin successfully..')
+        bot.send_message(chat_id, f'{mention} SAID.. \n\n{user.name}\n\nFowarded to admin successfully..',reply_markup=main_btn)
     except Exception as e:
         bot.reply_to(message, 'oooops')
         bot.send_message(chat_id, 'Oooops... Something went wrong.',reply_markup=admin_btn)
