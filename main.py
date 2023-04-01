@@ -462,9 +462,10 @@ def process_problem_step(message):
         name = message.text
         user = User(name)
         user_dict[chat_id] = user
-        bot.send_message(chat_id, 'Nice to meet you ' + user.name)
+        bot.send_message(chat_id, 'YOU SAID..' \n+ user.name + \n'Fowarded to admin successfully..')
     except Exception as e:
         bot.reply_to(message, 'oooops')
+        bot.send_message(chat_id, 'Oooops... Something went wrong.',reply_markup=admin_btn)
         
         
         
