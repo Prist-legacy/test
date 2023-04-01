@@ -436,7 +436,7 @@ def get_message(message):
         ORDERS:
         """
         bot.send_message(message.chat.id,
-                                  text=m.vip_msg, reply_markup=vip_btn())
+                                  text=acc, reply_markup=start_btn())
     elif message.text == "Free tips":
         bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
