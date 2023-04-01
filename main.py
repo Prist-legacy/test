@@ -427,9 +427,9 @@ def get_message(message):
         user_id = message.from_user.id
         user_name2 = message.from_user.last_name
         user_name = message.from_user.first_name
-        mention = "["+user_name + user_name2+"](tg://user?id="+int(user_id)+")"
+        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
         acc = f"""
-        ACCOUNT N0: {mention}
+        ACCOUNT N0: {user_id}
         TELL NAME: {user_name}
         ACCOUNT TYPE: 
         
