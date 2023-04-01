@@ -438,7 +438,6 @@ def get_message(message):
         orders_msg = "These are your oders"
         bot.send_message(message.chat.id,
                                   text=orders_msg)
-    elif
         
     elif message.text == "Close this menue":
         bot.send_message(message.chat.id,
