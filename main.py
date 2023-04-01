@@ -465,5 +465,4 @@ print('BOT IS STARTED SUCCESSFULLY')
 
 
 
-bot.load_next_step_handlers()
 bot.polling()
