@@ -342,6 +342,31 @@ def send_welcome(message):
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
         #mention = f"{user_name + user_name2}"
         bot.send_message(message.chat.id, text=f"**HEY {mention}**" + m.startmsg, reply_markup=main_btn(), parse_mode = "Markdown")
+        
+        
+@bot.message_handler(func=lambda message:True)
+def send_admin(message):
+    if not is_subscribed(m.CHAT_ID,message.chat.id):
+        # user is not subscribed. send message to the user
+        bot.send_message(message.chat.id, text=m.not_sub_msg
+                         , reply_markup=sub())
+    else:
+        if message.text == ["admin", "ADMIN", "Admin"]:
+            #USAGES
+            user_id = message.from_user.id
+            user_name = message.from_user.first_name
+            user_name2 = message.from_user.last_name
+            mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")" 
+            #END USAGES
+            bot.send_chat_action(message.chat.id, 'typing')  # show the bot "typing" (max. 5 secs)
+            time.sleep(3)
+            bot.send_message(message.chat.id, text=f"USER = {mention}\n" + f"ID = {user_id}\n" + m.admin_msg, 
+                             reply_markup=admin_btn(), 
+                             parse_mode = "Markdown", 
+                             disable_web_page_preview=True)
+        elif message.text == ["VIP GAMES"]:
+            bot.send_message(message.chat.id,
+                                  text=m.vip_msg, reply_markup=vip_btn())
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
