@@ -409,11 +409,11 @@ def send_welcome(message):
         
 @bot.message_handler() 
 def get_message(message):
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    user_name2 = message.from_user.last_name
-    mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
     if message.text == ["admin", "ADMIN", "Admin"]:
+        user_id = message.from_user.id
+        user_name = message.from_user.first_name
+        user_name2 = message.from_user.last_name
+        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
         bot.send_chat_action(message.chat.id, 'typing')  # show the bot "typing" (max. 5 secs)
         time.sleep(3)
         bot.send_message(message.chat.id, text=f"USER = {mention}\n" + f"ID = {user_id}\n" + m.admin_msg, 
@@ -421,7 +421,33 @@ def get_message(message):
                              parse_mode = "Markdown", 
                              disable_web_page_preview=True)
     elif message.text == "VIP GAMES":
-            bot.send_message(message.chat.id,
+        bot.send_message(message.chat.id,
+                                  text=m.vip_msg, reply_markup=vip_btn())
+    elif message.text == "My account":
+        user_id = message.from_user.id
+        user_name2 = message.from_user.last_name
+        user_name = message.from_user.first_name
+        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
+        acc = f"""
+        ACCOUNT N0: {mention}
+        TELL NAME: {user_name}
+        ACCOUNT TYPE: 
+        
+        ORDERS:
+        """
+        bot.send_message(message.chat.id,
+                                  text=m.vip_msg, reply_markup=vip_btn())
+    elif message.text == "Free tips":
+        bot.send_message(message.chat.id,
+                                  text=m.freetips_msg, reply_markup=free_btn())
+    elif message.text == "My orders":
+        bot.send_message(message.chat.id,
+                                  text=m.vip_msg, reply_markup=vip_btn())
+    elif message.text == "support":
+        bot.send_message(message.chat.id,
+                                  text=m.vip_msg, reply_markup=vip_btn())
+    elif message.text == "others":
+        bot.send_message(message.chat.id,
                                   text=m.vip_msg, reply_markup=vip_btn())
         
         
