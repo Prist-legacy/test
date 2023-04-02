@@ -46,6 +46,12 @@ def main_btn():
     markup.add(orders,support)
     markup.add(others)
     return markup
+def yesorno_btn():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    no = types.KeyboardButton(text="No",)
+    yes = types.KeyboardButton(text="Yes",)
+    markup.add(yes,no)
+    return markup
 
 
 def sub():
@@ -474,7 +480,8 @@ def process_problem_step(message):
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         user_dict[chat_id] = user
         msg = bot.send_message(chat_id, text=f'🧔{mention}\n▫️informing... \n_{user.name}_\n\n*Fowarded successfully...*',
-                         parse_mode = "Markdown", 
+                         parse_mode = "Markdown",
+                               reply_markup=yesorno_bt(),
 
                          disable_web_page_preview=True)
         bot.register_next_step_handler(msg, process_menu_step)
@@ -492,10 +499,18 @@ def process_menu_step(message):
                          , reply_markup=sub())
 
     else:
+        if message.text = "Yes":
+            bot.send_message(message.chat.id, text="Message sent successfully...")
+        elif message.text = "No":
+            support_msg = "Rewrite your problem"
+            msg = bot.send_message(message.chat.id,
+                                  text=support_msg,reply_markup=ReplyKeyboardRemove())
+            bot.register_next_step_handler(msg, process_problem_step)
+        
 
-        bot.send_message(message.chat.id, text="Bot Reloaded")
 
-        bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn())
+
+
     
         
         
