@@ -473,7 +473,7 @@ def process_problem_step(message):
         user = User(name)
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         user_dict[chat_id] = user
-        bot.send_message(chat_id, text=f'🧔{mention} needs help with... \n{user.name}\n\nFowarded to admin successfully..',
+        bot.send_message(chat_id, text=f'🧔{mention}\nneeds help with... \n_{user.name}_\n\nFowarded to admin successfully..',
                          parse_mode = "Markdown", 
 
                          disable_web_page_preview=True)
