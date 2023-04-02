@@ -3,6 +3,7 @@ bot_token = "5628656737:AAGqz06KVUBcdqNbCxQg3-t5nVMg7xy2_so"
 
 
 class m:
+    CHAT_ID = '@pristbank' #replace your channel id
     admin = 'https://t.mepristlegacy'
     force_channel = "pristbank"
     startmsg = """
