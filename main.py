@@ -430,10 +430,10 @@ def get_message(message):
                                   text=m.vip_msg, reply_markup=vip_btn())
     elif message.text == "My account":
         user_id = message.from_user.id
-        user_name2 = message.from_user.last_name
-        user_name = message.from_user.first_name
-        mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
-        acc = f"🧔USER/N0: {user_id}\n▫️NAME: {mention} \n▫️ACC/TYPE: \n💰ORDERS:"
+        name2 = message.from_user.last_name
+        name = message.from_user.first_name
+        mention = "["+name name2+"](tg://user?id="+str(user_id)+")"
+        acc = f"🧔USER/N0: {user_id}\n▫️NAME: {name} {name2} \n▫️ACC/TYPE: \n💰ORDERS:"
         bot.send_message(message.chat.id,
                                   text=acc, reply_markup=start_btn())
     elif message.text == "Free tips":
