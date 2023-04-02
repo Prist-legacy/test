@@ -415,7 +415,7 @@ def send_welcome(message):
                          , reply_markup=sub())
     else:
         bot.send_message(message.chat.id, text="Bot Reloaded")
-        bot.send_message(message.chat.id, text=m.startmsg, reply_markup=start_btn())
+        bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn())
         
 @bot.message_handler() 
 def get_message(message):
@@ -426,7 +426,7 @@ def get_message(message):
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         bot.send_chat_action(message.chat.id, 'typing')  # show the bot "typing" (max. 5 secs)
         time.sleep(3)
-        bot.send_message(message.chat.id, text=f"USER = {mention}\n" + f"ID = {user_id}\n" + m.admin_msg, 
+        bot.send_message(message.chat.id, text=f"*USER* = {mention}\n" + f"*ID* = {user_id}\n" + m.admin_msg, 
                              reply_markup=admin_btn(), 
                              parse_mode = "Markdown", 
                              disable_web_page_preview=True)
@@ -438,7 +438,7 @@ def get_message(message):
         name2 = message.from_user.last_name
         name = message.from_user.first_name
         mention = "["+name+"](tg://user?id="+str(user_id)+")"
-        acc = f"🧔USER/N0: {user_id}\n▫️NAME: {mention} \n▫️ACC/TYPE: \n💰ORDERS:"
+        acc = f"🧔*USER/N0:* {user_id}\n▫️*NAME: {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:"
         bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
@@ -473,11 +473,11 @@ def process_problem_step(message):
         user = User(name)
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         user_dict[chat_id] = user
-        bot.send_message(chat_id, text=f'🧔{mention}\nneeds help with... \n_{user.name}_\n\nFowarded to admin successfully..',
+        bot.send_message(chat_id, text=f'🧔{mention}\n▫️informing... \n_{user.name}_\n\n*Fowarded successfully...*',
                          parse_mode = "Markdown", 
 
                          disable_web_page_preview=True)
-        
+    bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
     except Exception as e:
 
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
