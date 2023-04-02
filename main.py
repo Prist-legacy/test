@@ -432,8 +432,8 @@ def get_message(message):
         user_id = message.from_user.id
         user_name2 = message.from_user.last_name
         user_name = message.from_user.first_name
-        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")"
-        acc = f"ACCOUNT N0: {user_id}\nTELL NAME: {user_name} \nACCOUNT TYPE: \nORDERS:"
+        mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
+        acc = f"🧔USER/N0: {user_id}\n▫️NAME: {mention} \n▫️ACC/TYPE: \n💰ORDERS:"
         bot.send_message(message.chat.id,
                                   text=acc, reply_markup=start_btn())
     elif message.text == "Free tips":
@@ -466,7 +466,7 @@ def process_problem_step(message):
         user = User(name)
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         user_dict[chat_id] = user
-        bot.send_message(chat_id, text=f'{mention} SAID.. \n\n{user.name}\n\nFowarded to admin successfully..',
+        bot.send_message(chat_id, text=f'🧔{mention} needs help with... \n{user.name}\n\nFowarded to admin successfully..',
                          parse_mode = "Markdown", 
 
                          disable_web_page_preview=True)
