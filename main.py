@@ -346,7 +346,12 @@ def send_welcome(message):
    
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
         #mention = f"{user_name + user_name2}"
-        bot.send_message(message.chat.id, text=f"**HEY {mention}**" + m.startmsg, reply_markup=main_btn(), parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=f"**HEY {mention}**" + m.startmsg,
+                         reply_markup=start_btn(),
+                         parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=m.main_msg
+
+                         , reply_markup=main_btn())
         
         
 
