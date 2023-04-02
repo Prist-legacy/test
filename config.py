@@ -6,6 +6,7 @@ class m:
     CHAT_ID = '@pristbank' #replace your channel id
     admin = 'https://t.mepristlegacy'
     force_channel = "pristbank"
+    main_msg = "🔘MAIN MENU"
     startmsg = """
 I can help you in many things regarding to fixed games. Am smart but you can still contact the **UFM administration** for farther help.
 **So now can I know your need ?**
