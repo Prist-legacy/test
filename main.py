@@ -432,10 +432,12 @@ def get_message(message):
         user_id = message.from_user.id
         name2 = message.from_user.last_name
         name = message.from_user.first_name
-        mention = "["+name + name2+"](tg://user?id="+str(user_id)+")"
-        acc = f"🧔USER/N0: {user_id}\n▫️NAME: {name} {name2} \n▫️ACC/TYPE: \n💰ORDERS:"
+        mention = "["+name+"](tg://user?id="+str(user_id)+")"
+        acc = f"🧔USER/N0: {user_id}\n▫️NAME: {mention} \n▫️ACC/TYPE: \n💰ORDERS:"
         bot.send_message(message.chat.id,
-                                  text=acc, reply_markup=start_btn())
+                                  text=acc,parse_mode = "Markdown",
+                         disable_web_page_preview=True,
+                         reply_markup=start_btn())
     elif message.text == "Free tips":
         bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
