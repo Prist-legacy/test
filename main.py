@@ -473,8 +473,8 @@ def process_problem_step(message):
         
     except Exception as e:
 
-        bot.send_message(message.chat.id, text='Oooops... Something went wrong.',reply_markup=admin_btn)
-    bot.send_message(message.chat.id, text='MAIN MENU 🔰',reply_markup=main_btn)
+        bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
+    
         
         
 # Enable saving next step handlers to file "./.handlers-saves/step.save".
