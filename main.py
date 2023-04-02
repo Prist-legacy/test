@@ -432,7 +432,7 @@ def get_message(message):
         user_id = message.from_user.id
         name2 = message.from_user.last_name
         name = message.from_user.first_name
-        mention = "["+name name2+"](tg://user?id="+str(user_id)+")"
+        mention = "["+name + name2+"](tg://user?id="+str(user_id)+")"
         acc = f"🧔USER/N0: {user_id}\n▫️NAME: {name} {name2} \n▫️ACC/TYPE: \n💰ORDERS:"
         bot.send_message(message.chat.id,
                                   text=acc, reply_markup=start_btn())
