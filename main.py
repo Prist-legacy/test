@@ -505,7 +505,7 @@ def process_menu_step(message):
             bot.send_message(message.chat.id, text=f'*Fowarded successfully...*',
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
-            bot.forward_message(chat_id='int(5753072076)', from_chat_id=message.chat.id, message_id=message.message_id)
+            bot.forward_message(chat_id='@pristlegacy', from_chat_id=message.chat.id, message_id=message.message_id)
             
         elif message.text == "No":
              msg = bot.send_message(message.chat.id, text='*Retype your problem*',
