@@ -243,11 +243,11 @@ def callback_data(call):
         if call.data == "free":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text="FREE MATCHES MENU", reply_markup=free_btn())
+                                  text=m.freetips_msg, reply_markup=free_btn())
         elif call.data == "today's_tips":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.freetips_msg, reply_markup=freetips_btn())
+                                  text=m.free_msg, reply_markup=freetips_btn())
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
@@ -390,7 +390,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, text=m.freetips_msg, reply_markup=freetips_btn())
+        bot.send_message(message.chat.id, text=m.free_msg, reply_markup=freetips_btn())
         
 @bot.message_handler(commands=['admin'])
 def send_welcome(message):
