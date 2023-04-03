@@ -499,9 +499,15 @@ def process_problem_step(message):
 
 def process_menu_step(message):
     chat_id = message.chat.id
+    name = message.text
+    user = user_dict[chat_id]
     try:
         if message.text == "Yes":
-           bot.send_message(chat_id, text=f'*Fowarded successfully...*',
+            bot.forward_message('+user.name+,
+            chat_id="@pristlegacy", 
+            from_chat_id=message.chat.id 
+            )
+            bot.send_message(chat_id, text=f'*Fowarded successfully...*',
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
         elif message.text == "No":
