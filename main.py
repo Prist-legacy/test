@@ -450,7 +450,7 @@ def get_message(message):
     elif message.text == "❌Close this menue":
         mainmsg = "PROCEED WITH THIS MENU NOW"
         bot.send_message(message.chat.id,
-                                  text="Key-buttons removed", reply_markup=ReplyKeyboardRemove())
+                                  text="▫️Key-buttons removed.. Re-enable with /menu", reply_markup=ReplyKeyboardRemove())
         bot.send_message(message.chat.id,
                                   text=mainmsg, reply_markup=start_btn(), parse_mode = "Markdown")
     elif message.text == "🧑‍💻Admin":
