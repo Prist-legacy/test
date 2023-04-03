@@ -483,7 +483,7 @@ def process_problem_step(message):
 def process_menu_step(message):
 
     try:
-        if message.text == "Yes"
+        if message.text == "Yes":
 
            chat_id = message.chat.id
 
@@ -491,7 +491,7 @@ def process_menu_step(message):
 
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
-        elif message.text == "No"
+        elif message.text == "No":
              chat_id = message.chat.id
              msg = bot.send_message(chat_id, text='*Retype your problem*',
 
