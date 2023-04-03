@@ -506,7 +506,7 @@ def process_menu_step(message):
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
         elif message.text == "No":
-             chat_id = message.chat.id
+
              msg = bot.send_message(chat_id, text='*Retype your problem*',
 
                          parse_mode = "Markdown",
@@ -518,7 +518,6 @@ def process_menu_step(message):
              bot.register_next_step_handler(msg, process_problem_step)           
 
     except Exception as e:
-
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
 
