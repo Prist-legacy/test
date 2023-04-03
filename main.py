@@ -479,8 +479,22 @@ def process_problem_step(message):
     except Exception as e:
 
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
-        
 
+def process_menu_step(message):
+
+    try:
+
+        chat_id = message.chat.id
+
+        msg = bot.send_message(chat_id, text='*Fowarded successfully...*',
+
+                               parse_mode = "Markdown",
+                               reply_markup=menu_btn())
+                              
+
+    except Exception as e:
+
+        bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
 
 
