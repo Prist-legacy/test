@@ -500,7 +500,7 @@ def process_menu_step(message):
 
     try:
         if message.text == "Yes":
-
+           name= massage.text
            chat_id = message.chat.id
            user = User(name)
            user_dict[chat_id] = user
