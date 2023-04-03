@@ -497,7 +497,7 @@ def process_problem_step(message):
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
 def process_menu_step(message):
-
+    chat_id = message.chat.id
     try:
         if message.text == "Yes":
            
