@@ -503,7 +503,7 @@ def process_menu_step(message):
     user = user_dict[chat_id]
     try:
         if message.text == "Yes":
-            bot.forward_message('+user.name+,
+            bot.forward_message('+user.name+',
             chat_id="@pristlegacy", 
             from_chat_id=message.chat.id 
             )
