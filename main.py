@@ -500,7 +500,7 @@ def process_problem_step(message):
 def process_menu_step(message):
     chatid = message.chat.id
     name = message.text
-    user = user_dict[chat_id]
+    user = user_dict[chatid]
     try:
         if message.text == "Yes":
             bot.forward_message('+user.name+',
