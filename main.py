@@ -502,7 +502,8 @@ def process_menu_step(message):
         if message.text == "Yes":
 
            chat_id = message.chat.id
-
+           user = User(name)
+           user_dict[chat_id] = user
            bot.send_message(chat_id, text=f'*Fowarded successfully...*{user.name}',
 
                                parse_mode = "Markdown",
