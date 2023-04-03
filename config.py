@@ -25,7 +25,7 @@ After use /reload to proceed"""
     'admin'    : 'Get admin link. You can also type admin for quick access.'
 }
 
-    free_msg = """‼️Caution:\n
+    freetips_msg = """‼️Caution:\n
 Here at our platform, we know things are hard so we came up with the FREE TIPS department where the administrator provides you with free predictions. \nWhat does this mean, matches provided here are not 100% sure. They most times win but stake them on your own risk, losses are not on us.
 \nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches👇"""
 
