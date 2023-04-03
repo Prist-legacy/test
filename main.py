@@ -441,40 +441,42 @@ def send_welcome(message):
         
 @bot.message_handler() 
 def get_message(message):
-
-    if message.text == "💰VIP GAMES💰":
-        bot.send_message(message.chat.id,
+    if not is_subscribed(m.CHAT_ID,message.chat.id):
+        # user is not subscribed. send message to the user
+        bot.send_message(message.chat.id, text=m.not_sub_msg
+                         , reply_markup=sub())
+    else:
+        if message.text == "💰VIP GAMES💰":
+            bot.send_message(message.chat.id,
                                   text=m.vip_msg, reply_markup=vip_btn())
-    elif message.text == "👤My account":
-        user_id = message.from_user.id
-        name2 = message.from_user.last_name
-        name = message.from_user.first_name
-        mention = "["+name+"](tg://user?id="+str(user_id)+")"
-        acc = f"📊 Your account information.\n\n🧔*USER/N0:* {user_id}\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:*"
-        bot.send_message(message.chat.id,
+        elif message.text == "👤My account":
+            user_id = message.from_user.id
+            name2 = message.from_user.last_name
+            name = message.from_user.first_name
+            mention = "["+name+"](tg://user?id="+str(user_id)+")"
+            acc = f"📊 Your account information.\n\n🧔*USER/N0:* {user_id}\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:*"
+            bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
                          )
-    elif message.text == "⛑️Free tips":
-        bot.send_message(message.chat.id,
+        elif message.text == "⛑️Free tips":
+            bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
-    elif message.text == "🧾My orders":
-        orders_msg = "These are your oders"
-        bot.send_message(message.chat.id,
+        elif message.text == "🧾My orders":
+            orders_msg = "These are your oders"
+            bot.send_message(message.chat.id,
                                   text=orders_msg)
-        
-    elif message.text == "❌Close this menue":
-        mainmsg = "PROCEED WITH THIS MENU NOW"
-        bot.send_message(message.chat.id,
+        elif message.text == "❌Close this menue":
+            mainmsg = "PROCEED WITH THIS MENU NOW"
+            bot.send_message(message.chat.id,
                                   text="▫️Key-buttons removed.. Re-enable with /menu", reply_markup=ReplyKeyboardRemove())
-        bot.send_message(message.chat.id,
+            bot.send_message(message.chat.id,
                                   text=mainmsg, reply_markup=start_btn(), parse_mode = "Markdown")
-    elif message.text == "🧑‍💻Admin":
-        support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
-        msg = bot.send_message(message.chat.id,
+        elif message.text == "🧑‍💻Admin":
+            support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
+            msg = bot.send_message(message.chat.id,
                                   text=support_msg,reply_markup=ReplyKeyboardRemove())
-        
-        bot.register_next_step_handler(msg, process_problem_step)
+            bot.register_next_step_handler(msg, process_problem_step)
         
         
 def process_problem_step(message):
@@ -493,7 +495,6 @@ def process_problem_step(message):
                          disable_web_page_preview=True)
         bot.register_next_step_handler(msg, process_menu_step)
     except Exception as e:
-
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
 def process_menu_step(message):
