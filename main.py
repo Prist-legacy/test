@@ -500,11 +500,8 @@ def process_menu_step(message):
 
     try:
         if message.text == "Yes":
-           name= massage.text
-           chat_id = message.chat.id
-           user = User(name)
-           user_dict[chat_id] = user
-           bot.send_message(chat_id, text=f'*Fowarded successfully...*{user.name}',
+           
+           bot.send_message(chat_id, text=f'*Fowarded successfully...*',
 
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
