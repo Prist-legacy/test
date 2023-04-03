@@ -454,7 +454,7 @@ def get_message(message):
         bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
-                         reply_markup=start_btn())
+                         )
     elif message.text == "⛑️Free tips":
         bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
