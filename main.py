@@ -39,7 +39,7 @@ def main_btn():
     account = types.KeyboardButton(text="👤My account",)
     freetips = types.KeyboardButton(text="⛑️Free tips",)
     orders = types.KeyboardButton(text="🧾My orders",)
-    support = types.KeyboardButton(text="Admin",)
+    support = types.KeyboardButton(text="🧑‍💻Admin",)
     others = types.KeyboardButton(text="❌Close this menue",)
     markup.add(vip)
     markup.add(account,freetips)
@@ -453,7 +453,7 @@ def get_message(message):
                                   text="Key-buttons removed", reply_markup=ReplyKeyboardRemove())
         bot.send_message(message.chat.id,
                                   text=mainmsg, reply_markup=start_btn(), parse_mode = "Markdown")
-    elif message.text == "🧑‍💻admin":
+    elif message.text == "🧑‍💻Admin":
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         msg = bot.send_message(message.chat.id,
                                   text=support_msg,reply_markup=ReplyKeyboardRemove())
