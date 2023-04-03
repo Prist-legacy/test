@@ -251,7 +251,7 @@ def callback_data(call):
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text= "Updated \n" + m.freetips_msg, reply_markup=reload_btn())
+                                  text= "Updated \n" + m.free_msg, reply_markup=reload_btn())
        #MAIN MENU     
         elif call.data == "menu":
      
