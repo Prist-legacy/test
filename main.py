@@ -498,7 +498,7 @@ def process_problem_step(message):
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
 def process_menu_step(message):
-    chat_id = message.chat.id
+    chatid = message.chat.id
     name = message.text
     user = user_dict[chat_id]
     try:
@@ -507,11 +507,11 @@ def process_menu_step(message):
             chat_id="@pristlegacy", 
             from_chat_id=message.chat.id 
             )
-            bot.send_message(chat_id, text=f'*Fowarded successfully...*',
+            bot.send_message(chatid, text=f'*Fowarded successfully...*',
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
         elif message.text == "No":
-             msg = bot.send_message(chat_id, text='*Retype your problem*',
+             msg = bot.send_message(chatid, text='*Retype your problem*',
                          parse_mode = "Markdown",
                          disable_web_page_preview=True)
              bot.register_next_step_handler(msg, process_problem_step)           
