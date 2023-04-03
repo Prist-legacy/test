@@ -472,7 +472,7 @@ def process_problem_step(message):
         user_dict[chat_id] = user
         msg = bot.send_message(chat_id, text=f'🧔{mention}\n▫️informing... \n_{user.name}_\n\n*Fowarded successfully...*',
                          parse_mode = "Markdown",
-                               reply_markup=yesorno_bt(),
+                               reply_markup=yesorno_btn(),
 
                          disable_web_page_preview=True)
         bot.register_next_step_handler(msg, process_menu_step)
