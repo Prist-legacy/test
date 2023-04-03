@@ -489,7 +489,7 @@ def process_menu_step(message):
         msg = bot.send_message(chat_id, text='*Fowarded successfully...*',
 
                                parse_mode = "Markdown",
-                               reply_markup=menu_btn())
+                               reply_markup=main_btn())
                               
 
     except Exception as e:
