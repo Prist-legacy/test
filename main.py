@@ -448,11 +448,12 @@ def get_message(message):
                                   text=orders_msg)
         
     elif message.text == "❌Close this menue":
+        mainmsg = "PROCEED WITH THIS MENU NOW"
         bot.send_message(message.chat.id,
                                   text="Key-buttons removed", reply_markup=ReplyKeyboardRemove())
         bot.send_message(message.chat.id,
-                                  text=m.start_msg, reply_markup=start_btn())
-    elif message.text == ["🧑‍💻admin","admin","Admin","ADMIN"]:
+                                  text=mainmsg, reply_markup=start_btn(), parse_mode = "Markdown")
+    elif message.text == "🧑‍💻admin":
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         msg = bot.send_message(message.chat.id,
                                   text=support_msg,reply_markup=ReplyKeyboardRemove())
