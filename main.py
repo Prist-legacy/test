@@ -243,11 +243,13 @@ def callback_data(call):
         if call.data == "free":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.freetips_msg, reply_markup=free_btn())
+                                  text=m.freetips_msg, reply_markup=free_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "today's_tips":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.free_msg, reply_markup=freetips_btn())
+                                  text=m.free_msg, reply_markup=freetips_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
@@ -390,7 +392,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, text=m.free_msg, reply_markup=freetips_btn())
+        bot.send_message(message.chat.id, text=m.free_msg, reply_markup=freetips_btn(),parse_mode = "Markdown")
         
 @bot.message_handler(commands=['admin'])
 def send_welcome(message):
@@ -410,7 +412,21 @@ def send_welcome(message):
                              parse_mode = "Markdown", 
                              disable_web_page_preview=True)
         
+@bot.message_handler(commands=['menu'])
 
+def send_welcome(message):
+
+    if not is_subscribed(m.CHAT_ID,message.chat.id):
+
+        # user is not subscribed. send message to the user
+
+        bot.send_message(message.chat.id, text=m.not_sub_msg
+
+                         , reply_markup=sub())
+
+    else:
+
+        bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn(),parse_mode = "Markdown")
             
     
 @bot.message_handler(commands=['reload'])
