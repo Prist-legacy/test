@@ -434,7 +434,7 @@ def get_message(message):
         name2 = message.from_user.last_name
         name = message.from_user.first_name
         mention = "["+name+"](tg://user?id="+str(user_id)+")"
-        acc = f"🧔*USER/N0:* {user_id}\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:"*
+        acc = f"📊 Your account information.\n\n🧔*USER/N0:* {user_id}\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:"*
         bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
