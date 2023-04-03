@@ -503,7 +503,7 @@ def process_menu_step(message):
 
            chat_id = message.chat.id
 
-           bot.send_message(chat_id, text='*Fowarded successfully...*',
+           bot.send_message(chat_id, text=f'*Fowarded successfully...*{user.name}',
 
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
