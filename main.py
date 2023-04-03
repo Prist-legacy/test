@@ -47,7 +47,7 @@ def main_btn():
     markup.add(others)
     return markup
 def yesorno_btn():
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2,one_time_keyboard=True)
     no = types.KeyboardButton(text="No",)
     yes = types.KeyboardButton(text="Yes",)
     markup.add(yes,no)
