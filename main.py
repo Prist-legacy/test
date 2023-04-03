@@ -489,24 +489,7 @@ def process_problem_step(message):
 
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
         
-def process_menu_step(message):
-    if not is_subscribed(m.CHAT_ID,message.chat.id):
 
-        # user is not subscribed. send message to the user
-
-        bot.send_message(message.chat.id, text=m.not_sub_msg
-
-                         , reply_markup=sub())
-
-    else:
-        if message.text = "Yes":
-            bot.send_message(message.chat.id, text="Message sent successfully...")
-        elif message.text = "No":
-            support_msg = "Rewrite your problem"
-            msg = bot.send_message(message.chat.id,
-                                  text=support_msg,reply_markup=ReplyKeyboardRemove())
-            bot.register_next_step_handler(msg, process_problem_step)
-        
 
 
 
