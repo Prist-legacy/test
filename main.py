@@ -35,12 +35,12 @@ def is_subscribed(chat_id, user_id):
 #BUTTONS
 def main_btn():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-    vip = types.KeyboardButton(text="VIP GAMES",)
-    account = types.KeyboardButton(text="My account",)
-    freetips = types.KeyboardButton(text="Free tips",)
-    orders = types.KeyboardButton(text="My orders",)
-    support = types.KeyboardButton(text="support",)
-    others = types.KeyboardButton(text="others",)
+    vip = types.KeyboardButton(text="💰VIP GAMES💰",)
+    account = types.KeyboardButton(text="👤My account",)
+    freetips = types.KeyboardButton(text="⛑️Free tips",)
+    orders = types.KeyboardButton(text="🧾My orders",)
+    support = types.KeyboardButton(text="Admin",)
+    others = types.KeyboardButton(text="❌Close this menue",)
     markup.add(vip)
     markup.add(account,freetips)
     markup.add(orders,support)
@@ -425,44 +425,34 @@ def send_welcome(message):
         
 @bot.message_handler() 
 def get_message(message):
-    if message.text == ["admin", "ADMIN", "Admin"]:
-        user_id = message.from_user.id
-        user_name = message.from_user.first_name
 
-        mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
-        bot.send_chat_action(message.chat.id, 'typing')  # show the bot "typing" (max. 5 secs)
-        time.sleep(3)
-        bot.send_message(message.chat.id, text=f"*USER* = {mention}\n" + f"*ID* = {user_id}\n" + m.admin_msg, 
-                             reply_markup=admin_btn(), 
-                             parse_mode = "Markdown", 
-                             disable_web_page_preview=True)
-    elif message.text == "VIP GAMES":
+    if message.text == "💰VIP GAMES💰":
         bot.send_message(message.chat.id,
                                   text=m.vip_msg, reply_markup=vip_btn())
-    elif message.text == "My account":
+    elif message.text == "👤My account":
         user_id = message.from_user.id
         name2 = message.from_user.last_name
         name = message.from_user.first_name
         mention = "["+name+"](tg://user?id="+str(user_id)+")"
-        acc = f"🧔*USER/N0:* {user_id}\n▫️*NAME: {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:"
+        acc = f"🧔*USER/N0:* {user_id}\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:"*
         bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
                          reply_markup=start_btn())
-    elif message.text == "Free tips":
+    elif message.text == "⛑️Free tips":
         bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
-    elif message.text == "My orders":
+    elif message.text == "🧾My orders":
         orders_msg = "These are your oders"
         bot.send_message(message.chat.id,
                                   text=orders_msg)
         
-    elif message.text == "Close this menue":
+    elif message.text == "❌Close this menue":
         bot.send_message(message.chat.id,
                                   text="Key-buttons removed", reply_markup=ReplyKeyboardRemove())
         bot.send_message(message.chat.id,
                                   text=m.start_msg, reply_markup=start_btn())
-    elif message.text == "support":
+    elif message.text == ["🧑‍💻admin","admin","Admin","ADMIN"]:
         support_msg = "Summerise your problem and it will be forwarded to the admin directly for answering.\n Thanks.."
         msg = bot.send_message(message.chat.id,
                                   text=support_msg,reply_markup=ReplyKeyboardRemove())
