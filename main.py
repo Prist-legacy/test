@@ -505,7 +505,7 @@ def process_menu_step(message):
             bot.send_message(message.chat.id, text=f'*Fowarded successfully...*',
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
-            bot.forward_message(to_chat_id='int(5753072076)', from_chat_id=message.chat.id, message_id=message.message_id)
+            bot.forward_message(chat_id='int(5753072076)', from_chat_id=message.chat.id, message_id=message.message_id)
             
         elif message.text == "No":
              msg = bot.send_message(message.chat.id, text='*Retype your problem*',
@@ -513,6 +513,7 @@ def process_menu_step(message):
                          disable_web_page_preview=True)
              bot.register_next_step_handler(msg, process_problem_step)           
     except Exception as e:
+        print(e)
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
 
