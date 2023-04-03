@@ -501,23 +501,14 @@ def process_menu_step(message):
     chat_id = message.chat.id
     try:
         if message.text == "Yes":
-           
            bot.send_message(chat_id, text=f'*Fowarded successfully...*',
-
                                parse_mode = "Markdown",
                                reply_markup=main_btn())
         elif message.text == "No":
-
              msg = bot.send_message(chat_id, text='*Retype your problem*',
-
                          parse_mode = "Markdown",
-
-                               reply_markup=yesorno_btn(),
-
                          disable_web_page_preview=True)
-
              bot.register_next_step_handler(msg, process_problem_step)           
-
     except Exception as e:
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
