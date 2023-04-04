@@ -6,11 +6,11 @@ class m:
     CHAT_ID = '@pristbank' #replace your channel id
     admin = 'https://t.mepristlegacy'
     force_channel = "pristbank"
-    main_msg = "🔘MAIN MENU"
+    main_msg = "🔘*MAIN MENU*"
     startmsg = """
 I can help you in many things regarding to fixed games. Am smart but you can still contact the **UFM administration** for farther help.
-**So now can I know your need ?**
-Use below buttons for simplicity!
+*So now can I know your need ?*
+Use below buttons for simplicity!👇
     """
     not_sub_msg = """Please subscribe to our main channel 📢 to use this BOT.
 After use /reload to proceed"""
@@ -20,9 +20,10 @@ After use /reload to proceed"""
     'start'       : 'Start the bot again',
     'help'        : 'Gives you information about the available services and how to use the bot',
     'free': 'To quickly access FREE TIPS.',
-    'getImage'    : 'A test using multi-stage messages, custom keyboard, and media sending',
-    'commands'    : 'All commands available with the bot',
-    'admin'    : 'Get admin link. You can also type admin for quick access.'
+    'reload'    : 'Reload bot to main menu 🔰 ',
+    'verify'    : 'To quickly verify your payments (Transaction ID)',
+    'menu'    : 'Tougles the main Reply buttons.',
+    'admin'    : 'Get admin attention. You can also type admin for quick access.'
 }
 
     freetips_msg = """‼️Caution:\n
@@ -41,19 +42,18 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
     vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
 WINNING IS GUARANTEED. IN SHORT, THEY ARE RISK FREE MATCHES.
 STAKE HIGH ON THEM."""
-    cs_msg = """YOU ARE ABOUT TO BUY
-Match Type: Correct Score
-Count: 2
-ODDS: 200+
+    cs_msg = """🔘*CORRECT SCORE*
+    
+*Match Type:* _Correct Score_
+*Count:* _2_
+*ODDS:* _200+_
 
-Confirm And Proceed To Booking"""
-    country_msg = "SPECIFY YOUR COUNTY"
+_*Confirm* And Proceed To Booking_"""
+    country_msg = "*SPECIFY YOUR COUNTY*"
     admin_msg = """
-🧑‍💻ADMIN CONTACT\n
-
-You be redirected to the admin's box.\n Please try to be brief and precise\n
-
-IE: Be on point because there are many people in that box.
+🧑‍💻*ADMIN CONTACT:
+_You be redirected to the admin's box.\n Please try to be brief and precise\n
+IE: Be on point because there are many people in that box._
 """
 
     vipdes_msg = "VIP DESCRIPTION"
