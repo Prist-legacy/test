@@ -31,13 +31,13 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
     free_msg = "*TODAY'S FREE TIPS*\n\n\n‼️_Stake accordingly_"
 
 
-    vip_msg = "CORRECT SCORE:\n
+    vip_msg = """CORRECT SCORE:\n
     This involves providing half-time and full-time score of the dedicated matches.\n
     Matches can be daily or else source hasn't confirmed it.\n
     They are 100% sure; we provide match score before it kicks off.\nHT/FT:\n
     These are matches give results by halves, \n▫️*Halftime results to Full-time results (1/2)*\n
     _Where home team wins half-time then away team to win full-time._\n\n
-    All results are delivered earlier before they kickoff."
+    All results are delivered earlier before they kickoff."""
     vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
 WINNING IS GUARANTEED. IN SHORT, THEY ARE RISK FREE MATCHES.
 STAKE HIGH ON THEM."""
