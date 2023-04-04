@@ -347,7 +347,7 @@ def send_welcome(message):
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=m.not_sub_msg
-                         , reply_markup=sub())
+                         , reply_markup=sub(),parse_mode = "Markdown")
     else:
         user_id = message.from_user.id
         user_name = message.from_user.first_name
