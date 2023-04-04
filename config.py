@@ -37,6 +37,7 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
     They are 100% sure; we provide match score before it kicks off.\nHT/FT:\n
     These are matches give results by halves, \n▫️*Halftime results to Full-time results (1/2)*\n
     _Where home team wins half-time then away team to win full-time._\n\n
+    
     All results are delivered earlier before they kickoff."""
     vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
 WINNING IS GUARANTEED. IN SHORT, THEY ARE RISK FREE MATCHES.
