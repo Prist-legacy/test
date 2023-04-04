@@ -253,88 +253,104 @@ def callback_data(call):
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text= "Updated \n" + m.free_msg, reply_markup=reload_btn())
+                                  text= "Updated \n" + m.free_msg, reply_markup=reload_btn(),
+                                  parse_mode = "Markdown")
        #MAIN MENU     
         elif call.data == "menu":
      
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.startmsg, reply_markup=start_btn(), 
+                                  text=m.startmsg, reply_markup=start_btn(),
+                                  parse_mode = "Markdown", 
                                    disable_web_page_preview=True)
         #VIP SECTION
         elif call.data == "vip-menu":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.vipmenu_msg, reply_markup=vipmenu_btn())
+                                  text=m.vipmenu_msg, reply_markup=vipmenu_btn(),
+                                 parse_mode = "Markdown")
         elif call.data == "vip":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.vip_msg, reply_markup=vip_btn())
+                                  text=m.vip_msg, reply_markup=vip_btn(),
+                                 parse_mode = "Markdown")
         elif call.data == "how":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.how_msg, reply_markup=how_btn())
+                                  text=m.how_msg, reply_markup=how_btn(),
+                                 parse_mode = "Markdown")
         
         elif call.data == "cs":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.cs_msg, reply_markup=cs_btn())
+                                  text=m.cs_msg, reply_markup=cs_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "subscribe":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.country_msg, reply_markup=country_btn())
+                                  text=m.country_msg, reply_markup=country_btn(),
+                                 parse_mode = "Markdown")
         elif call.data == "country":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.country_msg, reply_markup=country_btn())
+                                  text=m.country_msg, reply_markup=country_btn(),
+                                  parse_mode = "Markdown")
         #COUNTRY SECTION    
         elif call.data == "ug":
             ug = 47000
             ug_msg = f"VIP PRICE; {ug}ugx \nVVIP PRICE; {ug}ugx"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=ug_msg, reply_markup=ug_btn())
+                                  text=ug_msg, reply_markup=ug_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "ke":
             ke = 1535
             ke_msg = f"VIP PRICE; {ke}kes \nVVIP PRICE; {ke}kes"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=ke_msg, reply_markup=ke_btn())
+                                  text=ke_msg, reply_markup=ke_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "gh":
             gh = 99.3
             gh_msg = f"VIP PRICE; {gh}cedi \nVVIP PRICE; {gh}cedi"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=gh_msg, reply_markup=gh_btn())
+                                  text=gh_msg, reply_markup=gh_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "rw":
             rw = 13370
             rw_msg = f"VIP PRICE; {rw}rwf \nVVIP PRICE; {rw}rwf"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=rw_msg, reply_markup=rw_btn())
+                                  text=rw_msg, reply_markup=rw_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "tz":
             tz = 30492
             tz_msg = f"VIP PRICE; {tz}tzs \nVVIP PRICE; {tz}tzs"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=tz_msg, reply_markup=tz_btn())
+                                  text=tz_msg, reply_markup=tz_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "usa":
             usa = 17.473
             usa_msg = f"VIP PRICE; {usa}$ \nVVIP PRICE; {usa}$"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=usa_msg, reply_markup=usa_btn())
+                                  text=usa_msg, reply_markup=usa_btn(),
+                                  parse_mode = "Markdown")
         elif call.data == "ng":
             ng = 6500
             ng_msg = f"VIP PRICE; {ng}ngn \nVVIP PRICE; {ng}ngn"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=ng_msg, reply_markup=ng_btn())
+                                  text=ng_msg, reply_markup=ng_btn(),
+                                  parse_mode = "Markdown")
             
         elif call.data == "vip_des":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.vipdes_msg, reply_markup=vipdes_btn())
+                                  text=m.vipdes_msg, reply_markup=vipdes_btn(),
+                                  parse_mode = "Markdown")
             
 
 #COMMANDS
@@ -359,7 +375,7 @@ def send_welcome(message):
                          parse_mode = "Markdown")
         bot.send_message(message.chat.id, text=m.main_msg
 
-                         , reply_markup=main_btn())
+                         , reply_markup=main_btn(),parse_mode = "Markdown")
         
         
 
