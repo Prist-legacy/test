@@ -423,7 +423,7 @@ def send_welcome(message):
         
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
             #END USAGES    
-        bot.send_message(message.chat.id,text=m.adminn_msg, 
+        bot.send_message(message.chat.id,text=m.admin_msg, 
                              reply_markup=admin_btn(),
                              disable_web_page_preview=True,parse_mode = "Markdown")
         
