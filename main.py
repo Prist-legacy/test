@@ -462,7 +462,10 @@ def info_bot(message):
     name2 = message.from_user.last_name
     namet = "["+name+"](tg://user?id="+str(user_id)+")"
     namett = "["+name2+"](tg://user?id="+str(user_id)+")"
-    bot.send_message(message.chat.id, text=text.format(user_id,namet,namett),parse_mode = "Markdown")
+    try:
+        bot.send_message(message.chat.id, text=text.format(user_id,namet,namett),parse_mode = "Markdown")
+    except Exception as e:
+        print(e)
 
 @bot.message_handler(commands=['reload'])
 def send_welcome(message):
