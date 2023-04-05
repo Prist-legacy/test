@@ -424,8 +424,8 @@ def send_welcome(message):
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
             #END USAGES    
         bot.send_message(message.chat.id,text=m.admin_msg, 
-                             reply_markup=admin_btn(),
-                             disable_web_page_preview=True)
+                             reply_markup=admin_btn(),parse_mode = "Markdown",
+                             disable_web_page_preview=True,format(user_name,user_id))
         
 @bot.message_handler(commands=['menu'])
 
