@@ -580,4 +580,4 @@ bot.enable_save_next_step_handlers(delay=1)
 bot.load_next_step_handlers()
         
 print('BOT IS STARTED SUCCESSFULLY')
-bot.polling()
+bot.infinity_polling()
