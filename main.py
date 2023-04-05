@@ -466,7 +466,7 @@ def info_bot(message):
         bot.send_message(message.chat.id, text=text.format(user_id,namet,namett),parse_mode = "Markdown")
     except Exception as e:
         print(e)
-        bot.send_message(message.chat.id, text=text.format(user_id,namet,namett),parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=text.format(user_id,namet),parse_mode = "Markdown")
 
 @bot.message_handler(commands=['reload'])
 def send_welcome(message):
