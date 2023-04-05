@@ -1,5 +1,6 @@
 from telebot import*
 from telebot.types import*
+import payments as c
 from config import bot_token, m
 
     
