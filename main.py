@@ -435,7 +435,7 @@ def confirm_client (message):
     user = message.from_user.id
     not_msg = 'You must be an administrator to confirm client payments.'
     confirmed= 'Confirmed, photo loading'
-    if user not m.admin:
+    if user not in m.admin:
         bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
     else:
         bot.send_message(message.chat.id,confirmed,parse_mode = "Markdown")
