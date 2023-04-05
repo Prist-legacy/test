@@ -446,7 +446,24 @@ def send_welcome(message):
 
         bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn(),parse_mode = "Markdown")
             
-    
+@bot.message_handler(commands=['info'])
+def info_bot(message):
+    text = """
+    _Here is your telegram info_
+    🧔*ID:* `{}`
+    👤*FIRST NAME:* {}
+    👥*LAST NAME:* {}
+    🌐*USERNAME:*
+    ▫️*LANG:* 
+    _Updated on ......_"""
+
+    user_id = message.from_user.id
+    name = message.from_user.first_name
+    name2 = message.from_user.last_name
+    namet = "["+name+"](tg://user?id="+str(user_id)+")"
+    namett = "["+name2+"](tg://user?id="+str(user_id)+")"
+    bot.send_message(message.chat.id, text=text.format(user_id,namet,namett),parse_mode = "Markdown")
+
 @bot.message_handler(commands=['reload'])
 def send_welcome(message):
     if not is_subscribed(m.CHAT_ID,message.chat.id):
@@ -454,8 +471,8 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, text="Bot Reloaded")
-        bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn())
+        bot.send_message(message.chat.id, text="_Bot Reloaded_",parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn(),parse_mode = "Markdown")
         
 @bot.message_handler() 
 def get_message(message):
