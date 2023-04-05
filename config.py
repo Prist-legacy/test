@@ -51,7 +51,9 @@ STAKE HIGH ON THEM."""
 _*Confirm* And Proceed To Booking_"""
     country_msg = "*SPECIFY YOUR COUNTY*"
     admin_msg = """
-🧑‍💻*ADMIN CONTACT:
+🧑‍💻*ADMIN CONTACT:*
+🧔User: {}
+👤ID: `{}`
 _You be redirected to the admin's box.\n Please try to be brief and precise\n
 IE: Be on point because there are many people in that box._
 """
