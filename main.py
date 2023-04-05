@@ -425,7 +425,7 @@ def send_welcome(message):
             #END USAGES    
         bot.send_message(message.chat.id,text=m.admin_msg, 
                              reply_markup=admin_btn(),
-                             disable_web_page_preview=True,parse_mode = "Markdown")
+                             disable_web_page_preview=True)
         
 @bot.message_handler(commands=['menu'])
 
