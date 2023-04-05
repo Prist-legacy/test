@@ -169,50 +169,50 @@ def country_btn():
 def ug_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
-               InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
+    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="ug_vip"),
+               InlineKeyboardButton("JOIN VVIP", callback_data="ug_vvip"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def ke_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
-               InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
+    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="ke_vip"),
+               InlineKeyboardButton("JOIN VVIP", callback_data="ke_vvip"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def gh_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
-               InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
+    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="gh_vip"),
+               InlineKeyboardButton("JOIN VVIP", callback_data="gh_vvip"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def rw_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
-               InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
+    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="rw_vip"),
+               InlineKeyboardButton("JOIN VVIP", callback_data="rw_vvip"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def tz_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
-               InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
+    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="tz_vip"),
+               InlineKeyboardButton("JOIN VVIP", callback_data="tz_vvip"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def usa_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
-               InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
+    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="usa_vip"),
+               InlineKeyboardButton("JOIN VVIP", callback_data="usa_vvip"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def ng_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
-               InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
+    markup.add(InlineKeyboardButton("JOIN VIP", callback_data="ng_vip"),
+               InlineKeyboardButton("JOIN VVIP", callback_data="ng_vvip"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def others_btn():
@@ -423,7 +423,7 @@ def send_welcome(message):
         
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
             #END USAGES    
-        bot.send_message(message.chat.id,text=m.admin_msg.format(user_name,user_id), 
+        bot.send_message(message.chat.id,text=m.admin_msg.format(mention,user_id), 
                              reply_markup=admin_btn(),parse_mode = "Markdown",
                              disable_web_page_preview=True)
         
@@ -469,7 +469,7 @@ def get_message(message):
             name2 = message.from_user.last_name
             name = message.from_user.first_name
             mention = "["+name+"](tg://user?id="+str(user_id)+")"
-            acc = f"📊 Your account information.\n\n🧔*USER/N0:* {user_id}\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:*"
+            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:*"
             bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
