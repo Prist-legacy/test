@@ -464,8 +464,7 @@ def info_bot(message):
     namett = "["+name2+"](tg://user?id="+str(user_id)+")"
     try:
         bot.send_message(message.chat.id, text=text.format(user_id,namet,namett),parse_mode = "Markdown")
-    except Exception as e:
-        print(e)
+    except:
         bot.send_message(message.chat.id, text=text.format(user_id,namet),parse_mode = "Markdown")
 
 @bot.message_handler(commands=['reload'])
