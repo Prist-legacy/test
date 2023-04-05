@@ -463,7 +463,7 @@ def get_message(message):
     else:
         if message.text == "💰VIP GAMES💰":
             bot.send_message(message.chat.id,
-                                  text=m.vip_msg, reply_markup=vip_btn())
+                                  text=m.vip_msg, reply_markup=vip_btn(),parse_mode = "Markdown")
         elif message.text == "👤My account":
             user_id = message.from_user.id
             name2 = message.from_user.last_name
