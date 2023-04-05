@@ -237,6 +237,7 @@ def ugvip_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("MOBILE MONEY",callback_data="mm")
+    return markup
 
 
 #CALLBACK
