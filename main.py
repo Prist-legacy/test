@@ -429,6 +429,17 @@ def send_welcome(message):
         bot.send_message(message.chat.id,text=m.admin_msg.format(mention,user_id), 
                              reply_markup=admin_btn(),parse_mode = "Markdown",
                              disable_web_page_preview=True)
+  
+@bot.message_handler(commands=['confirm'])
+def confirm_client (message):
+    user = message.from_user.id
+    not_msg = 'You must be an administrator to confirm client payments.'
+    confirmed= 'Confirmed, photo loading'
+    if user not m.admin:
+        bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
+    else:
+        bot.send_message(message.chat.id,confirmed,parse_mode = "Markdown")
+
         
 @bot.message_handler(commands=['menu'])
 
