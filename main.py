@@ -432,13 +432,14 @@ def send_welcome(message):
   
 @bot.message_handler(commands=['confirm'])
 def confirm_client (message):
+    use = message.text.split()[1]
     user = message.from_user.id
     not_msg = 'You must be an administrator to confirm client payments.'
     confirmed= 'Confirmed, photo loading'
     if user not in m.admin:
         bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
     else:
-        bot.send_message(message.chat.id,confirmed,parse_mode = "Markdown")
+        bot.forward_message(use, message.chat.id, message.message_id)
 
         
 @bot.message_handler(commands=['menu'])
