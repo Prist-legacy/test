@@ -545,6 +545,7 @@ def process_problem_step(message):
 
                          disable_web_page_preview=True)
         bot.register_next_step_handler(msg, process_menu_step)
+        bot.forward_message(m.admin, message.chat.id, message.message_id)
     except Exception as e:
         bot.reply_to(message, 'Oooops... Something went wrong.',reply_markup=admin_btn)
 
