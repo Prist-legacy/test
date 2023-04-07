@@ -3,25 +3,32 @@ from telebot.types import*
 import datetime, time
 import payments as c
 from config import bot_token, m
+import psycopg2
 
     
 from telebot.apihelper import ApiTelegramException
 bot_token = bot_token
 
 bot = telebot.TeleBot(bot_token)
+#DATABASE CONNECT
+DATABASE_URL = "postgresql://postgres:0XSbBvU64j4G7EWusxWD@containers-us-west-163.railway.app:7257/railway"
+def connect_to_db():
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    return conn
+def insert_user_data(user_id, join_date, user_info):
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    query = "INSERT INTO users (user_id, join_date, user_info) VALUES (%s, %s, %s) ON CONFLICT (user_id) DO NOTHING;"
+    cursor.execute(query, (user_id, join_date, user_info))
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 user_dict = {}
-
-
 class User:
     def __init__(self, name):
         self.name = name
         self.number = None
-
-
-
-
-
 
 def is_subscribed(chat_id, user_id):
     try:
@@ -513,9 +520,10 @@ def send_welcome(message):
     else:
         user_id = message.from_user.id
         user_name = message.from_user.first_name
-   
-        mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
-       
+        join_date = message.date
+        user_info = f"{message.from_user.first_name} {message.from_user.last_name}"
+        insert_user_data(user_id, join_date, user_info)
+        mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
         bot.send_message(message.chat.id, text=f"**HEY {mention}**" + m.startmsg,
                          reply_markup=start_btn(),
                          parse_mode = "Markdown")
