@@ -11,7 +11,7 @@ bot_token = bot_token
 
 bot = telebot.TeleBot(bot_token)
 #DATABASE CONNECT
-DATABASE_URL = "postgresql://postgres:OSL6Bn5ece9uNx1j0HCw@containers-us-west-168.railway.app:5576/railway"
+DATABASE_URL = "postgresql://postgres:QwWWzrXR9Qmveq3EcZvP@containers-us-west-121.railway.app:6409/railway"
 def connect_to_db():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     return conn
