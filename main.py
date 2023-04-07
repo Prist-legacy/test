@@ -65,7 +65,7 @@ def ugvip_btn():
     return markup
 
 def kevip_btn():
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     admin = types.KeyboardButton(text="Admin",)
     mm = types.KeyboardButton(text="MTN mpesa",)
     chipper = types.KeyboardButton(text="Chipper Cash",)
