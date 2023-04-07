@@ -15,6 +15,10 @@ DATABASE_URL = "postgresql://postgres:0XSbBvU64j4G7EWusxWD@containers-us-west-16
 def connect_to_db():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     return conn
+#FETCH TYPE
+
+
+
 def insert_user_data(user_id, join_date, user_info):
     conn = connect_to_db()
     cursor = conn.cursor()
@@ -674,8 +678,18 @@ def get_message(message):
             user_id = message.from_user.id
             name2 = message.from_user.last_name
             name = message.from_user.first_name
+            #FETCH DATA
+            conn = connect_to_db()
+            cursor = conn.cursor()
+            postgreSQL_select_Query = f"select type from users where user_id='{user_id}'"
+            cursor.execute(postgreSQL_select_Query)
+            type = cursor.fetchall()
+            conn.commit()
+            cursor.close()
+            conn.close()
+            #END
             mention = "["+name+"](tg://user?id="+str(user_id)+")"
-            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* \n💰*ORDERS:*\n\n_Date: {TimeStamp}_"
+            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type} \n💰*ORDERS:*\n\n_Date: {TimeStamp}_"
             bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
