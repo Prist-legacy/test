@@ -16,6 +16,8 @@ user_dict = {}
 class User:
     def __init__(self, name):
         self.name = name
+        self.name = number
+
 
 
 
@@ -667,7 +669,7 @@ def get_message(message):
             bot.send_message(message.chat.id,text=mm_msg,reply_markup=mm_sim(),parse_mode = "Markdown")
         elif message.text == "MTN":
             mtn_msg = "*Send me the MTN number you're going to transact with.*"
-            msg = bot.send_message(message.chat.id,text=mtn_msg)
+            msg = bot.send_message(message.chat.id,text=mtn_msg,reply_markup=ReplyKeyboardRemove(),parse_mode = "Markdown")
             bot.register_next_step_handler(msg, mtnnumber_step)
         elif message.text == "AIRTEL":
             mtn_msg = "*Send me the Airtel number you're going to transact with.*"
@@ -685,16 +687,19 @@ def get_message(message):
 
 def mtnnumber_step(message):
     try:
-        msg = message.text
+        chat_id = message.chat.id
+        number = message.text
         mtn = "0773936516"
         amount = 47000
+        user = User(number)
+        user_dict[chat_id] = user
         no_msg = """
         *SENDER:* {}
         *RECEIVER:* {}
         *AMOUNT:* {}\n*Dail* `*185*1*{}*{}` *then input your pin.*\n*After* wait for verification or use /verify {your transaction id} or send a screenshot of the payment.\n\n_All rights reserved._
 
         """
-        bot.send_message(message.chat.id,text=no_msg.format(msg,mtn),parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=no_msg.format(user.number,mtn),parse_mode = "Markdown")
     except Exception as e:
         print(e)
         bot.send_message(message, 'Oooops... Something went wrong.')
