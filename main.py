@@ -587,7 +587,7 @@ def confirm_client (message):
 def confirm_client (message):
     use = message.text.split()[1]
     not_msg = "*Use format:* /verify `83623808484` <-- your transaction ID in your service provider SMS and it must be only digits."
-    confirmed= "_Confirming your payment in *TXN ID:* `{}`, please wait_"
+    confirmed= "_Confirming your payment in *TXN ID:* `{}`, please wait ⏳_"
     try:
         if not use.isdigit():
             bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
@@ -717,7 +717,7 @@ def mtnnumber_step(message):
         mtn = "0773936516"
         amount = 47000
         if not number.isdigit():
-            msg = bot.reply_to(message, "⚠️(SIM NUMBER) should be only 'numbers' and 10 digits.\n*Send me the Airtel number you're going to transact with.*",parse_mode = "Markdown")
+            msg = bot.reply_to(message, f"⚠️({number}) should only be 'numbers' and 10 digits.\n*Send me the Airtel number you're going to transact with.*",parse_mode = "Markdown")
             bot.register_next_step_handler(msg, mtnnumber_step)
             return
         user = User(number)
