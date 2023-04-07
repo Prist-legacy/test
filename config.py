@@ -34,8 +34,8 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
 
 
     vip_msg = """*CORRECT SCORE:*
-    This involves providing half-time and full-time score of the dedicated matches. Matches can be daily or else source hasn't confirmed it. They are 100% sure; we provide match score before it kicks off.\n*HT/FT:*
-    These are matches give results by halves,▫️*Halftime results to Full-time results (1/2)*👉_Where home team wins half-time then away team to win full-time._
+    _This involves providing half-time and full-time score of the dedicated matches. Matches can be daily or else source hasn't confirmed it. They are 100% sure; we provide match score before it kicks off._\n*HT/FT:*
+    _These are matches give results by halves,▫️*Halftime results to Full-time results (1/2)*👉Where home team wins half-time then away team to win full-time._
     
     All results are delivered earlier before they kickoff."""
     vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
