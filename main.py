@@ -22,7 +22,7 @@ def creat():
     create_table = """CREATE TABLE IF NOT EXISTS UFM_USERS (
     user_id integer NOT NULL,
     user_info varchar(50) NOT NULL,
-    join_date DATE DEFAULT CURRENT_DATE,
+    join_date varchar(13) NOT NULL,
     type varchar(10) DEFAULT 'ORD',
     PRIMARY KEY(user_id)
     );"""
