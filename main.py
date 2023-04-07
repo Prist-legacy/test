@@ -667,11 +667,11 @@ def get_message(message):
             bot.send_message(message.chat.id,text=mm_msg,reply_markup=mm_sim(),parse_mode = "Markdown")
         elif message.text == "MTN":
             mtn_msg = "*Send me the MTN number you're going to transact with.*"
-            msg = bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+            msg = bot.send_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
             bot.register_next_step_handler(msg, mtnnumber_step)
         elif message.text == "AIRTEL":
             mtn_msg = "*Send me the Airtel number you're going to transact with.*"
-            msg = bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+            msg = bot.send_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
             bot.register_next_step_handler(msg, airtelnumber_step)
         elif message.text == "Chipper Cash":
             link = "chippercash.com"
@@ -680,7 +680,7 @@ def get_message(message):
             ⚠️Please register and verify your chipper-Cash account with an appropriate legal document at [{}]({}).
             *Already registered?*, follow the payment link below to pay for today's *VIP games*.
             """
-            bot.sen_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),parse_mode = "Markdown")
+            bot.send_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),parse_mode = "Markdown")
             
 
 def mtnnumber_step(message):
