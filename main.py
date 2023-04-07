@@ -588,8 +588,7 @@ def info_bot(message):
     👤*FIRST NAME:* {}
     🌐*USERNAME:* {}
     ▫️*LANG:* {}
-    ▫️*TYPE:* {}
-    _Updated on {}_"""
+    ▫️*TYPE:* {} \n_Updated on {}_"""
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
     messageTime = messageTime.strftime('%d/%m/%Y %H:%M:%S') # formatted datetime
