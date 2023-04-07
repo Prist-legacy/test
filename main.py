@@ -667,14 +667,14 @@ def get_message(message):
             bot.send_message(message.chat.id,text=mm_msg,reply_markup=mm_sim(),parse_mode = "Markdown")
         elif message.text == "MTN":
             mtn_msg = "*Send me the MTN number you're going to transact with.*"
-            msg = bot.send_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+            msg = bot.send_message(message.chat.id,text=mtn_msg)
             bot.register_next_step_handler(msg, mtnnumber_step)
         elif message.text == "AIRTEL":
             mtn_msg = "*Send me the Airtel number you're going to transact with.*"
             msg = bot.send_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
             bot.register_next_step_handler(msg, airtelnumber_step)
         elif message.text == "Chipper Cash":
-            link = "chippercash.com"
+            link = "https://chippercash.com"
             text = "CHIPPER-CHASH SITE"
             chipper_msg = """
             ⚠️Please register and verify your chipper-Cash account with an appropriate legal document at [{}]({}).
@@ -694,9 +694,9 @@ def mtnnumber_step(message):
         *AMOUNT:* {}\n*Dail* `*185*1*{}*{}` *then input your pin.*\n*After* wait for verification or use /verify {your transaction id} or send a screenshot of the payment.\n\n_All rights reserved._
 
         """
-        bot.send_message(message.chat.id,text=no_msg.format(msg,mtn,amount,mtn,amoun),parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=no_msg.format(msg,mtn),parse_mode = "Markdown")
     except Exception as e:
-
+        print(e)
         bot.send_message(message, 'Oooops... Something went wrong.')
 
       
