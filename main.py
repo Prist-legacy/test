@@ -694,7 +694,7 @@ def mtnnumber_step(message):
         *AMOUNT:* {}\n*Dail* `*185*1*{}*{}` *then input your pin.*\n*After* wait for verification or use /verify {your transaction id} or send a screenshot of the payment.\n\n_All rights reserved._
 
         """
-        bot.sen_message(message.chat.id,text=no_msg.format(msg,mtn,amount,mtn,amoun),parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=no_msg.format(msg,mtn,amount,mtn,amoun),parse_mode = "Markdown")
     except Exception as e:
 
         bot.send_message(message, 'Oooops... Something went wrong.')
