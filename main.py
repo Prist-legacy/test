@@ -118,7 +118,12 @@ def usavip_btn():
     markup.add(mm)
     return markup
 
-
+def mm_sim():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    mtn = types.KeyboardButton(text="MTN",)
+    Airtel = types.KeyboardButton(text="AIRTEL",)
+    markup.add(mtn,Airtel)
+    return markup
 
 
 def sub():
@@ -658,24 +663,38 @@ def get_message(message):
                                   text=support_msg,reply_markup=ReplyKeyboardRemove())
             bot.register_next_step_handler(msg, process_problem_step)
         elif message.text == "Mobile Money":
+            mm_msg = "*WHAT SIMCARD🇺🇬 DO YOU USE*"
             bot.send_message(message.chat.id,text=mm_msg,reply_markup=mm_sim(),parse_mode = "Markdown")
         elif message.text == "MTN":
+            mtn_msg = "*Send me the MTN number you're going to transact with.*"
             msg = bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
             bot.register_next_step_handler(msg, mtnnumber_step)
         elif message.text == "AIRTEL":
+            mtn_msg = "*Send me the Airtel number you're going to transact with.*"
             msg = bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
             bot.register_next_step_handler(msg, airtelnumber_step)
         elif message.text == "Chipper Cash":
-            bot.sen_message(message.chat.id,text=chipper_msg,reply_markup=chipper_btn(),parse_mode = "Markdown")
+            link = "chippercash.com"
+            text = "CHIPPER-CHASH SITE"
+            chipper_msg = """
+            ⚠️Please register and verify your chipper-Cash account with an appropriate legal document at [{}]({}).
+            *Already registered?*, follow the payment link below to pay for today's *VIP games*.
+            """
+            bot.sen_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),parse_mode = "Markdown")
             
 
 def mtnnumber_step(message):
     try:
-        no_msg = """
-        
-        """
         msg = message.text
-        bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+        mtn = "0773936516"
+        amount = 47000
+        no_msg = """
+        *SENDER:* {}
+        *RECEIVER:* {}
+        *AMOUNT:* {}\n*Dail* `*185*1*{}*{}` *then input your pin.*\n*After* wait for verification or use /verify {your transaction id} or send a screenshot of the payment.\n\n_All rights reserved._
+
+        """
+        bot.sen_message(message.chat.id,text=no_msg.format(msg,mtn,amount,mtn,amoun),parse_mode = "Markdown")
 
       
 def process_problem_step(message):
