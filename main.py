@@ -20,7 +20,7 @@ def creat():
     conn = connect_to_db()
     cursor = conn.cursor()
     create_table = """CREATE TABLE IF NOT EXISTS UFM_USERS (
-    user_id integer NOT NULL,
+    user_id numeric NOT NULL,
     user_info varchar(50) NOT NULL,
     join_date varchar(13) NOT NULL,
     type varchar(10) DEFAULT 'ORD',
