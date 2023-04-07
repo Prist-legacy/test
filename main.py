@@ -695,6 +695,9 @@ def mtnnumber_step(message):
 
         """
         bot.sen_message(message.chat.id,text=no_msg.format(msg,mtn,amount,mtn,amoun),parse_mode = "Markdown")
+    except Exception as e:
+
+        bot.send_message(message, 'Oooops... Something went wrong.')
 
       
 def process_problem_step(message):
