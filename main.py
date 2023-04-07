@@ -657,7 +657,26 @@ def get_message(message):
             msg = bot.send_message(message.chat.id,
                                   text=support_msg,reply_markup=ReplyKeyboardRemove())
             bot.register_next_step_handler(msg, process_problem_step)
- 
+        elif message.text == "Mobile Money":
+            bot.send_message(message.chat.id,text=mm_msg,reply_markup=mm_sim(),parse_mode = "Markdown")
+        elif message.text == "MTN":
+            msg = bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+            bot.register_next_step_handler(msg, mtnnumber_step)
+        elif message.text == "AIRTEL":
+            msg = bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+            bot.register_next_step_handler(msg, airtelnumber_step)
+        elif message.text == "Chipper Cash":
+            bot.sen_message(message.chat.id,text=chipper_msg,reply_markup=chipper_btn(),parse_mode = "Markdown")
+            
+
+def mtnnumber_step(message):
+    try:
+        no_msg = """
+        
+        """
+        msg = message.text
+        bot.sen_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+
       
 def process_problem_step(message):
     try:
