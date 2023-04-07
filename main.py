@@ -694,7 +694,7 @@ def get_message(message):
             #FETCH DATA
             conn = connect_to_db()
             cursor = conn.cursor()
-            postgreSQL_select_Query = f"select type from users where user_id='{user_id}'"
+            postgreSQL_select_Query = f"select type from UFM_USERS where user_id='{user_id}'"
             cursor.execute(postgreSQL_select_Query)
             type = cursor.fetchall()
             conn.commit()
