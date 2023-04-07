@@ -520,7 +520,10 @@ def send_welcome(message):
     else:
         user_id = message.from_user.id
         user_name = message.from_user.first_name
-        join_date = message.date
+        messageTime = message.date
+        messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
+        messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
+        join_date = str(messageTime)
         user_info = f"{message.from_user.first_name} {message.from_user.last_name}"
         insert_user_data(user_id, join_date, user_info)
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
