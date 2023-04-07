@@ -11,18 +11,31 @@ bot_token = bot_token
 
 bot = telebot.TeleBot(bot_token)
 #DATABASE CONNECT
-DATABASE_URL = "postgresql://postgres:0XSbBvU64j4G7EWusxWD@containers-us-west-163.railway.app:7257/railway"
+DATABASE_URL = "postgresql://postgres:Z0wZGE0ZbdNaoMMSM1Xo@containers-us-west-121.railway.app:7041/railway"
 def connect_to_db():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     return conn
 #FETCH TYPE
-
+def creat():
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    create_table = """CREATE TABLE IF NOT EXISTS UFM_USERS (
+    user_id integer NOT NULL,
+    user_info varchar(50) NOT NULL,
+    join_date integer NOT NULL,
+    type varchar(10) DEFAULT 'ORD',
+    PRIMARY KEY(user_id)
+    );"""
+    cursor.execute(create_table)
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 
 def insert_user_data(user_id, join_date, user_info):
     conn = connect_to_db()
     cursor = conn.cursor()
-    query = "INSERT INTO users (user_id, join_date, user_info) VALUES (%s, %s, %s) ON CONFLICT (user_id) DO NOTHING;"
+    query = "INSERT INTO UFM_USERS (user_id, join_date, user_info) VALUES (%s, %s, %s) ON CONFLICT (user_id) DO NOTHING;"
     cursor.execute(query, (user_id, join_date, user_info))
     conn.commit()
     cursor.close()
@@ -36,12 +49,12 @@ class User:
 
 def is_subscribed(chat_id, user_id):
     try:
+        creat()
         response = bot.get_chat_member(chat_id, user_id)
         if response.status == 'left':
             return False
         else:
             return True
-
     except ApiTelegramException as e:
         if e.result_json['description'] == 'Bad Request: chat not found':
             return False
