@@ -677,13 +677,11 @@ def send_cast(message):
     conn.commit()
     cursor.close()
     conn.close()
-    
     #fetch users
     if user not in m.admin:
         bot.send_message(message.chat.id,text="You require admin permission to do this ‼️",parse_mode = "Markdown")
     else:
-        bot.forward_message(users, message.chat.id, message.message_id)
-        bot.send_message(m.admin,text=msg)
+        bot.send_message(message.chat.id,text=msg)
     
 
 @bot.message_handler(commands=['reload'])
