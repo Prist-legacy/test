@@ -680,7 +680,7 @@ def send_cast(message):
     #fetch users
     if user not in m.admin:
         bot.send_message(message.chat.id,text="You require admin permission to do this ‼️",parse_mode = "Markdown")
-    else;
+    else:
         bot.send_message(users,text=msg)
     
 
