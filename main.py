@@ -662,6 +662,27 @@ def info_bot(message):
         bot.send_message(message.chat.id, text=text.format(user_id,namet,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
     except Exception as e:
         bot.send_message(message, 'Oooops... Something went wrong.')
+        
+@bot.message_handler(commands=['cast'])
+def send_cast(message):
+    msg = message.text.split()[1]
+    user = message.from_user.id
+    #start
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    db_users = f"select user_id from UFM_USERS"
+    cursor.execute(db_users)
+    users = cursor.fetchall()
+    conn.commit()
+    cursor.close()
+    conn.close()
+    
+    #fetch users
+    if user not in m.admin:
+        bot.send_message(message.chat.id,text="You require admin permission to do this ‼️,parse_mode = "Markdown")
+    else;
+        bot.send_message(users,text=msg)
+    
 
 @bot.message_handler(commands=['reload'])
 def send_welcome(message):
