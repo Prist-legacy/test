@@ -665,7 +665,7 @@ def info_bot(message):
         
 @bot.message_handler(commands=['cast'])
 def send_cast(message):
-    msg = message.text.split()[1]
+    msg = message.text.split(None,1)[1]
     user = message.from_user.id
     #start
     conn = connect_to_db()
@@ -673,6 +673,7 @@ def send_cast(message):
     db_users = f"select user_id from UFM_USERS"
     cursor.execute(db_users)
     users = cursor.fetchall()
+    print(users)
     conn.commit()
     cursor.close()
     conn.close()
