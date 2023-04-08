@@ -670,7 +670,7 @@ def send_cast(message):
     #start
     conn = connect_to_db()
     cursor = conn.cursor()
-    db_users = f"select user_id from UFM_USERS"
+    db_users = "select user_id from UFM_USERS"
     cursor.execute(db_users)
     users = cursor.fetchall()
     print(users)
@@ -681,7 +681,7 @@ def send_cast(message):
     if user not in m.admin:
         bot.send_message(message.chat.id,text="You require admin permission to do this ‼️",parse_mode = "Markdown")
     else:
-        bot.send_message(m.admin,text=f"{msg} + {users}")
+        bot.send_message(m.admin,text=msg)
     
 
 @bot.message_handler(commands=['reload'])
