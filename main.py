@@ -20,7 +20,7 @@ def creat():
     conn = connect_to_db()
     cursor = conn.cursor()
     create_table = """CREATE TABLE IF NOT EXISTS UFM_USERS (
-    user_id varchar(15) NOT NULL,
+    user_id BIGINT NOT NULL,
     user_info varchar(50) NOT NULL,
     join_date varchar(13) NOT NULL,
     type varchar(10) DEFAULT 'ORD',
@@ -675,11 +675,9 @@ def send_cast(message):
     users = cursor.fetchall()
     print(users)
     conn.commit()
-    cursor.close()
-    conn.close()
     #fetch users
     if user not in m.admin:
-        bot.send_message(message.chat.id,text="You require admin permission to do this ‼️",parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{users}",parse_mode = "Markdown")
     else:
         bot.send_message(m.admin,text=msg)
     
