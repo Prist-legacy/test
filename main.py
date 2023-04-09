@@ -604,7 +604,7 @@ def send_welcome(message):
 
     cursor = conn.cursor()
 
-    postgreSQL_select_Query = f"select free_tips from free_tips where tips_date='{}'"
+    postgreSQL_select_Query = "select free_tips from free_tips where tips_date='{}'"
 
     cursor.execute(postgreSQL_select_Query.format(current_date))
 
