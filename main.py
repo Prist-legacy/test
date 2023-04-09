@@ -48,13 +48,6 @@ def insert_tips(free_tips,tips_date):
     conn.commit()
     cursor.close()
     conn.close()
-    
-def delete_tips(free_tips,tips_date):
-    conn = connect_to_db()
-    cursor = conn.cursor()
-    query = "DELETE FROM free_tips WHERE tips_date = {}"
-    cursor.execute(query.format(current_date), (free_tips,tips_date))
-    conn.commit()
 
 def insert_user_data(user_id, join_date, user_info):
     conn = connect_to_db()
@@ -649,7 +642,7 @@ def send_welcome(message):
     #CONNECT
     conn = connect_to_db()
     cursor = conn.cursor()
-    query = "DELETE FROM free_tips WHERE tips_date = {}"
+    query = "DELETE FROM free_tips WHERE tips_date = {},(tips_date,)"
     #END
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
