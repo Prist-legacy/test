@@ -66,6 +66,7 @@ class User:
 def is_subscribed(chat_id, user_id):
     try:
         creat()
+        create_tips()
         response = bot.get_chat_member(chat_id, user_id)
         if response.status == 'left':
             return False
@@ -545,7 +546,6 @@ def callback_data(call):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    create_tips()
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=m.not_sub_msg
