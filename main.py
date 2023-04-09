@@ -41,6 +41,12 @@ def create_tips():
     conn.commit()
     cursor.close()
     conn.close()
+
+def insert_tips(free_tips,tips_date):
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    query = "INSERT INTO free_tips (free_tips,tips_date) VALUES (%s)"
+    cursor.execute(query, (free_tips))
         
 
 
