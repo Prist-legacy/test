@@ -26,13 +26,22 @@ def creat():
     type varchar(10) DEFAULT 'ORD',
     PRIMARY KEY(user_id)
     );"""
-    create_free = """CREATE TABLE IF NOT EXISTS free_tips (
-    free_tips TEXT,
-    tips_date DATE DEFAULT CURRENT_DATE); """
-    cursor.execute(create_table, create_free)
+    cursor.execute(create_table)
     conn.commit()
     cursor.close()
     conn.close()
+    
+def create_tips():
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    create_free = """CREATE TABLE IF NOT EXISTS free_tips (
+        free_tips TEXT,
+        tips_date DATE DEFAULT CURRENT_DATE); """
+    cursor.execute(create_free)
+    conn.commit()
+    cursor.close()
+    conn.close()
+        
 
 
 def insert_user_data(user_id, join_date, user_info):
