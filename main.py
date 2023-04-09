@@ -11,7 +11,7 @@ bot_token = bot_token
 
 bot = telebot.TeleBot(bot_token)
 #DATABASE CONNECT
-DATABASE_URL = "postgresql://postgres:QWbrepjCBCmMDxnqTiQT@containers-us-west-21.railway.app:6365/railway"
+DATABASE_URL = "postgresql://postgres:BRLSi8da2x11EVJqJZZK@containers-us-west-202.railway.app:5471/railway"
 def connect_to_db():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     return conn
@@ -34,7 +34,7 @@ def creat():
 def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date DATE NOT NULL DEFAULT CURRENT_DATE)"
+    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date DATE NOT NULL DEFAULT CURRENT_DATE,PRIMARY KEY(tips_date))"
     cursor.execute(create_free)
     conn.commit()
     cursor.close()
