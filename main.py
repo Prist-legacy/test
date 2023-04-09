@@ -45,6 +45,9 @@ def insert_tips(free_tips,tips_date):
     cursor = conn.cursor()
     query = "INSERT INTO free_tips (free_tips,tips_date) VALUES (%s,%s)"
     cursor.execute(query, (free_tips))
+    conn.commit()
+    cursor.close()
+    conn.close()
         
 
 
