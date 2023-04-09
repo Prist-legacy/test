@@ -548,6 +548,7 @@ def callback_data(call):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+    create_tips()
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=m.not_sub_msg
@@ -603,7 +604,6 @@ def send_welcome(message):
         
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
-    create_tips()
     free_tips = message.text.split(None,1)[1]
     user_id = message.from_user.id
     if user_id not in m.admin:
