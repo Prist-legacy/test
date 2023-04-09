@@ -595,6 +595,23 @@ def send_welcome(message):
         
 @bot.message_handler(commands=['free'])
 def send_welcome(message):
+    messageTime = message.date
+    messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
+    messageTime = messageTime.strftime('%Y-%d-%m') # formatted datetime
+    current_date = str(messageTime)
+    #FETCH DATA
+    conn = connect_to_db()
+
+    cursor = conn.cursor()
+
+    postgreSQL_select_Query = f"select free_tip from free_tips where tips_date='{current_date}'"
+
+    cursor.execute(postgreSQL_select_Query)
+
+    tip = cursor.fetchall()
+
+    conn.commit()
+            #END
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=m.not_sub_msg
