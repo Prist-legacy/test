@@ -604,9 +604,9 @@ def send_welcome(message):
 
     cursor = conn.cursor()
 
-    postgreSQL_select_Query = f"select free_tips from free_tips where tips_date='{current_date}'"
+    postgreSQL_select_Query = f"select free_tips from free_tips where tips_date='{}'"
 
-    cursor.execute(postgreSQL_select_Query)
+    cursor.execute(postgreSQL_select_Query.format(current_date))
 
     tip = cursor.fetchall()
 
@@ -619,7 +619,7 @@ def send_welcome(message):
     else:
         print(tip)
         print(current_date)
-        bot.send_message(message.chat.id, text=m.free_msg.format(tip), reply_markup=freetips_btn(),parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=m.free_msg.format(current_date), reply_markup=freetips_btn(),parse_mode = "Markdown")
         
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
