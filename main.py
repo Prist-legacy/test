@@ -604,7 +604,9 @@ def send_welcome(message):
     cursor = conn.cursor()
     postgreSQL_select_Query = "select free_tips from free_tips where tips_date='{}'"
     cursor.execute(postgreSQL_select_Query.format(current_date))
-    tip = cursor.fetchall()
+    tip = cursor.fetchone()
+    for row in tip:
+        print(tip)
     conn.commit()
             #END
     if not is_subscribed(m.CHAT_ID,message.chat.id):
