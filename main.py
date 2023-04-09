@@ -607,7 +607,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
         insert_tips(free_tips,tips_date)
-        bot.send_message(message.chat.id, text=free_tips,parse_mode = "HTML")
+        bot.send_message(message.chat.id, text=free_tips,parse_mode = "Markdown")
         
 @bot.message_handler(commands=['admin'])
 def send_welcome(message):
