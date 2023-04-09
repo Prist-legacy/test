@@ -645,8 +645,8 @@ def send_welcome(message):
         try:
             conn = connect_to_db()
             cursor = conn.cursor()
-            query = "DELETE FROM free_tips WHERE tips_date = '{}',(tips_date,)"
-            cursor.execute(query.format(current_date))
+            cursor.execute(f"DELETE FROM free_tips WHERE tips_date = '{current_date}'")
+            
             conn.commit()
             conn.close()
             bot.send_message(message.chat.id, text=text.format(current_date))
