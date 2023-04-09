@@ -34,16 +34,16 @@ def creat():
 def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date DATE DEFAULT CURRENT_DATE)"
+    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date DATE NOT NULL DEFAULT CURRENT_DATE)"
     cursor.execute(create_free)
     conn.commit()
     cursor.close()
     conn.close()
 
-def insert_tips(free_tips,tips_date):
+def insert_tips(free_tips):
     conn = connect_to_db()
     cursor = conn.cursor()
-    query = "INSERT INTO free_tips (free_tips,tips_date) VALUES (%s,%s)"
+    query = "INSERT INTO free_tips (free_tips) VALUES (%s)"
     cursor.execute(query, (free_tips))
     conn.commit()
     cursor.close()
@@ -609,7 +609,7 @@ def send_welcome(message):
     if user_id not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
-        insert_tips(free_tips,tips_date)
+        insert_tips(free_tips)
         bot.send_message(message.chat.id, text=free_tips,parse_mode = "Markdown")
         
 @bot.message_handler(commands=['admin'])
