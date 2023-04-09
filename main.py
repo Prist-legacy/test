@@ -617,7 +617,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, text=m.free_msg, reply_markup=freetips_btn(),parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=m.free_msg.format(tip), reply_markup=freetips_btn(),parse_mode = "Markdown")
         
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
