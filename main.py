@@ -638,7 +638,7 @@ def send_welcome(message):
     tips_date = str(messageTime)
     user = message.from_user.id
     text="Tip for DATE: {} successfully ✅"
-    current_date = message.text.split()[1]
+    current_date = message.text.split(None,1)[1]
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
