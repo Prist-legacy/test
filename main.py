@@ -597,7 +597,7 @@ def send_welcome(message):
 def send_welcome(message):
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
-    messageTime = messageTime.strftime('%Y/%d/%m') # formatted datetime
+    messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
     current_date = str(messageTime)
     #FETCH DATA
     conn = connect_to_db()
