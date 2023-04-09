@@ -602,7 +602,7 @@ def send_welcome(message):
     #FETCH DATA
     conn = connect_to_db()
     cursor = conn.cursor()
-    postgreSQL_select_Query = "select free_tips from free_tips where tips_date='{}'"
+    postgreSQL_select_Query = "select * from free_tips where tips_date='{}'"
     cursor.execute(postgreSQL_select_Query.format(current_date))
     tip = cursor.fetchone()
     for row in tip:
