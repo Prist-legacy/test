@@ -25,7 +25,7 @@ def creat():
     join_date varchar(13) NOT NULL,
     type varchar(10) DEFAULT 'ORD',
     PRIMARY KEY(user_id)
-    );"""
+    )"""
     cursor.execute(create_table)
     conn.commit()
     cursor.close()
