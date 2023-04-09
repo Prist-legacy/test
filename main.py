@@ -34,7 +34,7 @@ def creat():
 def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date DATE NOT NULL DEFAULT CURRENT_DATE,PRIMARY KEY(tips_date))"
+    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date varchar(13) NOT NULL,PRIMARY KEY(tips_date))"
     cursor.execute(create_free)
     conn.commit()
     cursor.close()
@@ -597,7 +597,7 @@ def send_welcome(message):
 def send_welcome(message):
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
-    messageTime = messageTime.strftime('%Y-%d-%m') # formatted datetime
+    messageTime = messageTime.strftime('%Y/%d/%m') # formatted datetime
     current_date = str(messageTime)
     #FETCH DATA
     conn = connect_to_db()
@@ -614,7 +614,7 @@ def send_welcome(message):
             #END
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
-        bot.send_message(message.chat.id, text=m.not_sub_msg+tip
+        bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub())
     else:
         print(tip)
