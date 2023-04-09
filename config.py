@@ -30,7 +30,7 @@ After use /reload to proceed"""
     freetips_msg = """‼️Caution:\n
 Here at our platform, we know things are hard so we came up with the FREE TIPS department where the administrator provides you with free predictions. \nWhat does this mean, matches provided here are not 100% sure. They most times win but stake them on your own risk, losses are not on us.
 \nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches👇"""
-    free_msg = "*TODAY'S FREE TIPS*\n\n\n‼️_Stake accordingly_"
+    free_msg = "*TODAY'S FREE TIPS*\n{}\n‼️_Stake accordingly_"
 
 
     vip_msg = """*CORRECT SCORE:* _This involves providing half-time and full-time score of the dedicated matches. Matches can be daily or else source hasn't confirmed it. They are 100% sure; we provide match score before it kicks off._\n*HT/FT:* _These are matches give results by halves,▫️*Halftime results to Full-time results (1/2)*👉Where home team wins half-time then away team to win full-time._
