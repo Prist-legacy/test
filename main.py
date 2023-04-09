@@ -34,9 +34,7 @@ def creat():
 def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_free = """CREATE TABLE IF NOT EXISTS free_tips (
-        free_tips TEXT,
-        tips_date DATE DEFAULT CURRENT_DATE); """
+    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date DATE DEFAULT CURRENT_DATE)"
     cursor.execute(create_free)
     conn.commit()
     cursor.close()
@@ -547,7 +545,7 @@ def callback_data(call):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    
+    create_tips()
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=m.not_sub_msg
