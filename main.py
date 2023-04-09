@@ -11,7 +11,7 @@ bot_token = bot_token
 
 bot = telebot.TeleBot(bot_token)
 #DATABASE CONNECT
-DATABASE_URL = "postgresql://postgres:ciUxMJ5URUheShx20y1v@containers-us-west-11.railway.app:5688/railway"
+DATABASE_URL = "postgresql://postgres:7yBGEPgMzTms0f1zC3Ih@containers-us-west-11.railway.app:6397/railway"
 def connect_to_db():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     return conn
@@ -34,7 +34,7 @@ def creat():
 def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_free = "CREATE TABLE IF NOT EXISTS free_tips (free_tips TEXT,tips_date varchar(13) NOT NULL,PRIMARY KEY(tips_date))"
+    create_free = "CREATE TABLE IF NOT EXISTS free_tips (tips_date varchar(13) NOT NULL,free_tips TEXT,PRIMARY KEY(tips_date))"
     cursor.execute(create_free)
     conn.commit()
     cursor.close()
@@ -601,15 +601,10 @@ def send_welcome(message):
     current_date = str(messageTime)
     #FETCH DATA
     conn = connect_to_db()
-
     cursor = conn.cursor()
-
     postgreSQL_select_Query = "select free_tips from free_tips where tips_date='{}'"
-
     cursor.execute(postgreSQL_select_Query.format(current_date))
-
     tip = cursor.fetchall()
-
     conn.commit()
             #END
     if not is_subscribed(m.CHAT_ID,message.chat.id):
@@ -619,7 +614,7 @@ def send_welcome(message):
     else:
         print(tip)
         print(current_date)
-        bot.send_message(message.chat.id, text=m.free_msg.format(current_date), reply_markup=freetips_btn(),parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=m.free_msg.format(tip), reply_markup=freetips_btn(),parse_mode = "Markdown")
         
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
