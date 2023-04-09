@@ -67,7 +67,6 @@ class User:
 
 def is_subscribed(chat_id, user_id):
     try:
-        creat()
         creat_tips()
         response = bot.get_chat_member(chat_id, user_id)
         if response.status == 'left':
