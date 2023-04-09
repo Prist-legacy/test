@@ -639,17 +639,16 @@ def send_welcome(message):
     user = message.from_user.id
     text="Tip for DATE: {} successfully ✅"
     current_date = message.text.split()[1]
-    #CONNECT
-    conn = connect_to_db()
-    cursor = conn.cursor()
-    query = "DELETE FROM free_tips WHERE tips_date = {},(tips_date,)"
-    #END
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
         try:
+            conn = connect_to_db()
+            cursor = conn.cursor()
+            query = "DELETE FROM free_tips WHERE tips_date = '{}',(tips_date,)"
             cursor.execute(query.format(current_date))
             conn.commit()
+            conn.close()
             bot.send_message(message.chat.id, text=text.format(current_date))
         except (Exception, psycopg2.DatabaseError) as e:
             bot.reply_to(message, f"Make sure your date is well formated as {current_date}")
