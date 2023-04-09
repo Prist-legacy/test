@@ -40,11 +40,11 @@ def create_tips():
     cursor.close()
     conn.close()
 
-def insert_tips(free_tips):
+def insert_tips(free_tips,tips_date):
     conn = connect_to_db()
     cursor = conn.cursor()
-    query = "INSERT INTO free_tips (free_tips) VALUES (%s)"
-    cursor.execute(query, (free_tips))
+    query = "INSERT INTO free_tips (free_tips) VALUES (%s,%s)"
+    cursor.execute(query, (free_tips,tips_date))
     conn.commit()
     cursor.close()
     conn.close()
@@ -604,12 +604,16 @@ def send_welcome(message):
         
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
+    messageTime = message.date
+    messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
+    messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
+    tips_date = str(messageTime)
     free_tips = message.text.split(None,1)[1]
     user_id = message.from_user.id
     if user_id not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
-        insert_tips(free_tips)
+        insert_tips(free_tips,tips_date)
         bot.send_message(message.chat.id, text=free_tips,parse_mode = "Markdown")
         
 @bot.message_handler(commands=['admin'])
