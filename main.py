@@ -66,7 +66,6 @@ class User:
 def is_subscribed(chat_id, user_id):
     try:
         creat()
-        create_tips()
         response = bot.get_chat_member(chat_id, user_id)
         if response.status == 'left':
             return False
@@ -601,6 +600,7 @@ def send_welcome(message):
         
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
+    create_tips()
     free_tips = message.text.split(None,1)[1]
     user_id = message.from_user.id
     if user_id not in m.admin:
