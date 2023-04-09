@@ -48,8 +48,13 @@ def insert_tips(free_tips,tips_date):
     conn.commit()
     cursor.close()
     conn.close()
-        
-
+    
+def delete_tips(free_tips,tips_date):
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    query = "DELETE FROM free_tips WHERE tips_date = {}"
+    cursor.execute(query.format(current_date), (free_tips,tips_date))
+    conn.commit()
 
 def insert_user_data(user_id, join_date, user_info):
     conn = connect_to_db()
@@ -632,6 +637,20 @@ def send_welcome(message):
         insert_tips(free_tips,tips_date)
         bot.send_message(message.chat.id, text=free_tips,parse_mode = "Markdown")
         
+@bot.message_handler(commands=['delete'])
+def send_welcome(message):
+    messageTime = message.date
+    messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
+    messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
+    tips_date = str(messageTime)
+    user = message.from_user.id
+    current_date = message.text.split()[1]
+    if user not in m.admin:
+        bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
+    else:
+        delete_tips(free_tips,tips_date)
+        bot.send_message(message.chat.id, text=text.format(current_date))
+       
 @bot.message_handler(commands=['admin'])
 def send_welcome(message):
     if not is_subscribed(m.CHAT_ID,message.chat.id):
