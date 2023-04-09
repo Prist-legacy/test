@@ -614,7 +614,7 @@ def send_welcome(message):
             #END
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
-        bot.send_message(message.chat.id, text=m.not_sub_msg
+        bot.send_message(message.chat.id, text=m.not_sub_msg+tip
                          , reply_markup=sub())
     else:
         print(tip)
