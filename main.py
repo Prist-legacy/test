@@ -741,7 +741,7 @@ def send_cast(message):
     cursor = conn.cursor()
     db_users = "select user_id from UFM_USERS"
     cursor.execute(db_users)
-    users = cursor.fetchall()
+    users = cursor.fetchone()
     for row in users:
         print(users[0])
     conn.commit()
