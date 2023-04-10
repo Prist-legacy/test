@@ -741,7 +741,7 @@ def send_cast(message):
     cursor = conn.cursor()
     db_users = "select * from UFM_USERS"
     cursor.execute(db_users)
-    users = cursor.fetchone()
+    users = cursor.fetchone(4)
     for row in users:
         print("THERE ARE:", len(users))
     conn.commit()
