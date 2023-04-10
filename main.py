@@ -743,7 +743,7 @@ def send_cast(message):
     cursor.execute(db_users)
     users = cursor.fetchall()
     for row in users:
-        r = row[2]
+        r = row
         print("THERE ARE:", len(users))
     conn.commit()
     #fetch users
