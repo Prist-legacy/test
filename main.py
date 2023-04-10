@@ -743,15 +743,16 @@ def send_cast(message):
     cursor.execute(db_users)
     u = cursor.fetchall()
     users = [row[0] for row in u]
+    u_id = [users]
     for row in users:
         r = row
         print("THERE ARE:", len(users))
     conn.commit()
     #fetch users
     if user not in m.admin:
-        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{users}",parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{u_id}",parse_mode = "Markdown")
     else:
-        bot.send_message(users,text=msg)
+        bot.send_message(u_id,text=msg)
     
 
 @bot.message_handler(commands=['reload'])
