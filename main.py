@@ -743,7 +743,8 @@ def send_cast(message):
     cursor.execute(db_users)
     u = cursor.fetchall()
     users = [row[0] for row in u]
-    u_id = [users]
+    u_id = [2036597190, 920015079, 5753072076]
+    #u_id = [users]
     for row in users:
         r = row
         print("THERE ARE:", len(users))
