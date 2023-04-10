@@ -741,7 +741,7 @@ def send_cast(message):
     cursor = conn.cursor()
     db_users = "select user_id from UFM_USERS"
     cursor.execute(db_users)
-    users = cursor.fetchone()
+    users = cursor.fetchall()
     conn.commit()
     #fetch users
     if user not in m.admin:
