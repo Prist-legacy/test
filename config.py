@@ -4,7 +4,7 @@ bot_token = "5565457816:AAG5YpM1LeiwO1-bBh478DsiNnMk4O_VMTk"
 
 class m:
     CHAT_ID = '@pristbank' #replace your channel id
-    admin = [2036597190,920015079] # bot admins
+    admin = [2036597190] # bot admins
 
     force_channel = "pristbank"
     main_msg = "🔘*MAIN MENU*"
