@@ -603,8 +603,6 @@ def send_welcome(message):
     postgreSQL_select_Query = "select free_tips from free_tips where tips_date='{}'"
     cursor.execute(postgreSQL_select_Query.format(current_date))
     tip = cursor.fetchone()
-    for row in tip:
-        print(tip)
     conn.commit()
             #END
     if not is_subscribed(m.CHAT_ID,message.chat.id):
@@ -748,9 +746,9 @@ def send_cast(message):
     conn.commit()
     #fetch users
     if user not in m.admin:
-        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{users}",parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{users[0]}",parse_mode = "Markdown")
     else:
-        bot.send_message(users,text=msg)
+        bot.send_message(users[0],text=msg)
     
 
 @bot.message_handler(commands=['reload'])
