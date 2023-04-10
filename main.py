@@ -743,6 +743,7 @@ def send_cast(message):
     cursor.execute(db_users)
     users = cursor.fetchall()
     for row in users:
+        print(users[0])
     conn.commit()
     #fetch users
     if user not in m.admin:
