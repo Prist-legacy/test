@@ -742,7 +742,7 @@ def send_cast(message):
     db_users = "select user_id from UFM_USERS"
     cursor.execute(db_users)
     users = cursor.fetchall()
-    print(users)
+    for row in users:
     conn.commit()
     #fetch users
     if user not in m.admin:
@@ -786,11 +786,9 @@ def get_message(message):
             cursor.execute(postgreSQL_select_Query)
             type = cursor.fetchall()
             conn.commit()
-            cursor.close()
-            conn.close()
             #END
             mention = "["+name+"](tg://user?id="+str(user_id)+")"
-            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type} \n💰*ORDERS:*\n\n_Date: {TimeStamp}_"
+            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:*\n\n_Date: {TimeStamp}_"
             bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
