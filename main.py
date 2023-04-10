@@ -645,7 +645,7 @@ def send_welcome(message):
         try:
             conn = connect_to_db()
             cursor = conn.cursor()
-            cursor.execute(f"DELETE FROM free_tips WHERE 'tips_date' = '{current_date}'";)
+            cursor.execute(f"DELETE FROM free_tips WHERE tips_date = '{current_date}'";)
             
             conn.commit()
             conn.close()
