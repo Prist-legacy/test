@@ -741,14 +741,15 @@ def send_cast(message):
     cursor = conn.cursor()
     db_users = "select user_id from UFM_USERS where type ='ORD'"
     cursor.execute(db_users)
-    users = cursor.fetchall()
+    u = cursor.fetchall()
+    users = [row[0] for row in u]
     for row in users:
         r = row
         print("THERE ARE:", len(users))
     conn.commit()
     #fetch users
     if user not in m.admin:
-        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{users[0]}",parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{users}",parse_mode = "Markdown")
     else:
         bot.send_message(users,text=msg)
     
