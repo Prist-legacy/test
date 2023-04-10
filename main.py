@@ -739,7 +739,7 @@ def send_cast(message):
     #start
     conn = connect_to_db()
     cursor = conn.cursor()
-    db_users = "select user_id from UFM_USERS"
+    db_users = "select user_id from UFM_USERS where type ='ORD'"
     cursor.execute(db_users)
     users = cursor.fetchall()
     for row in users:
