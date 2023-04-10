@@ -746,7 +746,7 @@ def send_cast(message):
     conn.commit()
     #fetch users
     if user not in m.admin:
-        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️\n{u_id}",parse_mode = "Markdown")
+        bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
     else:
         bot.send_message(users,text=msg)
     
