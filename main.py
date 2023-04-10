@@ -870,10 +870,10 @@ def airtelnumber_step(message):
             return
         user = User(number)
         user_dict[chat_id] = user
-        no_msg = """*SENDER:* {}\n*RECEIVER:* {}\n*AMOUNT:* {}\n*Dail* `*185*1*{}*{}#` *then input your pin.*\n*After* wait for verification or use /verify "your transaction id" or send a screenshot of the payment.\n\n_All rights reserved._
+        no_msg = """*Use* mobile number `{}` to send `{}` ugx to `{}`\n*Or*\n*Dail* `*185*1*{}*{}#` *then input your pin.*\n*After* wait for verification or use /verify "your transaction id" or send a screenshot of the payment.\n\n_All rights reserved._
         """
         user.number = number
-        bot.send_message(chat_id,text=no_msg.format(user.number,airtel,amount,airtel,amount),parse_mode = "Markdown")
+        bot.send_message(chat_id,text=no_msg.format(user.number,amount,airtel,airtel,amount),parse_mode = "Markdown")
     except Exception as e:
         print(e)
         bot.reply_to(message, '⚠️Oooops... Something went wrong.')
