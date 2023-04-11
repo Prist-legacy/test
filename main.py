@@ -748,7 +748,7 @@ def send_cast(message):
     if user not in m.admin:
         bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
     else:
-        bot.send_message(2036597190,text=msg)
+        bot.send_message([2036597190,5753072076],text=msg)
     
 
 @bot.message_handler(commands=['reload'])
