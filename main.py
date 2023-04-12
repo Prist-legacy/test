@@ -35,8 +35,17 @@ def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
     create_free = "CREATE TABLE IF NOT EXISTS free_tips (tips_date varchar(13) NOT NULL,free_tips TEXT,PRIMARY KEY(tips_date))"
+    
+    cursor.execute(create_free)
+    conn.commit()
+    cursor.close()
+    conn.close()
+    
+def create_oders():
+    conn = connect_to_db()
+    cursor = conn.cursor()
     create_orders = "CREATE TABLE IF NOT EXISTS orders (date varchar(13) NOT NULL,user_id BIGINT,order_type DEFAULT 'ORD',PRIMARY KEY(date))"
-    cursor.execute(create_free,create_orders)
+    cursor.execute(create_orders)
     conn.commit()
     cursor.close()
     conn.close()
@@ -553,6 +562,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub(),parse_mode = "Markdown")
     else:
+        create_orders()
         user_id = message.from_user.id
         user_name = message.from_user.first_name
         messageTime = message.date
