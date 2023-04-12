@@ -31,6 +31,9 @@ def creat():
     cursor.close()
     conn.close()
     
+conn = connect_to_db()
+cursor = conn.cursor()
+    
 def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
@@ -682,14 +685,19 @@ def send_welcome(message):
   
 @bot.message_handler(commands=['confirm'])
 def confirm_client (message):
-    use = message.text.split()[1]
+    user_id = message.text.split()[1]
     user = message.from_user.id
+    date = message.date
+    order_no = message.message_id
     not_msg = 'You must be an administrator to confirm client payments.'
     confirmed= 'Confirmed, photo loading'
     if user not in m.admin:
         bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
     else:
-        bot.forward_message(use, message.chat.id, message.message_id)
+        query = "INSERT INTO orders (date,user_id,oder_type) VALUES (%s,%s,%s)"
+        cursor.execute(query,(date,user_id,order_type))
+        conn.commit()
+        bot.send_message(user_id,text=text.format(order_no))
 
 @bot.message_handler(commands=['verify'])
 def confirm_client (message):
