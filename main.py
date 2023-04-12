@@ -35,7 +35,8 @@ def create_tips():
     conn = connect_to_db()
     cursor = conn.cursor()
     create_free = "CREATE TABLE IF NOT EXISTS free_tips (tips_date varchar(13) NOT NULL,free_tips TEXT,PRIMARY KEY(tips_date))"
-    cursor.execute(create_free)
+    create_orders = "CREATE TABLE IF NOT EXISTS orders (date varchar(13) NOT NULL,user_id BIGINT,order_type DEFAULT 'ORD',PRIMARY KEY(date))"
+    cursor.execute(create_free,create_orders)
     conn.commit()
     cursor.close()
     conn.close()
