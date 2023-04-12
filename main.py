@@ -688,6 +688,7 @@ def confirm_client (message):
     user_id = message.text.split()[1]
     user = message.from_user.id
     date = message.date
+    order_type = "VIP"
     order_no = message.message_id
     not_msg = 'You must be an administrator to confirm client payments.'
     confirmed= 'Confirmed, photo loading'
