@@ -687,18 +687,22 @@ def send_welcome(message):
 def confirm_client (message):
     user_id = message.text.split()[1]
     user = message.from_user.id
+    text = "Payment confirmed with *Order No:* `{}`."
     date = message.date
     order_type = "VIP"
     order_no = message.message_id
+    admin= "ORDER: Date: {} User: {} No: {} Type: {}"
     not_msg = 'You must be an administrator to confirm client payments.'
-    confirmed= 'Confirmed, photo loading'
+    photo_msg= '_Sending your receipt 🧾 now.._'
     if user not in m.admin:
         bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
     else:
         query = "INSERT INTO orders (date,user_id,order_type) VALUES (%s,%s,%s)"
         cursor.execute(query,(date,user_id,order_type))
         conn.commit()
+        bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type))
         bot.send_message(user_id,text=text.format(order_no))
+        bot.send_message(user_id,text=photo_msg)
 
 @bot.message_handler(commands=['verify'])
 def confirm_client (message):
