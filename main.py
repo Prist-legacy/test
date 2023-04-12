@@ -562,7 +562,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub(),parse_mode = "Markdown")
     else:
-        create_orders()
+        create_oders()
         user_id = message.from_user.id
         user_name = message.from_user.first_name
         messageTime = message.date
