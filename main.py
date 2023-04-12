@@ -823,7 +823,7 @@ def get_message(message):
                                   text=support_msg,reply_markup=ReplyKeyboardRemove())
             bot.register_next_step_handler(msg, process_problem_step)
         elif message.text == "Mobile Money":
-            mm_msg = "*WHAT SIMCARD🇺🇬 DO YOU USE*"
+            mm_msg = "*WHAT SIMCARD (🇺🇬) DO YOU USE*"
             bot.send_message(message.chat.id,text=mm_msg,reply_markup=mm_sim(),parse_mode = "Markdown")
         elif message.text == "MTN":
             mtn_msg = "*Send me the MTN number you're going to transact with.*"
@@ -833,16 +833,24 @@ def get_message(message):
             bot.register_next_step_handler(msg, mtnnumber_step)
         elif message.text == "AIRTEL":
             mtn_msg = "*Send me the Airtel number you're going to transact with.*"
-            msg = bot.send_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown")
+            msg = bot.send_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown",reply_markup=ReplyKeyboardRemove())
             bot.register_next_step_handler(msg, airtelnumber_step)
         elif message.text == "Chipper Cash":
             link = "https://chippercash.com"
             text = "CHIPPER-CHASH SITE"
-            chipper_msg = """
-            ⚠️Please register and verify your chipper-Cash account with an appropriate legal document at [{}]({}).
-            *Already registered?*, follow the payment link below to pay for today's *VIP games*.
+            chipper_msg = """⚠️Please register and verify your chipper-Cash account with an appropriate legal document at [{}]({}).*Already registered?*, follow the payment link below to pay for today's *VIP games*.
             """
             bot.send_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),disable_web_page_preview=True,parse_mode = "Markdown")
+        elif message.text == "MTN mpesa":
+            MTN= "0773936516"
+            text= "*Dail* `*156#` then east Africa..."
+            bot.send_message(message.chat.id,text=text,parse_mode = "Markdown")
+        elif message.text == "Card 💳":
+            text= "Will be available soon 🙂"
+            bot.send_message(message.chat.id,text=text)
+        
+            
+            
             
 
 def mtnnumber_step(message):
@@ -857,10 +865,10 @@ def mtnnumber_step(message):
             return
         user = User(number)
         user_dict[chat_id] = user
-        no_msg = """*SENDER:* {}\n*RECEIVER:* {}\n*AMOUNT:* {}\n*Dail* `*185*1*{}*{}#` *then input your pin.*\n*After* wait for verification or use /verify "your transaction id" or send a screenshot of the payment.\n\n_All rights reserved._
+        no_msg = """*Use* mobile number `{}` to send `{}` ugx to `{}`\n*Or*\n*Dail* `*185*1*{}*{}#` *then input your pin.*\n*After* wait for verification or use /verify "your transaction id" or send a screenshot of the payment.\n\n_All rights reserved._
         """
         user.number = number
-        bot.send_message(message.chat.id,text=no_msg.format(user.name,mtn,amount,mtn,amount),parse_mode = "Markdown")
+        bot.send_message(chat_id,text=no_msg.format(user.number,amount,mtn,mtn,amount),parse_mode = "Markdown")
     except Exception as e:
         print(e)
         bot.send_message(message, '⚠️Oooops... Something went wrong.')
@@ -869,7 +877,7 @@ def airtelnumber_step(message):
     try:
         chat_id = message.chat.id
         number = message.text
-        airtel = "0773936516"
+        airtel = "0708527456"
         amount = "47000"
         if not number.isdigit():
             msg = bot.reply_to(message, "⚠️(SIM NUMBER) should be only 'numbers' and 10 digits.\n*Send me the Airtel number you're going to transact with.*",parse_mode = "Markdown")
