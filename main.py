@@ -824,10 +824,14 @@ def get_message(message):
             orders_msg = "These are your oders.\n\nACTIVE ORDER: {}\placed on {}"
             date = message.date
             user= message.from_user.id
+            #connect
+            conn = connect_to_db()
+            cursor = conn.cursor()
             query = "select order_no from orders where user_id='{}'"
             cursor.execute(query.format(user))
             order = cursor.fetchone()
             conn.commit()
+            #fetch end
             bot.send_message(message.chat.id,
                                   text=orders_msg.format(order[0]))
         elif message.text == "❌Close this menue":
