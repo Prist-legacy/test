@@ -47,7 +47,7 @@ def create_tips():
 def create_oders():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_orders = "CREATE TABLE IF NOT EXISTS orders (date varchar(13) NOT NULL,user_id BIGINT,order_type varchar(10) DEFAULT 'ORD',PRIMARY KEY(date))"
+    create_orders = "CREATE TABLE IF NOT EXISTS orders (date varchar(13) NOT NULL,user_id BIGINT,order_no BIGINT NOT NULL,order_type varchar(10) DEFAULT 'VIP',PRIMARY KEY(date))"
     cursor.execute(create_orders)
     conn.commit()
     cursor.close()
@@ -697,8 +697,8 @@ def confirm_client (message):
     if user not in m.admin:
         bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
     else:
-        query = "INSERT INTO orders (date,user_id,order_type) VALUES (%s,%s,%s)"
-        cursor.execute(query,(date,user_id,order_type))
+        query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s)"
+        cursor.execute(query,(date,user_id,order_type,order_no))
         conn.commit()
         bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type))
         bot.send_message(user_id,text=text.format(order_no))
@@ -808,7 +808,7 @@ def get_message(message):
             cursor = conn.cursor()
             postgreSQL_select_Query = f"select type from UFM_USERS where user_id='{user_id}'"
             cursor.execute(postgreSQL_select_Query)
-            type = cursor.fetchall()
+            type = cursor.fetchone()
             conn.commit()
             #END
             mention = "["+name+"](tg://user?id="+str(user_id)+")"
@@ -821,9 +821,15 @@ def get_message(message):
             bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
         elif message.text == "🧾My orders":
-            orders_msg = "These are your oders"
+            orders_msg = "These are your oders.\n\nACTIVE ORDER: {}\placed on {}"
+            date = message.date
+            user= message.from_user.id
+            query = "select order_no from orders where user_id='{}'"
+            cursor.execute(query.format(user))
+            order = cursor.fetchone()
+            conn.commit()
             bot.send_message(message.chat.id,
-                                  text=orders_msg)
+                                  text=orders_msg.format(order[0]))
         elif message.text == "❌Close this menue":
             mainmsg = "PROCEED WITH THIS MENU NOW"
             bot.send_message(message.chat.id,
