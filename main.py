@@ -833,7 +833,7 @@ def get_message(message):
             conn.commit()
             #fetch end
             bot.send_message(message.chat.id,
-                                  text=orders_msg.format(order[0]))
+                                  text=orders_msg.format(order))
         elif message.text == "❌Close this menue":
             mainmsg = "PROCEED WITH THIS MENU NOW"
             bot.send_message(message.chat.id,
