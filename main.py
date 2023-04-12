@@ -695,7 +695,7 @@ def confirm_client (message):
     if user not in m.admin:
         bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
     else:
-        query = "INSERT INTO orders (date,user_id,oder_type) VALUES (%s,%s,%s)"
+        query = "INSERT INTO orders (date,user_id,order_type) VALUES (%s,%s,%s)"
         cursor.execute(query,(date,user_id,order_type))
         conn.commit()
         bot.send_message(user_id,text=text.format(order_no))
