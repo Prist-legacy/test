@@ -832,7 +832,7 @@ def get_message(message):
             ⚠️Please register and verify your chipper-Cash account with an appropriate legal document at [{}]({}).
             *Already registered?*, follow the payment link below to pay for today's *VIP games*.
             """
-            bot.send_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),parse_mode = "Markdown")
+            bot.send_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),disable_web_page_preview=True,parse_mode = "Markdown")
             
 
 def mtnnumber_step(message):
