@@ -823,7 +823,7 @@ def get_message(message):
             conn.commit()
             #END
             mention = "["+name+"](tg://user?id="+str(user_id)+")"
-            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* [1]No: `{order[0]}`\n\n_Date: {TimeStamp}_"
+            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* `{order[0]}`| _{TimeStamp}_\n\n_Date: {TimeStamp}_"
             bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
