@@ -813,12 +813,17 @@ def get_message(message):
             conn = connect_to_db()
             cursor = conn.cursor()
             postgreSQL_select_Query = f"select type from UFM_USERS where user_id='{user_id}'"
+
             cursor.execute(postgreSQL_select_Query)
             type = cursor.fetchone()
             conn.commit()
+            query = "select order_no from orders where user_id='{}'"
+            cursor.execute(query.format(user_id))
+            order = cursor.fetchone()
+            conn.commit()
             #END
             mention = "["+name+"](tg://user?id="+str(user_id)+")"
-            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:*\n\n_Date: {TimeStamp}_"
+            acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* [1]No: `{order[0]}`\n\n_Date: {TimeStamp}_"
             bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
