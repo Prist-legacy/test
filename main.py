@@ -693,7 +693,7 @@ def confirm_client (message):
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
 
-    messageTime = messageTime.strftime('%d/%m/%Y %H:%M:%S') # formatted datetime
+    messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
 
     date = str(messageTime)
     order_no = message.message_id
