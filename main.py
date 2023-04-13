@@ -827,7 +827,7 @@ def get_message(message):
             bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
         elif message.text == "🧾My orders":
-            orders_msg = "These are your oders.\n\nACTIVE ORDER: {}\placed on {}"
+            orders_msg = "These are your oders.\n\nACTIVE ORDER: {}\nplaced on {}"
      
             user= message.from_user.id
             #time
@@ -843,7 +843,7 @@ def get_message(message):
             cursor = conn.cursor()
             query = "select order_no from orders where user_id='{}'"
             cursor.execute(query.format(user))
-            order = cursor.fetchone()
+            order = cursor.fetchall()
             conn.commit()
             #fetch end
             bot.send_message(message.chat.id,
