@@ -822,13 +822,21 @@ def get_message(message):
                                   text=m.freetips_msg, reply_markup=free_btn())
         elif message.text == "🧾My orders":
             orders_msg = "These are your oders.\n\nACTIVE ORDER: {}\placed on {}"
-            date = message.date
+     
             user= message.from_user.id
+            #time
+            messageTime = message.date
+
+            messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
+
+            messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
+
+            date = str(messageTime)
             #connect
             conn = connect_to_db()
             cursor = conn.cursor()
-            query = "select order_no from orders where user_id='{}'"
-            cursor.execute(query.format(user))
+            query = "select order_no from orders where user_id='{}',date ='{}'"
+            cursor.execute(query.format(user,date))
             order = cursor.fetchone()
             conn.commit()
             #fetch end
