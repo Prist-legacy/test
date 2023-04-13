@@ -841,7 +841,7 @@ def get_message(message):
             #connect
             conn = connect_to_db()
             cursor = conn.cursor()
-            query = "select order_no from orders where user_id='{}',date ='{}'"
+            query = "select order_no from orders where user_id='{}'"
             cursor.execute(query.format(user,date))
             order = cursor.fetchone()
             conn.commit()
