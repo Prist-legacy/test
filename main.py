@@ -688,11 +688,17 @@ def confirm_client (message):
     user_id = message.text.split()[1]
     user = message.from_user.id
     text = "Payment confirmed with *Order No:* `{}`."
-    date = message.date
+
     order_type = "VIP"
+    messageTime = message.date
+    messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
+
+    messageTime = messageTime.strftime('%d/%m/%Y %H:%M:%S') # formatted datetime
+
+    date = str(messageTime)
     order_no = message.message_id
     admin= "ORDER: Date: {} User: {} No: {} Type: {}"
-    not_msg = 'You must be an administrator to confirm client payments.'
+    not_msg = 'You must be an administrator to do this.'
     photo_msg= '_Sending your receipt 🧾 now.._'
     if user not in m.admin:
         bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
