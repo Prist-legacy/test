@@ -688,27 +688,28 @@ def confirm_client (message):
     user_id = message.text.split()[1]
     user = message.from_user.id
     text = "Payment confirmed with *Order No:* `{}`."
-
     order_type = "VIP"
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
-
     messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
-
     date = str(messageTime)
     order_no = message.message_id
     admin= "ORDER: Date: {} User: {} No: {} Type: {}"
     not_msg = 'You must be an administrator to do this.'
     photo_msg= '_Sending your receipt 🧾 now.._'
-    if user not in m.admin:
-        bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
-    else:
-        query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s)"
-        cursor.execute(query,(date,user_id,order_type,order_no))
-        conn.commit()
-        bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type))
-        bot.send_message(user_id,text=text.format(order_no))
-        bot.send_message(user_id,text=photo_msg)
+    try:
+        if user not in m.admin:
+            bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
+        else:
+            query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s)"
+            cursor.execute(query,(date,user_id,order_type,order_no))
+            conn.commit()
+            bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type))
+            bot.send_message(user_id,text=text.format(order_no))
+            bot.send_message(user_id,text=photo_msg)
+    except Exception as e:
+        print(e)
+        bot.reply_to(message, 'Oooops... Something went wrong.')
 
 @bot.message_handler(commands=['verify'])
 def confirm_client (message):
@@ -727,7 +728,6 @@ def confirm_client (message):
         bot.reply_to(message, 'Oooops... Something went wrong.')
         
 @bot.message_handler(commands=['menu'])
-
 def send_welcome(message):
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
@@ -813,7 +813,6 @@ def get_message(message):
             conn = connect_to_db()
             cursor = conn.cursor()
             postgreSQL_select_Query = f"select type from UFM_USERS where user_id='{user_id}'"
-
             cursor.execute(postgreSQL_select_Query)
             type = cursor.fetchone()
             conn.commit()
@@ -824,10 +823,15 @@ def get_message(message):
             #END
             mention = "["+name+"](tg://user?id="+str(user_id)+")"
             acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* `{order[0]}`| _{TimeStamp}_\n\n_Date: {TimeStamp}_"
-            bot.send_message(message.chat.id,
+            try:
+                bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
                          )
+            except Exception as e:
+                print(e)
+                bot.send_message(message, 'Oooops... Something went wrong.')
+                
         elif message.text == "⛑️Free tips":
             bot.send_message(message.chat.id,
                                   text=m.freetips_msg, reply_markup=free_btn())
