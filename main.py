@@ -617,15 +617,17 @@ def send_welcome(message):
     cursor.execute(postgreSQL_select_Query.format(current_date))
     tip = cursor.fetchone()
     conn.commit()
-            #END
-    if not is_subscribed(m.CHAT_ID,message.chat.id):
+    #END
+    try:
+        if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
-        bot.send_message(message.chat.id, text=m.not_sub_msg
+            bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub())
-    else:
-        print(tip)
-        print(current_date)
-        bot.send_message(message.chat.id, text=m.free_msg.format(current_date,tip[0]), reply_markup=freetips_btn(),parse_mode = "Markdown")
+        else:
+            bot.send_message(message.chat.id, text=m.free_msg.format(current_date,tip[0]), reply_markup=freetips_btn(),parse_mode = "Markdown")
+    except (Exception, psycopg2.DatabaseError) as e:
+            bot.send_message(message.chat.id, text=m.no_free_msg.format(current_date))
+            print(e)
         
 @bot.message_handler(commands=['update'])
 def send_welcome(message):
