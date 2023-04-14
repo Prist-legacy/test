@@ -701,7 +701,7 @@ def confirm_client (message):
         if user not in m.admin:
             bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
         else:
-            query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s)"
+            query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s) ON CONFLICT (date) DO NOTHING"
             cursor.execute(query,(date,user_id,order_type,order_no))
             conn.commit()
             bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type),parse_mode = "Markdown")
