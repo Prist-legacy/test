@@ -3,7 +3,7 @@ bot_token = "5565457816:AAG5YpM1LeiwO1-bBh478DsiNnMk4O_VMTk"
 
 
 class m:
-    ticket = ''
+    ticket = 'https://ibb.co/HxdCwWQ'
     chippercash = ''
     CHAT_ID = '@pristbank' #replace your channel id
     admin = [2036597190] # bot admins
