@@ -258,7 +258,7 @@ def how_btn():
 def admin_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("ADMIN 🕴️", url='https://t.me/pristlegacy'))
+    markup.add(InlineKeyboardButton("ADMIN 🕴️", url='https://t.me/talktotegs'))
     return markup
 
 def vip_btn():
