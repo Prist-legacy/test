@@ -8,7 +8,7 @@ class m:
     CHAT_ID = '@ufmmatches' #replace your channel id
     admin = [2036597190] # bot admins
 
-    force_channel = "ufmmatches"
+    main_channel = "ufmmatches"
     main_msg = "🔘*MAIN MENU*"
     startmsg = """
 I can help you in many things regarding to fixed games. Am smart but you can still contact the **UFM administration** for farther help.
