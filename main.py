@@ -776,7 +776,7 @@ def info_bot(message):
     except Exception as e:
         bot.send_message(message.chat.id, text=text2.format(user_id,namet2,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
         
-@bot.message_handler(commands=['user'])
+@bot.message_handler(func=lambda message: True)
 def send_info(message):
     user = message.forward_from.id
     msg = '*USER:* `{}`'
