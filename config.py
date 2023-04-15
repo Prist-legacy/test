@@ -5,7 +5,7 @@ bot_token = "5565457816:AAG5YpM1LeiwO1-bBh478DsiNnMk4O_VMTk"
 class m:
     ticket = 'https://ibb.co/HxdCwWQ'
     chippercash = ''
-    CHAT_ID = '@pristbank' #replace your channel id
+    CHAT_ID = '@ufmmatches' #replace your channel id
     admin = [2036597190] # bot admins
 
     force_channel = "ufmmatches"
