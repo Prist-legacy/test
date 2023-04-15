@@ -46,7 +46,7 @@ def create_tips():
 def create_oders():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_orders = "CREATE TABLE IF NOT EXISTS orders (date varchar(13) NOT NULL,user_id BIGINT,order_no TEXT NOT NULL,order_type varchar(10) DEFAULT 'VIP',PRIMARY KEY(date))"
+    create_orders = "CREATE TABLE IF NOT EXISTS orders (date varchar(13) NOT NULL,user_id BIGINT,order_no TEXT NOT NULL,order_type varchar(10) DEFAULT 'VIP',PRIMARY KEY(user_id))"
     cursor.execute(create_orders)
     conn.commit()
     cursor.close()
