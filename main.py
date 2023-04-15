@@ -709,7 +709,7 @@ def confirm_client (message):
             bot.send_message(user_id,text=photo_msg,parse_mode = "Markdown")
             bot.send_chat_action(user_id, 'upload_photo')  # show the bot "typing" (max. 5 secs)
             time.sleep(3)
-            bot.send_photo(user_id,m.ticket, caption = 'VIP TICKET | {order_no}')
+            bot.send_photo(user_id,m.ticket, caption = f'VIP TICKET | {order_no}')
     except (Exception, psycopg2.DatabaseError) as e:
         print(e)
         msg = '*User:* {} already has an order settled for *Date:* {}'
