@@ -576,7 +576,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=f"**HEY {mention}**" + m.startmsg,
                          
                          parse_mode = "Markdown")
-        bot.send_message(message.chat.id, text=m.main_msg,reply_markup=main_btn(),
+        bot.send_message(message.chat.id, text=m.main_msg,reply_markup=main_btn()
                          ,parse_mode = "Markdown")
         
         
