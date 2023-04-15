@@ -746,15 +746,14 @@ def info_bot(message):
     text = """
     _Here is your telegram info_
     🧔*ID:* `{}`
-    👤*FIRST NAME:* {}
-    👤*LAST NAME:* {}
+    👤*NAME:* {}
     🌐*USERNAME:* {}
     ▫️*LANG:* {}
     ▫️*TYPE:* {} \n_Updated on {}_"""
     text2 = """
     _Here is your telegram info_
     🧔*ID:* `{}`
-    👤*FIRST NAME:* {}
+    👤*NAME:* {}
     🌐*USERNAME:* {}
     ▫️*LANG:* {}
     ▫️*TYPE:* {} \n_Updated on {}_"""
@@ -772,9 +771,9 @@ def info_bot(message):
     namet = "["+name+"](tg://user?id="+str(user_id)+")"
     namet2 = "["+name+ name2+"](tg://user?id="+str(user_id)+")"
     try:
-        bot.send_message(message.chat.id, text=text.format(user_id,namet,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=text.format(user_id,namet2,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
     except Exception as e:
-        bot.send_message(message.chat.id, text=text2.format(user_id,namet2,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text=text.format(user_id,namet,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
         
 @bot.message_handler(func=lambda message: True)
 def send_info(message):
