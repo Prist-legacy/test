@@ -23,7 +23,7 @@ def creat():
     user_id BIGINT NOT NULL,
     user_info varchar(50) NOT NULL,
     join_date varchar(13) NOT NULL,
-    type varchar(10) DEFAULT 'ORD',
+    type varchar(10) DEFAULT 'VIP',
     PRIMARY KEY(user_id)
     )"""
     cursor.execute(create_table)
