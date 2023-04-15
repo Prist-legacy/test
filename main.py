@@ -701,7 +701,7 @@ def confirm_client (message):
         if user not in m.admin:
             bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
         else:
-            query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s) ON CONFLICT (date) DO NOTHING"
+            query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s)"
             cursor.execute(query,(date,user_id,order_type,order_no))
             conn.commit()
             bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type),parse_mode = "Markdown")
@@ -710,7 +710,7 @@ def confirm_client (message):
             bot.send_chat_action(user_id, 'upload_photo')  # show the bot "typing" (max. 5 secs)
             time.sleep(3)
             bot.send_photo(user_id,m.ticket, caption = 'VIP TICKET | {order_no}')
-    except Exception as e:
+    except (Exception, psycopg2.DatabaseError) as e:
         print(e)
         msg = '*User:* {} already has an order settled for *Date:* {}'
         bot.send_message(message.chat.id, msg.format(user_id,date),parse_mode = "Markdown")
