@@ -259,7 +259,6 @@ def admin_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("ADMIN 🕴️", url='https://t.me/pristlegacy'))
-    markup.add(InlineKeyboardButton("MAIN MENU 🔰", callback_data="menu"))
     return markup
 
 def vip_btn():
@@ -432,49 +431,49 @@ def callback_data(call):
         #COUNTRY SECTION    
         elif call.data == "ug":
             ug = 47000
-            ug_msg = f"VIP PRICE; {ug}ugx \nVVIP PRICE; {ug}ugx"
+            ug_msg = f"*VIP @;* {ug}ugx | *VVIP @;* {30*ug}ugx"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=ug_msg, reply_markup=ug_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "ke":
             ke = 1535
-            ke_msg = f"VIP PRICE; {ke}kes \nVVIP PRICE; {ke}kes"
+            ke_msg = f"*VIP @;* {ke}kes | *VVIP @;* {30*ke}kes"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=ke_msg, reply_markup=ke_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "gh":
             gh = 99.3
-            gh_msg = f"VIP PRICE; {gh}cedi \nVVIP PRICE; {gh}cedi"
+            gh_msg = f"*VIP @;* {gh}cedi | *VVIP @;* {30*gh}cedi"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=gh_msg, reply_markup=gh_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "rw":
             rw = 13370
-            rw_msg = f"VIP PRICE; {rw}rwf \nVVIP PRICE; {rw}rwf"
+            rw_msg = f"*VIP @;* {rw}rwf | *VVIP @;* {30*rw}rwf"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=rw_msg, reply_markup=rw_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "tz":
             tz = 30492
-            tz_msg = f"VIP PRICE; {tz}tzs \nVVIP PRICE; {tz}tzs"
+            tz_msg = f"*VIP @;* {tz}tzs | *VVIP @;* {30*tz}tzs"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=tz_msg, reply_markup=tz_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "usa":
             usa = 17.473
-            usa_msg = f"VIP PRICE; {usa}$ \nVVIP PRICE; {usa}$"
+            usa_msg = f"*VIP @;* {usa}$ | *VVIP @;* {30*usa}$"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=usa_msg, reply_markup=usa_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "ng":
             ng = 6500
-            ng_msg = f"VIP PRICE; {ng}ngn \nVVIP PRICE; {ng}ngn"
+            ng_msg = f"*VIP @;* {ng}ngn | *VVIP @;* {30*ng}ngn"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=ng_msg, reply_markup=ng_btn(),
@@ -748,6 +747,14 @@ def info_bot(message):
     _Here is your telegram info_
     🧔*ID:* `{}`
     👤*FIRST NAME:* {}
+    👤*LAST NAME:* {}
+    🌐*USERNAME:* {}
+    ▫️*LANG:* {}
+    ▫️*TYPE:* {} \n_Updated on {}_"""
+    text2 = """
+    _Here is your telegram info_
+    🧔*ID:* `{}`
+    👤*FIRST NAME:* {}
     🌐*USERNAME:* {}
     ▫️*LANG:* {}
     ▫️*TYPE:* {} \n_Updated on {}_"""
@@ -761,11 +768,21 @@ def info_bot(message):
     lang = message.from_user.language_code
     premium = message.from_user.is_premium
     name = message.from_user.first_name
+    name2 = message.from_user.last_name
     namet = "["+name+"](tg://user?id="+str(user_id)+")"
+    namet2 = "["+name+ name2+"](tg://user?id="+str(user_id)+")"
     try:
         bot.send_message(message.chat.id, text=text.format(user_id,namet,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
     except Exception as e:
-        bot.send_message(message, 'Oooops... Something went wrong.')
+        bot.send_message(message.chat.id, text=text2.format(user_id,namet2,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
+        
+@bot.message_handler(commands=['user'])
+def send_info(message):
+    user = message.forward_from.id
+    msg = '*USER:* `{}`'
+    bot.send_message(message.chat.id, 
+                         msg.format(user),
+                         parse_mode = "Markdown")
         
 @bot.message_handler(commands=['users'])
 def send_cast(message):
