@@ -625,7 +625,7 @@ def send_welcome(message):
         else:
             bot.send_message(message.chat.id, text=m.free_msg.format(current_date,tip[0]), reply_markup=freetips_btn(),parse_mode = "Markdown")
     except (Exception, psycopg2.DatabaseError) as e:
-            bot.send_message(message.chat.id, text=m.no_free_msg.format(current_date))
+            bot.send_message(message.chat.id, text=m.no_free_msg.format(current_date),parse_mode = "Markdown")
             print(e)
         
 @bot.message_handler(commands=['update'])
