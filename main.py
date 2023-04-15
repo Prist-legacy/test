@@ -777,7 +777,7 @@ def info_bot(message):
         print(e)
         bot.reply_to(message, text=text.format(user_id,namet,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
         
-@bot.message_handler(func=lambda message: True)
+@bot.message_handler(commands=['user'])
 def send_info(message):
     user = message.forward_from.id
     msg = '*USER:* `{}`'
