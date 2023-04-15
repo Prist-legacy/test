@@ -769,11 +769,12 @@ def info_bot(message):
     name = message.from_user.first_name
     name2 = message.from_user.last_name
     namet = "["+name+"](tg://user?id="+str(user_id)+")"
-    namet2 = "["+name+ name2+"](tg://user?id="+str(user_id)+")"
+    namet2 = "["+name + name2+"](tg://user?id="+str(user_id)+")"
     try:
         bot.send_message(message.chat.id, text=text.format(user_id,namet2,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
     except Exception as e:
-        bot.send_message(message.chat.id, text=text.format(user_id,namet,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
+        print(e)
+        bot.reply_to(message, text=text.format(user_id,namet,unamef,lang,premium,TimeStamp),parse_mode = "Markdown")
         
 @bot.message_handler(func=lambda message: True)
 def send_info(message):
