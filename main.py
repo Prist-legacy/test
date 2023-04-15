@@ -191,7 +191,7 @@ def chipper_btn():
 def sub():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN CHANNEL 📢", url="https://t.me/pristbank"))
+    markup.add(InlineKeyboardButton("JOIN CHANNEL 📢", url=f"https://t.me/{m.main_channel}"))
     return markup
 
 def commands_btn():
