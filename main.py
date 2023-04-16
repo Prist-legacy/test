@@ -847,8 +847,8 @@ def get_message(message):
                 cursor.execute(postgreSQL_select_Query)
                 type = cursor.fetchone()
                 conn.commit()
-                query = "select order_no from orders where user_id='{}'"
-                cursor.execute(query.format(user_id))
+                query = "select order_no from orders where user_id='{}' and date = '{}'"
+                cursor.execute(query.format(user_id,TimeStamp))
                 order = cursor.fetchone()
                 conn.commit()
                 #END
@@ -880,8 +880,8 @@ def get_message(message):
             #connect
             conn = connect_to_db()
             cursor = conn.cursor()
-            query = "select order_no from orders where user_id='{}'"
-            cursor.execute(query.format(user))
+            query = "select order_no from orders where user_id='{}' and date = '{}'"
+            cursor.execute(query.format(user,date))
             order = cursor.fetchone()
             conn.commit()
             #fetch end
