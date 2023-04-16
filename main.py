@@ -89,6 +89,13 @@ def is_subscribed(chat_id, user_id):
             return False
 
 #BUTTONS
+def vipreply_btn():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2,one_time_keyboard=True)
+    cs = types.KeyboardButton(text="CORRECT SCORE",)
+    ht_ft = types.KeyboardButton(text="HT/FT",)
+    markup.add(cs,ht_ft)
+    return markup
+
 def main_btn():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     vip = types.KeyboardButton(text="💰VIP GAMES💰",)
@@ -830,7 +837,7 @@ def get_message(message):
     else:
         if message.text == "💰VIP GAMES💰":
             bot.send_message(message.chat.id,
-                                  text=m.vip_msg, reply_markup=vip_btn(),parse_mode = "Markdown")
+                                  text=m.vip_msg, reply_markup=vipreply_btn(),parse_mode = "Markdown")
         elif message.text == "👤My account":
             try:
                 messageTime = message.date
