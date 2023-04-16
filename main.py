@@ -937,6 +937,18 @@ def get_message(message):
         elif message.text == "Card 💳":
             text= "Will be available soon 🙂"
             bot.send_message(message.chat.id,text=text)
+            
+        elif message.text == "CORRECT SCORE":
+            bot.edit_message_text(chat_id=call.message.chat.id,
+                                  message_id=call.message.message_id,
+                                  text=m.cs_msg, reply_markup=cs_btn(),
+                                  parse_mode = "Markdown")
+        elif message.text == "HT/FT":
+            msg = "🔘HT/FT MENU*\n\n_No HT/FT matches today._\nPlease proceed with CORRECT SCORE matches."
+            bot.edit_message_text(chat_id=call.message.chat.id,
+                                  message_id=call.message.message_id,
+                                  text=msg, reply_markup=main_btn(),
+                                  parse_mode = "Markdown")
         
             
             
