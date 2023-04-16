@@ -943,7 +943,7 @@ def get_message(message):
                                   text=m.cs_msg, reply_markup=cs_btn(),
                                   parse_mode = "Markdown")
         elif message.text == "HT/FT":
-            msg = "🔘HT/FT MENU*\n\n_No HT/FT matches today._\nPlease proceed with CORRECT SCORE matches."
+            msg = "*🔘HT/FT MENU*\n\n_No HT/FT matches today.\nPlease proceed with CORRECT SCORE matches._"
             bot.send_message(chat_id=message.chat.id,
                                   text=msg, reply_markup=main_btn(),
                                   parse_mode = "Markdown")
