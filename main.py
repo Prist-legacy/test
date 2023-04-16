@@ -943,11 +943,15 @@ def get_message(message):
                                   text=m.cs_msg, reply_markup=cs_btn(),
                                   parse_mode = "Markdown")
         elif message.text == "HT/FT":
-            msg = "*🔘HT/FT MENU*\n\n_No HT/FT matches today.\nPlease proceed with CORRECT SCORE matches._"
+            msg = "*🔘HT/FT MENU*\n\n_⚠️No HT/FT matches today.\nPlease proceed with CORRECT SCORE matches._"
             bot.send_message(chat_id=message.chat.id,
                                   text=msg,
                                   parse_mode = "Markdown")
             bot.send_message(message.chat.id, text=m.main_msg,reply_markup=main_btn()
+                         ,parse_mode = "Markdown")
+        elif message.text == "Admin":
+            msg = "*CONTACT ADMIN HERE*\n\n⚠️Contact admin here for payment issues only. Click on UFM ADMIN below 👇.\n*🧑‍💻ADMIN:* [UFM ADMIN]({})\n\n_All rights reserved._")
+            bot.send_message(message.chat.id, text=msg.format(admin_direct),reply_markup=main_btn()
                          ,parse_mode = "Markdown")
         
             
