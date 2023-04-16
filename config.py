@@ -9,6 +9,7 @@ class m:
     admin = [2036597190] # bot admins
 
     main_channel = "ufmmatches"
+    admin_direct = "@talktotegs"
     main_msg = "🔘*MAIN MENU*"
     startmsg = """
 I can help you in many things regarding to fixed games. Am smart but you can still contact the **UFM administration** for farther help.
