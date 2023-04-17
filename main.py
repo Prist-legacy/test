@@ -951,7 +951,7 @@ def get_message(message):
                          ,parse_mode = "Markdown")
         elif message.text == "Admin":
             msg = "*CONTACT ADMIN HERE*\n\n⚠️Contact admin here for payment issues only. Click on UFM ADMIN below 👇.\n*🧑‍💻ADMIN:* [UFM ADMIN]({})\n\n_All rights reserved._")
-            bot.send_message(message.chat.id, text=msg.format(admin_direct),reply_markup=main_btn(),disable_web_page_preview=True
+            bot.send_message(message.chat.id, text=msg.format(m.admin_direct),reply_markup=main_btn(),disable_web_page_preview=True
                          ,parse_mode = "Markdown")
         
             
