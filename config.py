@@ -34,6 +34,7 @@ After use /reload to proceed"""
 Here at our platform, we know things are hard so we came up with the FREE TIPS department where the administrator provides you with free predictions. \nWhat does this mean, matches provided here are not 100% sure. They most times win but stake them on your own risk, losses are not on us.
 \nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches👇"""
     free_msg = "*TODAY'S FREE TIPS | {}*\n{}\n‼️_Stake accordingly_"
+    free_msg1 = "*TODAY'S FREE TIPS*\n\n‼️_To get today's use command /free to get the matches now_"
     no_free_msg = "*TODAY'S FREE TIPS | {}*\nFree matches haven't been uploaded. Wait at around *04:30pm*\n‼️_All rights reserved_"
 
 
