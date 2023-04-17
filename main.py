@@ -190,7 +190,7 @@ def mm_sim():
 def chipper_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("CHIPPER CASH PAY", url="{}".format(m.chippercash)))
+    markup.add(InlineKeyboardButton("CHIPPER CASH PAY", url=f"{m.chippercash}"))
     return markup
 
 
@@ -238,7 +238,7 @@ def today_tips_btn():
 def freetips_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("RELOAD TIP 🔃", callback_data="reload"),
+    markup.add(
                InlineKeyboardButton("💯 SURE ODDS", callback_data="vip-menu"))
     return markup
 def reload_btn():
@@ -388,7 +388,7 @@ def callback_data(call):
         elif call.data == "today's_tips":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.free_msg, reply_markup=freetips_btn(),
+                                  text=m.free_msg1, reply_markup=freetips_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
