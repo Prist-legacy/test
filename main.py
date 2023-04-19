@@ -705,7 +705,7 @@ def send_welcome(message):
         try:
             if (ticket_type == u'CS') or (ticket_type == u'HT/FT'):
                 insert_tiket(date,ticket_url,ticket_type)
-                bot.send_message(message.chat.id, text=text.format(ticket_url,ticket_type,date),parse_mode = "Markdown")
+                bot.send_message(message.chat.id, text=text.format(ticket_url,ticket_type,date),parse_mode = "Markdown",disable_web_page_preview=True)
             else:
                 raise Exception("Unknown ticket type")
         except (Exception, psycopg2.DatabaseError) as e:
