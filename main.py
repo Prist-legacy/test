@@ -864,8 +864,6 @@ def get_message(message):
                 messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
                 messageTime = messageTime.strftime('%d/%m/%Y %H:%M:%S')
                 TimeStamp = str(messageTime)
-                Mydate = messageTime.strftime('%d/%m/%Y')
-                prist = str(Mydate)
                 name2 = message.from_user.last_name
                 name = message.from_user.first_name
                 user_id = message.from_user.id
@@ -885,10 +883,9 @@ def get_message(message):
                 acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* `{order[0]}` | _{prist}_\n\n_Date: {TimeStamp}_"
                 bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
-                         disable_web_page_preview=True,
+                         disable_web_page_preview=True
                          )
             except (Exception, psycopg2.DatabaseError) as e:
-                user_id = message.from_user.id
                 acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* `No oder yet`\n\n_Date: {TimeStamp}_"
                 bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
