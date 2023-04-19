@@ -704,7 +704,6 @@ def send_welcome(message):
     else:
         try:
             if (ticket_type == u'CS') or (ticket_type == u'HF/FT'):
-                gjj
                 insert_tiket(date,ticket_url,ticket_type)
                 bot.send_message(message.chat.id, text=text.format(ticket_url))
             else:
