@@ -750,12 +750,16 @@ def confirm_client (message):
             query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s)"
             cursor.execute(query,(date,user_id,order_type,order_no))
             conn.commit()
+            ticket_url = "select ticket_url from tickets where date ='{}'"
+            cursor.execute(ticket_url.format(date))
+            ticket = cursor.fetchone()
+            conn.commit()
             bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type),parse_mode = "Markdown")
             bot.send_message(user_id,text=text.format(order_no),parse_mode = "Markdown")
             bot.send_message(user_id,text=photo_msg,parse_mode = "Markdown")
             bot.send_chat_action(user_id, 'upload_photo')  # show the bot "typing" (max. 5 secs)
             time.sleep(3)
-            bot.send_photo(user_id,m.ticket, caption = f'VIP TICKET | {order_no}')
+            bot.send_photo(user_id,ticket[0], caption = f'VIP TICKET | {order_no}')
     except (Exception, psycopg2.DatabaseError) as e:
         print(e)
         msg = '*User:* {} already has an order settled for *Date:* {}'
