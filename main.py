@@ -654,7 +654,7 @@ def send_welcome(message):
             bot.send_message(message.chat.id, text=m.no_free_msg.format(current_date),parse_mode = "Markdown")
             print(e)
         
-@bot.message_handler(commands=['update'])
+@bot.message_handler(commands=['tip'])
 def send_welcome(message):
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
@@ -668,21 +668,19 @@ def send_welcome(message):
         insert_tips(free_tips,tips_date)
         bot.send_message(message.chat.id, text=free_tips,parse_mode = "Markdown")
         
-@bot.message_handler(commands=['delete'])
+@bot.message_handler(commands=['dtip'])
 def send_welcome(message):
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime)
     messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
     tips_date = str(messageTime)
     user = message.from_user.id
-    text="Tip for DATE: {} successfully ✅"
+    text="Tip for DATE: {} successfully ✅ deleted"
     current_date = message.text.split(None,1)[1]
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
         try:
-            conn = connect_to_db()
-            cursor = conn.cursor()
             qwery = "DELETE FROM free_tips WHERE tips_date = '{}'"
             cursor.execute(qwery.format(current_date))
             conn.commit()
@@ -690,6 +688,8 @@ def send_welcome(message):
         except (Exception, psycopg2.DatabaseError) as e:
             bot.reply_to(message, text=f"Make sure your date is well formated as {current_date}")
             print(e)
+            
+
        
 @bot.message_handler(commands=['admin'])
 def send_welcome(message):
