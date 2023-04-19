@@ -705,7 +705,7 @@ def send_welcome(message):
             insert_tiket(date,ticket_url,ticket_type)
             bot.send_message(message.chat.id, text=text.format(ticket_url))
         except (Exception, psycopg2.DatabaseError) as e:
-            bot.reply_to(message, text=f"Make sure your date is well formated as {current_date}")
+            bot.reply_to(message, text="Oops. Something went wrong..")
             print(e)
        
 @bot.message_handler(commands=['admin'])
