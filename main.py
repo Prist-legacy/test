@@ -691,7 +691,7 @@ def send_welcome(message):
             
 @bot.message_handler(commands=['ticket'])
 def send_welcome(message):
-    ticket_url = message.text.split()[2]
+    ticket_url = message.text.split()[1]
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime)
     messageTime = messageTime.strftime('%d/%m/%Y')
