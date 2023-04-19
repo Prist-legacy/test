@@ -78,6 +78,16 @@ def insert_user_data(user_id, join_date, user_info):
     conn.commit()
     cursor.close()
     conn.close()
+    
+def insert_tiket(date,ticket_url,ticket_type):
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    query = "INSERT INTO tickes (date, ticket_url, ticket_type) VALUES (%s, %s, %s) ON CONFLICT (date) DO NOTHING;"
+    cursor.execute(query, (date,ticket_url,ticket_type))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
 
 user_dict = {}
 class User:
