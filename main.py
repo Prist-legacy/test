@@ -703,8 +703,12 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
         try:
-            insert_tiket(date,ticket_url,ticket_type)
-            bot.send_message(message.chat.id, text=text.format(ticket_url))
+            if (ticket_type == u'CS') or (ticket_type == u'HF/FT'):
+                gjj
+                insert_tiket(date,ticket_url,ticket_type)
+                bot.send_message(message.chat.id, text=text.format(ticket_url))
+            else:
+                raise Exception("Unknown ticket type")
         except (Exception, psycopg2.DatabaseError) as e:
             bot.reply_to(message, text="Oops. Something went wrong..")
             bot.reply_to(message, text=e)
