@@ -862,8 +862,10 @@ def get_message(message):
             try:
                 messageTime = message.date
                 messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
-                messageTime = messageTime.strftime('%d/%m/%Y %H:%M:%S') # formatted datetim
+                messageTime = messageTime.strftime('%d/%m/%Y %H:%M:%S')
                 TimeStamp = str(messageTime)
+                Mydate = messageTime.strftime('%d/%m/%Y')
+                prist = str(Mydate)
                 user_id = message.from_user.id
                 name2 = message.from_user.last_name
                 name = message.from_user.first_name
@@ -875,12 +877,12 @@ def get_message(message):
                 type = cursor.fetchone()
                 conn.commit()
                 query = "select order_no from orders where user_id='{}' and date = '{}'"
-                cursor.execute(query.format(user_id,TimeStamp))
+                cursor.execute(query.format(user_id,prist))
                 order = cursor.fetchone()
                 conn.commit()
                 #END
                 mention = "["+name+"](tg://user?id="+str(user_id)+")"
-                acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* `{order[0]}` | _{TimeStamp}_\n\n_Date: {TimeStamp}_"
+                acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* `{order[0]}` | _{prist}_\n\n_Date: {TimeStamp}_"
                 bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
                          disable_web_page_preview=True,
