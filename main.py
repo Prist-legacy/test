@@ -671,8 +671,8 @@ def send_welcome(message):
 @bot.message_handler(commands=['delete'])
 def send_welcome(message):
     messageTime = message.date
+    messageTime = datetime.datetime.utcfromtimestamp(messageTime)
     messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
-    messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
     tips_date = str(messageTime)
     user = message.from_user.id
     text="Tip for DATE: {} successfully ✅"
