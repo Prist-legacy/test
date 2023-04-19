@@ -55,7 +55,7 @@ def create_oders():
 def create_tickets():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_tickets = "CREATE TABLE IF NOT EXISTS tickets (date varchar(13) NOT NULL,ticket_url TEXT NOT NULL,ticket_type varchar(10) DEFAULT 'VIP',PRIMARY KEY(date))"
+    create_tickets = "CREATE TABLE IF NOT EXISTS tickets (date varchar(13) NOT NULL,ticket_url TEXT NOT NULL,ticket_type varchar(5) DEFAULT 'CS',PRIMARY KEY(date))"
     cursor.execute(create_tickets)
     conn.commit()
     cursor.close()
@@ -82,7 +82,7 @@ def insert_user_data(user_id, join_date, user_info):
 def insert_tiket(date,ticket_url,ticket_type):
     conn = connect_to_db()
     cursor = conn.cursor()
-    query = "INSERT INTO tickes (date, ticket_url, ticket_type) VALUES (%s, %s, %s) ON CONFLICT (date) DO NOTHING;"
+    query = "INSERT INTO tickes (date, ticket_url, ticket_type) VALUES (%s, %s, %s) ON CONFLICT (ticket_type) DO NOTHING;"
     cursor.execute(query, (date,ticket_url,ticket_type))
     conn.commit()
     cursor.close()
