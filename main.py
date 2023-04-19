@@ -698,18 +698,17 @@ def send_welcome(message):
     messageTime = messageTime.strftime('%d/%m/%Y')
     date = str(messageTime)
     ticket_type = message.text.split()[2]
-    text = "Ticket url: {} | Type: ••• \nUpdated successfully"
+    text = "*Ticket url:* {} | *Type:* {} \n_Updated successfully {} ✅_"
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
         try:
-            if (ticket_type == u'CS') or (ticket_type == u'HF/FT'):
+            if (ticket_type == u'CS') or (ticket_type == u'HT/FT'):
                 insert_tiket(date,ticket_url,ticket_type)
-                bot.send_message(message.chat.id, text=text.format(ticket_url))
+                bot.send_message(message.chat.id, text=text.format(ticket_url,ticket_type,date),parse_mode = "Markdown")
             else:
                 raise Exception("Unknown ticket type")
         except (Exception, psycopg2.DatabaseError) as e:
-            bot.reply_to(message, text="Oops. Something went wrong..")
             bot.reply_to(message, text=e)
             print(e)
        
