@@ -707,6 +707,7 @@ def send_welcome(message):
             bot.send_message(message.chat.id, text=text.format(ticket_url))
         except (Exception, psycopg2.DatabaseError) as e:
             bot.reply_to(message, text="Oops. Something went wrong..")
+            bot.reply_to(message, text=e)
             print(e)
        
 @bot.message_handler(commands=['admin'])
