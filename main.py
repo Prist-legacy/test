@@ -697,7 +697,7 @@ def send_welcome(message):
     messageTime = datetime.datetime.utcfromtimestamp(messageTime)
     messageTime = messageTime.strftime('%d/%m/%Y')
     date = str(messageTime)
-    ticket_type = message.text.split()[2]
+    ticket_type = "VIP"
     text = "Ticket url: {} | Type: ••• \nUpdated successfully"
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
