@@ -692,11 +692,12 @@ def send_welcome(message):
 @bot.message_handler(commands=['ticket'])
 def send_welcome(message):
     ticket_url = message.text.split()[1]
+    user = message.from_user.id
     messageTime = message.date
     messageTime = datetime.datetime.utcfromtimestamp(messageTime)
     messageTime = messageTime.strftime('%d/%m/%Y')
     date = str(messageTime)
-    text = "Ticket url: {} | Type: •••"
+    text = "Ticket url: {} | Type: ••• \nUpdated successfully"
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
