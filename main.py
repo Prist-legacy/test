@@ -82,7 +82,7 @@ def insert_user_data(user_id, join_date, user_info):
 def insert_tiket(date,ticket_url,ticket_type):
     conn = connect_to_db()
     cursor = conn.cursor()
-    query = "INSERT INTO tickets (date, ticket_url, ticket_type) VALUES (%s, %s, %s) ON CONFLICT (ticket_type) DO NOTHING;"
+    query = "INSERT INTO tickets (date, ticket_url, ticket_type) VALUES (%s, %s, %s);"
     cursor.execute(query, (date,ticket_url,ticket_type))
     conn.commit()
     cursor.close()
