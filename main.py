@@ -866,9 +866,9 @@ def get_message(message):
                 TimeStamp = str(messageTime)
                 Mydate = messageTime.strftime('%d/%m/%Y')
                 prist = str(Mydate)
-                user_id = message.from_user.id
                 name2 = message.from_user.last_name
                 name = message.from_user.first_name
+                user_id = message.from_user.id
                 #FETCH DATA
                 conn = connect_to_db()
                 cursor = conn.cursor()
