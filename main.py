@@ -683,9 +683,9 @@ def send_welcome(message):
         try:
             conn = connect_to_db()
             cursor = conn.cursor()
-            cursor.execute(f"DELETE FROM free_tips WHERE tips_date = '{current_date}'")
+            qwery = "DELETE FROM free_tips WHERE tips_date = '{}'"
+            cursor.execute(qwery.format(current_date))
             conn.commit()
-            conn.close()
             bot.send_message(message.chat.id, text=text.format(current_date))
         except (Exception, psycopg2.DatabaseError) as e:
             bot.reply_to(message, text=f"Make sure your date is well formated as {current_date}")
