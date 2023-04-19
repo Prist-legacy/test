@@ -888,6 +888,7 @@ def get_message(message):
                          disable_web_page_preview=True,
                          )
             except (Exception, psycopg2.DatabaseError) as e:
+                user_id = message.from_user.id
                 acc = f"📊 Your account information.\n\n🧔*USER/N0:* `{user_id}`\n▫️*NAME:* {mention} \n▫️*ACC/TYPE:* {type[0]} \n💰*ORDERS:* `No oder yet`\n\n_Date: {TimeStamp}_"
                 bot.send_message(message.chat.id,
                                   text=acc,parse_mode = "Markdown",
