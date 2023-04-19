@@ -696,12 +696,13 @@ def send_welcome(message):
     messageTime = datetime.datetime.utcfromtimestamp(messageTime)
     messageTime = messageTime.strftime('%d/%m/%Y')
     date = str(messageTime)
+    text = "Ticket url: {} | Type: •••"
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
         try:
             insert_tiket(date,ticket_url,ticket_type)
-            bot.send_message(message.chat.id, text=text.format(current_date))
+            bot.send_message(message.chat.id, text=text.format(ticket_url))
         except (Exception, psycopg2.DatabaseError) as e:
             bot.reply_to(message, text=f"Make sure your date is well formated as {current_date}")
             print(e)
