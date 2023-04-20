@@ -40,8 +40,8 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
 
     vip_msg = """*CORRECT SCORE:* _This involves providing half-time and full-time score of the dedicated matches. Matches can be daily or else source hasn't confirmed it. They are 100% sure; we provide match score before it kicks off._\n*HT/FT:* _These are matches give results by halves,▫️*Halftime results to Full-time results (1/2)*👉Where home team wins half-time then away team to win full-time._
     
-    *USE BUTTONS BELOW TO*
-    *👇CHOSE MATCH TYPE 👇*"""
+      *USE BUTTONS BELOW TO*
+      *👇CHOSE MATCH TYPE 👇*"""
     vipmenu_msg = "VIP MATCHES are 100% sure games in that winning on these matches is guaranteed. You must stake high on them because any lose is on us where by due to any loss, we proceed with the #refund-policy"
     cs_msg = "*Confirm* _And Proceed To Booking_"
     cs_menu = "🔘*CORRECT SCORE*\nClosed ticket 👇"
