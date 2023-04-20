@@ -442,7 +442,7 @@ def callback_data(call):
         elif call.data == "cs":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=m.cs_msg, reply_markup=cs_btn(),
+                                  text=m.cs_msg1, reply_markup=cs_btn(),
                                   parse_mode = "Markdown")
         elif call.data == "subscribe":
             bot.edit_message_text(chat_id=call.message.chat.id,
