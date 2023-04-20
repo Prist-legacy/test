@@ -703,7 +703,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
         try:
-            if (ticket_type == u'CS') or (ticket_type == u'HT/FT'):
+            if (ticket_type == u'CS') or (ticket_type == u'HT/FT') or (ticket_type == u'OPEN') or (ticket_type == u'CLOSED'):
                 insert_tiket(date,ticket_url,ticket_type)
                 bot.send_message(message.chat.id, text=text.format(ticket_url,ticket_type,date),parse_mode = "Markdown",disable_web_page_preview=True)
             else:
@@ -750,7 +750,7 @@ def confirm_client (message):
             query = "INSERT INTO orders (date,user_id,order_type,order_no) VALUES (%s,%s,%s,%s)"
             cursor.execute(query,(date,user_id,order_type,order_no))
             conn.commit()
-            ticket_url = "select ticket_url from tickets where date ='{}'"
+            ticket_url = "select ticket_url from tickets where date ='{}' and ticket_type ='OPEN'"
             cursor.execute(ticket_url.format(date))
             ticket = cursor.fetchone()
             conn.commit()
@@ -966,6 +966,7 @@ def get_message(message):
                                    parse_mode = "Markdown")
             bot.register_next_step_handler(msg, mtnnumber_step)
         elif message.text == "AIRTEL":
+            
             mtn_msg = "*Send me the Airtel number you're going to transact with.*"
             msg = bot.send_message(message.chat.id,text=mtn_msg,parse_mode = "Markdown",reply_markup=ReplyKeyboardRemove())
             bot.register_next_step_handler(msg, airtelnumber_step)
@@ -984,6 +985,16 @@ def get_message(message):
             bot.send_message(message.chat.id,text=text)
             
         elif message.text == "CORRECT SCORE":
+            messageTime = message.date
+            messageTime = datetime.datetime.utcfromtimestamp(messageTime)
+            messageTime = messageTime.strftime('%d/%m/%Y')
+            date = str(messageTime)
+            query = "select ticket_url from tickets where date='{}' and ticket_type = 'CLOSED'"
+            cursor.execute(query.format(date))
+            ticket = cursor.fetchone()
+            conn.commit()
+            bot.send_message(message.chat.id,text=m.cs_menu,parse_mode = "Markdown")
+            bot.send_photo(message.chat.id,ticket[0], caption = f'VIP TICKET | {date}')
             bot.send_message(chat_id=message.chat.id,
                                   text=m.cs_msg, reply_markup=cs_btn(),
                                   parse_mode = "Markdown")
