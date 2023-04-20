@@ -55,7 +55,7 @@ def create_oders():
 def create_tickets():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_tickets = "CREATE TABLE IF NOT EXISTS tickets (date varchar(13) NOT NULL,ticket_url TEXT NOT NULL,ticket_type varchar(5) DEFAULT 'CS',PRIMARY KEY(date,ticket_type))"
+    create_tickets = "CREATE TABLE IF NOT EXISTS tickets (date varchar(13) NOT NULL,ticket_url TEXT NOT NULL,ticket_type varchar(6) DEFAULT 'CS',PRIMARY KEY(date,ticket_type))"
     cursor.execute(create_tickets)
     conn.commit()
     cursor.close()
