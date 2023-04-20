@@ -585,7 +585,7 @@ def callback_data(call):
 def send_welcome(message):
     create_tips()
     if not is_subscribed(m.CHAT_ID,message.chat.id):
-        create_tickets():
+        create_tickets()
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=m.not_sub_msg
                          , reply_markup=sub(),parse_mode = "Markdown")
