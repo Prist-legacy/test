@@ -989,7 +989,7 @@ def get_message(message):
             messageTime = datetime.datetime.utcfromtimestamp(messageTime)
             messageTime = messageTime.strftime('%d/%m/%Y')
             date = str(messageTime)
-            query = "select ticket_url from tickets where date='{}' and ticket_type = 'CLOSED'"
+            query = "select ticket_url from tickets where date='{}' and ticket_type = 'OPEN'"
             cursor.execute(query.format(date))
             ticket = cursor.fetchone()
             conn.commit()
