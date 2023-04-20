@@ -762,7 +762,7 @@ def confirm_client (message):
                 bot.send_chat_action(user_id, 'upload_photo')  # show the bot "typing" (max. 5 secs)
                 time.sleep(3)
                 bot.send_photo(user_id,ticket[0], caption = f'VIP TICKET | {order_no}')
-            except Exception as e:
+            except (Exception, psycopg2.DatabaseError) as e:
                 bot.send_message(message.chat.id,"PAYMENT RECEIVED SUCCESSFULLY ✅.\nThough matches haven't been posted, wait here an open ticket will be sent immediately after being received",parse_mode = "Markdown")
     except (Exception, psycopg2.DatabaseError) as e:
         print(e)
