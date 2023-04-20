@@ -43,7 +43,8 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
       *USE BUTTONS BELOW TO*
       *👇CHOSE MATCH TYPE 👇*"""
     vipmenu_msg = "VIP MATCHES are 100% sure games in that winning on these matches is guaranteed. You must stake high on them because any lose is on us where by due to any loss, we proceed with the #refund-policy"
-    cs_msg = "*Confirm* _And Proceed To Booking_"
+    cs_msg = "*Confirm* _And Proceed To Booking_" 
+    cs_msg1 = "🔘*CORRECT SCORE*\n\n*Games:* _2_\n*Odd:* •••\n\n_Use the main menu button 💰VIP GAMES💰 then correct score to view today's ticket with actual odds_*Confirm* _And Proceed To Booking_"
     cs_menu = "🔘*CORRECT SCORE*\nClosed ticket 👇"
     country_msg = "*SPECIFY YOUR COUNTY*"
     admin_msg = """
