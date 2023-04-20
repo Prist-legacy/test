@@ -19,7 +19,7 @@ Use below buttons for simplicity!👇
     not_sub_msg = """Please subscribe to our main channel 📢 to use this BOT.
 After use /reload to proceed"""
 
-    helpmsg = 'THIS A HELP MESSAGE DESCRIBING ALL WAYS AND HOW TO GET ONE RICH IN BETTING. ALL COMMANDS AND SHORT CODES ARE FOUND HERE'
+    helpmsg = "🔘HELP MENU\nYou can get help from the following.\n/how if you want to know how to book.\n/admin to talk to the admin directly.\n/verify to quickly verify you payment./menu if the menu button is not visible./free for today's free tips"
     commands = {  # command description used in the "help" command
     'start'       : 'Start the bot again',
     'help'        : 'Gives you information about the available services and how to use the bot',
@@ -41,16 +41,9 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
     vip_msg = """*CORRECT SCORE:* _This involves providing half-time and full-time score of the dedicated matches. Matches can be daily or else source hasn't confirmed it. They are 100% sure; we provide match score before it kicks off._\n*HT/FT:* _These are matches give results by halves,▫️*Halftime results to Full-time results (1/2)*👉Where home team wins half-time then away team to win full-time._
     
     *CHOSE MATCH TYPE 👇👇*"""
-    vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
-WINNING IS GUARANTEED. IN SHORT, THEY ARE RISK FREE MATCHES.
-STAKE HIGH ON THEM."""
-    cs_msg = """🔘*CORRECT SCORE*
-    
-*Match Type:* _Correct Score_
-*Count:* _2_
-*ODDS:* _200+_
-
-_*Confirm* And Proceed To Booking_"""
+    vipmenu_msg = "VIP MATCHES are 100% sure games in that winning on these matches is guaranteed. You must stake high on them because any lose is on us where by due to any loss, we proceed with the #refund-policy"
+    cs_msg = "*Confirm* _And Proceed To Booking_"
+    cs_menu = "🔘*CORRECT SCORE*\nClosed ticket 👇"
     country_msg = "*SPECIFY YOUR COUNTY*"
     admin_msg = """
 🧑‍💻*ADMIN CONTACT:*
@@ -60,7 +53,7 @@ _You be redirected to the admin's box.\n Please try to be brief and precise\n
 IE: Be on point because there are many people in that box._
 """
 
-    vipdes_msg = "VIP DESCRIPTION"
-    how_msg = "THIS DESCRIBES HOW TO BOOK MATCHES BOTH VIP AND VVIP"
+    vipdes_msg = "*VIP:* Is a daily subscription. This payment is done daily and verification is a vital step every each payment made.\n\n*VVIP:* Its the same as VIP but this is to those who pay for matches in a long period like weekly, monthly and yearly payments. Just multiply the VIP payments by the Days more than one, that is the VVIP subscription needed.\nVVIP members have their secret group where matches where open tickets are posted every morning plus additional bonus.\n\nHope you got it right."
+    how_msg = "*CONTACT:* [ADMIN](t.me/talktotegs) for more info"
 
 
