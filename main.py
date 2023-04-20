@@ -55,7 +55,7 @@ def create_oders():
 def create_tickets():
     conn = connect_to_db()
     cursor = conn.cursor()
-    create_tickets = "CREATE TABLE IF NOT EXISTS tickets (date varchar(13) NOT NULL,ticket_url TEXT NOT NULL,ticket_type varchar(5) DEFAULT 'CS',PRIMARY KEY(date))"
+    create_tickets = "CREATE TABLE IF NOT EXISTS tickets (date varchar(13) NOT NULL,ticket_url TEXT NOT NULL,ticket_type varchar(5) DEFAULT 'CS',PRIMARY KEY(date,ticket_type))"
     cursor.execute(create_tickets)
     conn.commit()
     cursor.close()
@@ -756,10 +756,13 @@ def confirm_client (message):
             conn.commit()
             bot.send_message(message.chat.id,text=admin.format(date,user_id,order_no,order_type),parse_mode = "Markdown")
             bot.send_message(user_id,text=text.format(order_no),parse_mode = "Markdown")
-            bot.send_message(user_id,text=photo_msg,parse_mode = "Markdown")
-            bot.send_chat_action(user_id, 'upload_photo')  # show the bot "typing" (max. 5 secs)
-            time.sleep(3)
-            bot.send_photo(user_id,ticket[0], caption = f'VIP TICKET | {order_no}')
+            try:
+                bot.send_message(user_id,text=photo_msg,parse_mode = "Markdown")
+                bot.send_chat_action(user_id, 'upload_photo')  # show the bot "typing" (max. 5 secs)
+                time.sleep(3)
+                bot.send_photo(user_id,ticket[0], caption = f'VIP TICKET | {order_no}')
+            except Exception as e:
+                bot.send_message(message.chat.id,"PAYMENT RECEIVED SUCCESSFULLY ✅.\nThough matches haven't been posted, wait here an open ticket will be sent immediately after being received",parse_mode = "Markdown")
     except (Exception, psycopg2.DatabaseError) as e:
         print(e)
         msg = '*User:* {} already has an order settled for *Date:* {}'
@@ -991,15 +994,18 @@ def get_message(message):
             date = str(messageTime)
             conn = connect_to_db()
             cursor = conn.cursor()
-            query = "select ticket_url from tickets where date='{}' and ticket_type = 'OPEN'"
+            query = "select ticket_url from tickets where date='{}' and ticket_type = 'CLOSED'"
             cursor.execute(query.format(date))
             ticket = cursor.fetchone()
             conn.commit()
-            bot.send_message(message.chat.id,text=m.cs_menu,parse_mode = "Markdown")
-            bot.send_photo(message.chat.id,ticket[0], caption = f'VIP TICKET | {date}')
-            bot.send_message(chat_id=message.chat.id,
+            try:
+                bot.send_message(message.chat.id,text=m.cs_menu,parse_mode = "Markdown")
+                bot.send_photo(message.chat.id,ticket[0], caption = f'VIP TICKET | {date}')
+                bot.send_message(chat_id=message.chat.id,
                                   text=m.cs_msg, reply_markup=cs_btn(),
                                   parse_mode = "Markdown")
+            except Exception as e:
+                bot.send_message(message.chat.id, "⚠️ CORRECT SCORE matches haven't been received from the source. Please wait, you will be informed in the main channel when they arrive. Thanks")
         elif message.text == "HT/FT":
             msg = "*🔘HT/FT MENU*\n\n_⚠️No HT/FT matches today.\nPlease proceed with CORRECT SCORE matches._"
             bot.send_message(chat_id=message.chat.id,
@@ -1034,7 +1040,7 @@ def mtnnumber_step(message):
         bot.send_message(chat_id,text=no_msg.format(user.number,amount,mtn,mtn,amount),parse_mode = "Markdown")
     except Exception as e:
         print(e)
-        bot.send_message(message, '⚠️Oooops... Something went wrong.')
+        bot.send_message(chat_id, '⚠️Oooops... Something went wrong.')
         
 def airtelnumber_step(message):
     try:
@@ -1092,7 +1098,7 @@ def process_menu_step(message):
              bot.register_next_step_handler(msg, process_problem_step)           
     except Exception as e:
         print(e)
-        bot.send_message(message, 'Oooops... Something went wrong.')
+        bot.send_message(message.chat_id, 'Oooops... Something went wrong.')
 
 
 
