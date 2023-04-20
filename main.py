@@ -1005,7 +1005,8 @@ def get_message(message):
                                   text=m.cs_msg, reply_markup=cs_btn(),
                                   parse_mode = "Markdown")
             except Exception as e:
-                bot.send_message(message.chat.id, "⚠️ CORRECT SCORE matches haven't been received from the source. Please wait, you will be informed in the main channel when they arrive. Thanks")
+                bot.send_message(message.chat.id, "⚠️_CORRECT SCORE matches haven't been received from the source. Please wait, you will be informed in the main channel when they arrive. Thanks_"
+                                 ,reply_markup=main_btn(),parse_mode = "Markdown")
         elif message.text == "HT/FT":
             msg = "*🔘HT/FT MENU*\n\n_⚠️No HT/FT matches today.\nPlease proceed with CORRECT SCORE matches._"
             bot.send_message(chat_id=message.chat.id,
