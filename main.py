@@ -11,7 +11,7 @@ bot_token = bot_token
 
 bot = telebot.TeleBot(bot_token)
 #DATABASE CONNECT
-DATABASE_URL = "postgresql://postgres:J1qoYKjmlvskc4cbB2Yb@containers-us-west-210.railway.app:7626/railway"
+DATABASE_URL = "postgresql://postgres:6lR9GoDtaJv2G3Kc2NhQ@containers-us-west-62.railway.app:7851/railway"
 def connect_to_db():
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     return conn
@@ -740,9 +740,9 @@ def confirm_client (message):
     messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
     date = str(messageTime)
     order_no = message.message_id
-    admin= "ORDER: Date: {} User: {} No: {} Type: {}"
+    admin= "_ORDER:_ *Date:* {} *User:* `{}` *No:* `{}` *Type:* `{}`"
     not_msg = 'You must be an administrator to do this.'
-    photo_msg= '_Sending your receipt 🧾 now.._'
+    photo_msg= '_Sending your ticket 🧾 now.._'
     try:
         if user not in m.admin:
             bot.send_message(message.chat.id,not_msg,parse_mode = "Markdown")
