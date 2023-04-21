@@ -853,14 +853,14 @@ def send_cast(message):
     users = [row[0] for row in u]
     conn.commit()
     #fetch users
-    jip = [2036597190,920015079]
+    jip = '2036597190,920015079'
     try:
         if user not in m.admin:
            bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
         else:
             for user in jip:
             #bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
-                bot.send_message(chat_id=jip,text=msg,parse_mode = "Markdown")
+                bot.send_message(chat_id=user,text=msg,parse_mode = "Markdown")
     except Exception as e:
         bot.send_message(message.chat.id, 
                          f'*Oooops... Something went wrong.*\n`These are your users`\n{users}',
