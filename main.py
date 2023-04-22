@@ -1003,7 +1003,7 @@ def get_message(message):
             bot.send_message(message.chat.id,text=text.format(MTN,MTN),reply_markup=ReplyKeyboardRemove(),parse_mode = "MarkdownV2")
         elif message.text == "MS-APP":
             text = "🔸Open the *MySafaricom app* on your smartphone\nSelect the option *MPESA*\n🔸Next select *MPESA Global*\n🔸Accept the `Terms and Conditions` when prompted\n🔸Now select *Send*\n🔸Continue inputting the details as and when required such as *amount* and *PIN* to complete the transaction"
-            bot.send_message(message.chat.id,text=text.format(MTN,MTN),reply_markup=ReplyKeyboardRemove(),parse_mode = "MarkdownV2")
+            bot.send_message(message.chat.id,text=text,reply_markup=ReplyKeyboardRemove(),parse_mode = "MarkdownV2")
         except Exception as e:
             bot.send_message(message.chat.id,text=e,parse_mode = "Markdown")
             
