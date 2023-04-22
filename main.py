@@ -985,10 +985,10 @@ def get_message(message):
         elif message.text == "MTN mpesa":
             MTN= "256773936516"
             text= "*Dial* *840#\n🔸Enter your preferred PIN\n🔸Select Send Money\n🔸Enter destination phone number (`{}`)\n_Never forget the international format (256XXXXXXX)_\n🔸Enter amount and confirm"
-            bot.send_message(message.chat.id,text=text,parse_mode = "Markdown")
+            bot.send_message(message.chat.id,text=text.format(MTN),parse_mode = "Markdown")
         elif message.text == "Card 💳":
             text= "Will be available soon 🙂"
-            bot.send_message(message.chat.id,text=text.format(MTN))
+            bot.send_message(message.chat.id,text=text)
             
         elif message.text == "CORRECT SCORE":
             messageTime = message.date
