@@ -989,7 +989,7 @@ def get_message(message):
             """
             bot.send_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),disable_web_page_preview=True,parse_mode = "Markdown")
         elif message.text == "MTN mpesa":
-            text = "🔘*M_PESSA PAY*\n\nPlease select which platform do you wish to use \n*USSD* or *MS-APP*"
+            text = "🔘*MPESSA PAY*\n\nPlease select which platform do you wish to use \n*USSD* or *MS-APP*"
             try:
                 bot.send_message(message.chat.id,text=text,reply_markup=mpessa_btn(),parse_mode = "MarkdownV2")
             except Exception as e:
