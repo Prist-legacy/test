@@ -212,6 +212,12 @@ def chipper_btn():
     markup.add(InlineKeyboardButton("CHIPPER CASH PAY", url=f"{m.chippercash}"))
     return markup
 
+def mpessa_btn():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    ussd = types.KeyboardButton(text="USSD",)
+    app = types.KeyboardButton(text="MS-APP",)
+    markup.add(ussd,app)
+    return markup
 
 #OTHERS
 def sub():
@@ -983,15 +989,21 @@ def get_message(message):
             """
             bot.send_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),disable_web_page_preview=True,parse_mode = "Markdown")
         elif message.text == "MTN mpesa":
-            MTN= "256773936516"
-            text= "*🔸Dial* `*840#`\n🔸Enter your preferred PIN\n🔸Select Send Money\n🔸Enter destination phone number as `{}`•  _⚠️Never forget the international format `256`XXXXXXX•_\n🔸Enter amount and confirm•\n\nNUMBER ➖ `{}`\n*AFTER: Send a screenshot of your payment for verification•*"
+            text = "🔘*M-PESSA MENU*\n\nPlease select which platform do you wish to use. \n*USSD* or *MS-APP*"
             try:
-                bot.send_message(message.chat.id,text=text.format(MTN,MTN),parse_mode = "MarkdownV2")
+                bot.send_message(message.chat.id,text=text,reply_markup=mpessa_btn(),parse_mode = "MarkdownV2")
             except Exception as e:
                 bot.send_message(message.chat.id,text=e,parse_mode = "Markdown")
         elif message.text == "Card 💳":
             text= "Will be available soon 🙂"
             bot.send_message(message.chat.id,text=text)
+        elif message.text == "USSD":
+            MTN= "256773936516"
+            text= "*🔸Dial* `*840#`\n🔸Enter your preferred PIN\n🔸Select Send Money\n🔸Enter destination phone number as `{}`•  _⚠️Never forget the international format `256`XXXXXXX•_\n🔸Enter amount and confirm•\n\nNUMBER ➖ `{}`\n*AFTER: Send a screenshot of your payment for verification•*"
+            bot.send_message(message.chat.id,text=text.format(MTN,MTN),reply_markup=ReplyKeyboardRemove(),parse_mode = "MarkdownV2")
+        elif message.text == "MS-APP":
+            text = "🔸Open the *MySafaricom app* on your smartphone.\nSelect the option *M-PESA*\n🔸Next select *M-PESA Global*\n🔸Accept the ‘Terms and Conditions’ when prompted\n🔸Now select *‘Send’*\n🔸Continue inputting the details as and when required such as *amount* and *PIN* to complete the transaction."
+            bot.send_message(message.chat.id,text=text.format(MTN,MTN),reply_markup=ReplyKeyboardRemove(),parse_mode = "MarkdownV2")
             
         elif message.text == "CORRECT SCORE":
             messageTime = message.date
