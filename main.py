@@ -984,9 +984,9 @@ def get_message(message):
             bot.send_message(message.chat.id,text=chipper_msg.format(text,link),reply_markup=chipper_btn(),disable_web_page_preview=True,parse_mode = "Markdown")
         elif message.text == "MTN mpesa":
             MTN= "256773936516"
-            text= "*🔸Dial* `*840#`\n🔸Enter your preferred PIN\n🔸Select Send Money\n🔸Enter destination phone number as `{}`•  _⚠️Never forget the international format `256`XXXXXXX•_\n🔸Enter amount and confirm•\n\nNUMBER ➖ `{}`*AFTER: Send a screenshot of your payment for verification•*"
+            text= "*🔸Dial* `*840#`\n🔸Enter your preferred PIN\n🔸Select Send Money\n🔸Enter destination phone number as `{}`•  _⚠️Never forget the international format `256`XXXXXXX•_\n🔸Enter amount and confirm•\n\nNUMBER ➖ `{}`\n*AFTER: Send a screenshot of your payment for verification•*"
             try:
-                bot.send_message(message.chat.id,text=text.format(*MTN),parse_mode = "MarkdownV2")
+                bot.send_message(message.chat.id,text=text.format(MTN,MTN),parse_mode = "MarkdownV2")
             except Exception as e:
                 bot.send_message(message.chat.id,text=e,parse_mode = "Markdown")
         elif message.text == "Card 💳":
