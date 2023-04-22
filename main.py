@@ -988,7 +988,7 @@ def get_message(message):
             bot.send_message(message.chat.id,text=text,parse_mode = "Markdown")
         elif message.text == "Card 💳":
             text= "Will be available soon 🙂"
-            bot.send_message(message.chat.id,text=text)
+            bot.send_message(message.chat.id,text=text.format(MTN))
             
         elif message.text == "CORRECT SCORE":
             messageTime = message.date
@@ -1053,7 +1053,7 @@ def airtelnumber_step(message):
         airtel = "0708527456"
         amount = "47000"
         if not number.isdigit():
-            msg = bot.reply_to(message, "⚠️(SIM NUMBER) should be only 'numbers' and 10 digits.\n*Send me the Airtel number you're going to transact with.*",parse_mode = "Markdown")
+            msg = bot.reply_to(message, "⚠️({number}) should be only 'numbers' and 10 digits.\n*Send me the Airtel number you're going to transact with.*",parse_mode = "Markdown")
             bot.register_next_step_handler(msg, airtelnumber_step)
             return
         user = User(number)
