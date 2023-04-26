@@ -683,7 +683,7 @@ def send_welcome(message):
     tips_date = str(messageTime)
     user = message.from_user.id
     text="Tip for DATE: {} successfully ✅ deleted"
-    current_date = message.text.split(None,1)[1]
+    current_date = message.text.split()[1]
     if user not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
@@ -693,7 +693,7 @@ def send_welcome(message):
             conn.commit()
             bot.send_message(message.chat.id, text=text.format(current_date))
         except (Exception, psycopg2.DatabaseError) as e:
-            bot.reply_to(message, text=f"Make sure your date is well formated as {current_date}")
+            bot.reply_to(message, text=f"Make sure your date is well formated as {tips_date}")
             print(e)
             
 @bot.message_handler(commands=['ticket'])
