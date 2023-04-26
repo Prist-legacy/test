@@ -866,9 +866,9 @@ def send_cast(message):
            bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
         else:
             for user in users:
-            #bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
-                    bot.send_message(chat_id=jip,text=msg,parse_mode = "Markdown")
                 
+            #bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
+                bot.send_message(chat_id=jip,text=msg,parse_mode = "Markdown")
     except Exception as e:
         #*\n`These are your users`\n{users}
         bot.send_message(message.chat.id, 
