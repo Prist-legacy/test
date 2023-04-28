@@ -52,6 +52,17 @@ def create_oders():
     cursor.close()
     conn.close()
     
+def cast_users():
+    conn = connect_to_db()
+    cursor = conn.cursor()
+    db_users = "select user_id from UFM_USERS where type ='VIP'"
+    cursor.execute(db_users)
+    u = cursor.fetchall()
+    ufm_users = [row[0] for row in u]
+    conn.commit()
+    cursor.close()
+    conn.close()
+    
 def create_tickets():
     conn = connect_to_db()
     cursor = conn.cursor()
@@ -672,8 +683,10 @@ def send_welcome(message):
     if user_id not in m.admin:
         bot.send_message(message.chat.id, text="⚠️You must be admin to do this")
     else:
+        cast_users():
         insert_tips(free_tips,tips_date)
         bot.send_message(message.chat.id, text=free_tips,parse_mode = "Markdown")
+        bot.send_message(ufm_users, text='_Free tips have been updated._ Use /free to get them',parse_mode = "Markdown")
         
 @bot.message_handler(commands=['dtip'])
 def send_welcome(message):
