@@ -859,7 +859,7 @@ def send_info(message):
         
 @bot.message_handler(commands=['cast'])
 def send_cast(message):
-    msg = message.text.split(None,1)[1]
+    msg1 = message.text.split(None,1)[1]
     user = message.from_user.id
     #start
     conn = connect_to_db()
@@ -877,7 +877,7 @@ def send_cast(message):
         else:
             for user in users:
             #bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
-                bot.send_message(chat_id=users,text=msg,parse_mode = "Markdown")
+                bot.send_message(users,text=msg1,parse_mode = "Markdown")
     except Exception as e:
         #*\n`These are your users`\n{users}
         bot.send_message(message.chat.id, 
