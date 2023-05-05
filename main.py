@@ -973,9 +973,9 @@ def get_message(message):
     #END
             try:
                if not is_subscribed(m.CHAT_ID,message.chat.id):
+                    
         # user is not subscribed. send message to the user
-               bot.send_message(message.chat.id, text=m.not_sub_msg
-                         , reply_markup=sub())
+                    bot.send_message(message.chat.id, text=m.not_sub_msg,reply_markup=sub())
                else:
                    bot.send_message(message.chat.id, text=m.free_msg.format(current_date,tip[0]), reply_markup=freetips_btn(),parse_mode = "Markdown")
             except (Exception, psycopg2.DatabaseError) as e:
