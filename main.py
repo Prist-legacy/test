@@ -617,7 +617,7 @@ def send_welcome(message):
         user_info = f"{message.from_user.first_name} {message.from_user.last_name}"
         insert_user_data(user_id, join_date, user_info)
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
-        if user in m.admin:
+        if user_id in m.admin:
             bot.send_message(message.chat.id, text="**HEY Admin**",
                              reply_markup=pro_btn(),parse_mode = "Markdown")
         else:
