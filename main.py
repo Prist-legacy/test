@@ -980,7 +980,7 @@ def get_message(message):
         # user is not subscribed. send message to the user
                     bot.send_message(message.chat.id, text=m.not_sub_msg,reply_markup=sub())
                else:
-                    bot.edit_message_text(call.message.chat.id,call.message.message_id, text=load1,reply_markup=sub())
+                    bot.send_message(call.message.chat.id,call.message.message_id, text=load1,reply_markup=sub())
                     time.sleep(1)
                     bot.edit_message_text(call.message.chat.id,call.message.message_id, text=load2,reply_markup=sub())
                     time.sleep(1)
@@ -1108,9 +1108,9 @@ def handler_function(message):
     if message.text == "hi":
         bot.send_message(message.chat.id, text="You ha",parse_mode = "Markdown")
         time.sleep(1)
-        bot.send_message(message.chat.id, text="You have no",parse_mode = "Markdown")
+        bot.edit_message_text(message.chat.id,message.message_id, text="You have no",parse_mode = "Markdown")
         time.sleep(1)
-        bot.send_message(message.chat.id, text="You have no order for today ",parse_mode = "Markdown")
+        bot.edit_message_text(message.chat.id,message.message_id, text="You have no order for today ",parse_mode = "Markdown")
 
 
             
