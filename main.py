@@ -959,8 +959,30 @@ def get_message(message):
                 print(e)
                 
         elif message.text == "⛑️Free tips":
-            bot.send_message(message.chat.id,
-                                  text=m.freetips_msg, reply_markup=free_btn())
+            messageTime = message.date
+            messageTime = datetime.datetime.utcfromtimestamp(messageTime) # datetime format
+            messageTime = messageTime.strftime('%d/%m/%Y') # formatted datetime
+            current_date = str(messageTime)
+    #FETCH DATA
+            conn = connect_to_db()
+            cursor = conn.cursor()
+            postgreSQL_select_Query = "select free_tips from free_tips where tips_date='{}'"
+            cursor.execute(postgreSQL_select_Query.format(current_date))
+            tip = cursor.fetchone()
+            conn.commit()
+    #END
+            try:
+               if not is_subscribed(m.CHAT_ID,message.chat.id):
+        # user is not subscribed. send message to the user
+               bot.send_message(message.chat.id, text=m.not_sub_msg
+                         , reply_markup=sub())
+               else:
+                   bot.send_message(message.chat.id, text=m.free_msg.format(current_date,tip[0]), reply_markup=freetips_btn(),parse_mode = "Markdown")
+            except (Exception, psycopg2.DatabaseError) as e:
+                
+                bot.send_message(message.chat.id, text=m.no_free_msg.format(current_date),parse_mode = "Markdown")
+                print(e)
+        
         elif message.text == "🧾My orders":
             orders_msg = "These are your oders.\n\nACTIVE ORDER: {}\nplaced on {}"
             user= message.from_user.id
