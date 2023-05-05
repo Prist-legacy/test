@@ -1100,9 +1100,22 @@ def get_message(message):
             msg = f"*CONTACT ADMIN HERE*\n\n⚠️Contact admin here for payment issues only. Click on UFM ADMIN below 👇.\n*🧑‍💻ADMIN:* [UFM ADMIN]({m.admin_direct})\n\n_All rights reserved._"
             bot.send_message(message.chat.id, text=msg,reply_markup=main_btn(),disable_web_page_preview=True
                          ,parse_mode = "Markdown")
+        bot.send_message(message.chat.id, text="You have no order for today ",parse_mode = "Markdown")
+
+      
+@bot.edited_message_handler(func=lambda message: True)
+def handler_function(message):
+    if message.text == "hi":
+        bot.send_message(message.chat.id, text="You have ",parse_mode = "Markdown")
+
+
+        time.sleep(1)
+        bot.send_message(message.chat.id, text="You have no orde",parse_mode = "Markdown")
         
-            
-            
+        time.sleep(1)
+        bot.send_message(message.chat.id, text="You have no order for today ",parse_mode = "Markdown")
+
+
             
 
 def mtnnumber_step(message):
