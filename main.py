@@ -1106,12 +1106,9 @@ def get_message(message):
 @bot.edited_message_handler(func=lambda message: True)
 def handler_function(message):
     if message.text == "hi":
-        bot.send_message(message.chat.id, text="You have ",parse_mode = "Markdown")
-
-
+        bot.send_message(message.chat.id, text="You ha",parse_mode = "Markdown")
         time.sleep(1)
-        bot.send_message(message.chat.id, text="You have no orde",parse_mode = "Markdown")
-        
+        bot.send_message(message.chat.id, text="You have no",parse_mode = "Markdown")
         time.sleep(1)
         bot.send_message(message.chat.id, text="You have no order for today ",parse_mode = "Markdown")
 
