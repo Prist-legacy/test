@@ -913,7 +913,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn(),parse_mode = "Markdown")
         
 @bot.message_handler() 
-def get_message(message):
+def get_message(message,call):
     create_tickets()
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
@@ -1103,17 +1103,7 @@ def get_message(message):
         bot.send_message(message.chat.id, text="You have no order for today ",parse_mode = "Markdown")
 
       
-@bot.edited_message_handler(func=lambda message: True)
-def handler_function(message):
-    if message.text == "hi":
-        bot.send_message(message.chat.id, text="You ha",parse_mode = "Markdown")
-        time.sleep(2)
-        bot.edit_message_text(message.chat.id,message.message_id, text="You have no",parse_mode = "Markdown")
-        time.sleep(2)
-        bot.edit_message_text(message.chat.id,message.message_id, text="You have no order for today ",parse_mode = "Markdown")
 
-
-            
 
 def mtnnumber_step(message):
     try:
