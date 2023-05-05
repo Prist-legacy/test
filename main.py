@@ -1107,9 +1107,9 @@ def get_message(message):
 def handler_function(message):
     if message.text == "hi":
         bot.send_message(message.chat.id, text="You ha",parse_mode = "Markdown")
-        time.sleep(1)
+        time.sleep(2)
         bot.edit_message_text(message.chat.id,message.message_id, text="You have no",parse_mode = "Markdown")
-        time.sleep(1)
+        time.sleep(2)
         bot.edit_message_text(message.chat.id,message.message_id, text="You have no order for today ",parse_mode = "Markdown")
 
 
