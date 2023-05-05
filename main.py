@@ -108,6 +108,17 @@ def is_subscribed(chat_id, user_id):
             return False
 
 #BUTTONS
+def pro_btn():
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2,one_time_keyboard=True)
+    c = types.KeyboardButton(text="CAST",)
+    o = types.KeyboardButton(text="ORDERS",)
+    u = types.KeyboardButton(text="UPDATE",)
+    other = types.KeyboardButton(text="OTHERS",)
+    cancel = types.KeyboardButton(text="cancel",)
+    markup.add(c,o,u,other)
+    markup.add(cancel)
+    return markup
+
 def vipreply_btn():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2,one_time_keyboard=True)
     cs = types.KeyboardButton(text="CORRECT SCORE",)
@@ -606,10 +617,14 @@ def send_welcome(message):
         user_info = f"{message.from_user.first_name} {message.from_user.last_name}"
         insert_user_data(user_id, join_date, user_info)
         mention = "["+user_name+"](tg://user?id="+str(user_id)+")"
-        bot.send_message(message.chat.id, text=f"**HEY {mention}**" + m.startmsg,
+        if user in m.admin:
+            bot.send_message(message.chat.id, text="**HEY Admin**",
+                             reply_markup=pro_btn(),parse_mode = "Markdown")
+        else:
+            bot.send_message(message.chat.id, text=f"**HEY {mention}**" + m.startmsg,
                          
                          parse_mode = "Markdown")
-        bot.send_message(message.chat.id, text=m.main_msg,reply_markup=main_btn()
+            bot.send_message(message.chat.id, text=m.main_msg,reply_markup=main_btn()
                          ,parse_mode = "Markdown")
         
         
