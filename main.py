@@ -980,13 +980,7 @@ def get_message(message,call):
         # user is not subscribed. send message to the user
                     bot.send_message(message.chat.id, text=m.not_sub_msg,reply_markup=sub())
                else:
-                    bot.send_message(call.message.chat.id,call.message.message_id, text=load1,reply_markup=sub())
-                    time.sleep(1)
-                    bot.edit_message_text(call.message.chat.id,call.message.message_id, text=load2,reply_markup=sub())
-                    time.sleep(1)
-                    bot.edit_message_text(call.message.chat.id,call.message.message_id, text=load3,reply_markup=sub())
-                    time.sleep(1)
-                    bot.edit_message_text(call.message.chat.id,call.message.message_id, text=m.free_msg.format(current_date,tip[0]), reply_markup=freetips_btn(),parse_mode = "Markdown")
+                    bot.send_message(call.message.chat.id,call.message.message_id, text=m.free_msg.format(current_date,tip[0]), reply_markup=freetips_btn(),parse_mode = "Markdown")
             except (Exception, psycopg2.DatabaseError) as e:
                 
                 bot.send_message(message.chat.id, text=m.no_free_msg.format(current_date),parse_mode = "Markdown")
