@@ -1094,7 +1094,7 @@ def get_message():
             msg = f"*CONTACT ADMIN HERE*\n\n⚠️Contact admin here for payment issues only. Click on UFM ADMIN below 👇.\n*🧑‍💻ADMIN:* [UFM ADMIN]({m.admin_direct})\n\n_All rights reserved._"
             bot.send_message(message.chat.id, text=msg,reply_markup=main_btn(),disable_web_page_preview=True
                          ,parse_mode = "Markdown")
-        bot.send_message(message.chat.id, text="You have no order for today ",parse_mode = "Markdown")
+        
 
       
 
