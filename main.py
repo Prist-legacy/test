@@ -913,7 +913,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=m.main_msg, reply_markup=main_btn(),parse_mode = "Markdown")
         
 @bot.message_handler() 
-def get_message(message):
+def get_message():
     create_tickets()
     if not is_subscribed(m.CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
