@@ -875,7 +875,7 @@ def send_info(message):
 @bot.message_handler(commands=['cast'])
 def send_cast(message):
     msg1 = message.text.split(None,1)[1]
-    user = message.chat.id
+    user = message.from_user.id
     #start
     conn = connect_to_db()
     cursor = conn.cursor()
@@ -890,9 +890,10 @@ def send_cast(message):
         if user not in m.admin:
            bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
         else:
-            for user in users:
+            for user in jip:
                 bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
                 bot.send_message(chat_id=users,text=msg1,parse_mode = "Markdown")
+                bot.send_message(jip,text=msg1,parse_mode = "Markdown")
     except Exception as e:
         #*\n`These are your users`\n{users}
         bot.send_message(message.chat.id, 
