@@ -875,7 +875,7 @@ def send_info(message):
 @bot.message_handler(commands=['cast'])
 def send_cast(message):
     msg1 = message.text.split(None,1)[1]
-    user = message.from_user.id
+    user = message.chat.id
     #start
     conn = connect_to_db()
     cursor = conn.cursor()
