@@ -885,7 +885,7 @@ def send_cast(message):
     users = [row[0] for row in u]
     conn.commit()
     #fetch users
-    jip = 920015079,2036597190
+    jip = '2036597190'
     try:
         if user not in m.admin:
            bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
