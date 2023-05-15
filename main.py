@@ -892,7 +892,7 @@ def send_cast(message):
         else:
             for user in users:
                 bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
-                bot.send_message(users,text=msg1,parse_mode = "Markdown")
+                bot.send_message(chat_id=users,text=msg1,parse_mode = "Markdown")
     except Exception as e:
         #*\n`These are your users`\n{users}
         bot.send_message(message.chat.id, 
