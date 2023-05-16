@@ -971,9 +971,6 @@ def get_message(message):
             cursor.execute(postgreSQL_select_Query.format(current_date))
             tip = cursor.fetchone()
             conn.commit()
-            load1 = "Loading."
-            load2 = "Loading.."
-            load3 = "Loading..."
     #END
             try:
                if not is_subscribed(m.CHAT_ID,message.chat.id):
