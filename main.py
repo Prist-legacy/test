@@ -893,8 +893,8 @@ def send_cast(message):
             try:
                for user in jip:
                 #bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
-                #bot.send_message(chat_id=users,text=msg1,parse_mode = "Markdown")
-                bot.send_message(jip,text=msg1,parse_mode = "Markdown")
+                bot.send_message(chat_id=users,text=msg1,parse_mode = "Markdown")
+                #bot.send_message(jip,text=msg1,parse_mode = "Markdown")
             except (Exception, psycopg2.DatabaseError) as e:
                 bot.send_message(message.chat.id,text=e,parse_mode = "Markdown")
     except (Exception, psycopg2.DatabaseError) as e:
