@@ -875,6 +875,7 @@ def send_info(message):
 @bot.message_handler(commands=['cast'])
 def send_cast(message):
     msg1 = message.text.split(None,1)[1]
+    userr = message.chat.id
     user = message.from_user.id
     #start
     conn = connect_to_db()
@@ -891,7 +892,7 @@ def send_cast(message):
            bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
         else:
             try:
-               for user in jip:
+               for userr in users:
                 #bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
                 bot.send_message(chat_id=users,text=msg1,parse_mode = "Markdown")
                 #bot.send_message(jip,text=msg1,parse_mode = "Markdown")
