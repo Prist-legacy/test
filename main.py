@@ -887,12 +887,13 @@ def send_cast(message):
     conn.commit()
     #fetch users
     jip = 1943044095,5753072076,920015079
+    ufm = f'{users}'
     try:
         if user not in m.admin:
            bot.send_message(message.chat.id,text=f"You require admin permission to do this ‼️",parse_mode = "Markdown")
         else:
             try:
-               for userr in users:
+               for user in users:
                 #bot.send_message(message.chat.id,f'_These are your users_\n{users}',parse_mode = "Markdown")
                 bot.send_message(chat_id=users,text=msg1,parse_mode = "Markdown")
                 #bot.send_message(jip,text=msg1,parse_mode = "Markdown")
